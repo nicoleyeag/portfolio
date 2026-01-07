@@ -29,7 +29,10 @@ export default function Home() {
         </div>
 
         <div className="heroRight">
-          <img src="/assets/your-photo.png" alt="Nicole Yeager" />
+          <img
+            src="/assets/Yeager Sisters Test Shoot - 20210915_19_47_58-2L2A8724-1000.jpg"
+            alt="Nicole Yeager"
+            />
         </div>
       </section>
 

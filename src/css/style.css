@@ -124,12 +124,14 @@ body {
 /* sparkle container on top of button */
 .download-cv .cv-sparkles {
   position: absolute;
-  left: 0;
-  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -15px;
   width: 100%;
   height: 60px;
   pointer-events: none;
 }
+
 
 /* base sparkle for CV (scoped!) */
 .download-cv .cv-sparkles .sparkle {
@@ -149,12 +151,21 @@ body {
 .download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 8px;  }
 
 /* show + animate on hover */
-.download-cv.hover .cv-sparkles .sparkle {
+/* Odd sparkles rotate left → right */
+.download-cv.hover .cv-sparkles .sparkle.s1,
+.download-cv.hover .cv-sparkles .sparkle.s3,
+.download-cv.hover .cv-sparkles .sparkle.s5 {
   opacity: 1;
-  animation: sparkle-wiggle 1s ease-in-out infinite;
+  animation: sparkle-wiggle-left 1s ease-in-out infinite;
 }
 
-
+/* Even sparkles rotate right → left */
+.download-cv.hover .cv-sparkles .sparkle.s2,
+.download-cv.hover .cv-sparkles .sparkle.s4,
+.download-cv.hover .cv-sparkles .sparkle.s6 {
+  opacity: 1;
+  animation: sparkle-wiggle-right 1s ease-in-out infinite;
+}
 
 /* pressed state */
 .download-cv.active .cv-sparkles .sparkle {
@@ -163,26 +174,53 @@ body {
   transform: translateY(2px);
 }
 
+/* Keyframes for wiggle */
+@keyframes sparkle-wiggle-left {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes sparkle-wiggle-right {
+  0%, 100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
 
 
 /* --- NAV BAR --- */
 
-/* Navbar container */
-/* Navbar Container */
 nav {
-  display: flex;  /* Enables flexible layout */
-  justify-content: space-between; /* Spreads items across the navbar */
-  align-items: center; /* Aligns items vertically */
-  width: 100%; /* Make sure the navbar spans the full width */
-  padding:  20px; /* Optional: Add some horizontal padding */
-  background-color: #FFFAFA; /* Optional: Background color for the navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1100px;   /* 👈 matches hero width */
+  margin: 0 auto;      /* 👈 centers navbar */
+  padding: 20px 20px;
+  background-color: #FFFAFA;
 }
 
-/* Navbar Buttons (adjust button layout) */
-nav button {
-  margin-right: 20px; /* Adds space between the buttons */
+/* this styles the left and right sections of the navbar */
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* spacing between items */
+}
+
+/* Keepexisting button styles — this just ensures spacing consistency */
+.nav-left button {
   padding: 10px 20px;
 }
+
 
 
 
@@ -193,3 +231,41 @@ nav button {
   font-weight: 700;
 }
 
+/* hero responsive */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* hero mobile responsive */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .heroRight img {
+    max-height: 300px;
+    margin-top: 24px;
+  }
+}
+
+/* hero right */
+.heroRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroRight img {
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;     /* 👈 controls how big it can get */
+  border-radius: 16px;   /* optional, looks nice */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
