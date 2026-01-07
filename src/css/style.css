@@ -269,3 +269,50 @@ nav {
   border-radius: 16px;   /* optional, looks nice */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+/* SKILLS CARDS */
+/* Skills section layout */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* Individual card */
+.skill-card {
+  background: #FFFAFA;
+  border: 2px solid #111;
+  border-radius: 20px;
+  padding: 28px;
+}
+
+/* Card title */
+.skill-card h3 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 24px;
+  margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+/* Skill list */
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-card li {
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* on mobile */
+@media (max-width: 768px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}

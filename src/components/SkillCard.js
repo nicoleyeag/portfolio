@@ -1,8 +1,15 @@
-export default function SkillCard({ title, children }) {
+import React from "react";
+
+export default function SkillCard({ title, skills }) {
   return (
-    <article className="card">
-      <h2>{title}</h2>
-      <div className="cardBody">{children}</div>
-    </article>
+    <div className="skill-card">
+      <h3>{title}</h3>
+
+      <ul>
+        {skills.map((skill, index) => (
+          <li key={index}>{skill}</li>
+        ))}
+      </ul>
+    </div>
   );
 }

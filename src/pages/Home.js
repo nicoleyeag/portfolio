@@ -36,10 +36,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="cards">
-        <SkillCard title="Front Development" />
-        <SkillCard title="Backend Development" />
-      </section>
+    <section className="skills">
+        <SkillCard
+            title="Front-End Development"
+            skills={[
+                "React",
+                "JavaScript (ES6+)",
+                "HTML5",
+                "CSS3",
+                "Responsive Design",
+                "CSS Grid & Flexbox",
+            ]}
+            />
+
+            <SkillCard
+            title="Back-End Development"
+            skills={[
+                "Node.js",
+                "Express",
+                "REST APIs",
+                "PostgreSQL",
+                "Authentication",
+                "API Integration",
+            ]}
+            />
+        </section>
     </main>
   );
 }
