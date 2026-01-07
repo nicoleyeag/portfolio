@@ -1,0 +1,195 @@
+/* --- GLOBAL PARAMETERS --- */
+body {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* --- BUTTON --- */
+
+/* Button */
+.stateful-button {
+  position: relative;  /* Allows absolute positioning of children */
+  font-family: 'Jost', sans-serif;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #FFFAFA;
+  border: none;
+  border-radius: 5px;
+  display: inline-flex; /* Use flexbox to align text and sparkles */
+  align-items: center;  /* Align text and sparkles vertically in the center */
+  cursor: pointer;
+}
+
+/* Image */
+.button-image {
+  width: 1em; /* Set width to match the font size */
+  height: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align image vertically with the text */
+}
+
+
+/* Position sparkles */
+.sparkle {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0; /* Hide by default */
+  /* transition: opacity 0.3s ease; Smooth transition only for opacity */
+  /* Don't transition `top` or `left` */
+}
+
+/* Large Sparkle */
+.sparkle-large {
+  width: 1.5em;  /* Larger sparkle size */
+  height: 1.5em; /* Larger sparkle size */
+  left: 100%;  /* Position relative to the right edge of the button */
+  top: 10px; /* Move sparkle up or down */
+  margin-left: -20px;  /* Adjust space between the button and sparkle */
+  opacity: 0;  /* Initially hidden */
+  /* No transition on position, only opacity */
+}
+
+/* Small Sparkle */
+.sparkle-small {
+  width: 0.75em; /* Smaller sparkle size */
+  height: 0.75em; /* Smaller sparkle size */
+  left: 100%; /* Position relative to the right edge of the button */
+  margin-left: -20px; /* Increase space between large and small sparkle */
+  top: 5px; /* Move sparkle up or down */
+  opacity: 0;  /* Initially hidden */
+  /* No transition on position, only opacity */
+}
+
+/* Hover animation */
+.stateful-button.hover .sparkle {
+  opacity: 1; /* Make the sparkles visible when hovered */
+  animation: sparkle-wiggle 1s ease-in-out infinite;
+}
+
+/* Optional: delay animation for each sparkle */
+.sparkle-large {
+  animation-delay: 0s;
+}
+
+.sparkle-small {
+  animation-delay: 0.5s;
+}
+
+/* Keyframes for wiggle */
+@keyframes sparkle-wiggle {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-50%) rotate(-20deg);
+  }
+  75% {
+    transform: translateY(-50%) rotate(20deg);
+  }
+}
+
+/* --- DOWNLOAD CV --- */
+
+/* =========================
+   DOWNLOAD CV sparkles ONLY
+   ========================= */
+
+.download-cv {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: #FFFAFA;
+  border: none;
+  cursor: pointer;
+  overflow: visible;
+}
+
+/* label above sparkles */
+.download-cv .download-label {
+  position: relative;
+  z-index: 2;
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* sparkle container on top of button */
+.download-cv .cv-sparkles {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+}
+
+/* base sparkle for CV (scoped!) */
+.download-cv .cv-sparkles .sparkle {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 2em;   /* same-ish scale as your other large sparkle */
+  height: 2em;
+}
+
+/* spread them across the top (separated like your mock) */
+.download-cv .cv-sparkles .sparkle.s1 { left: 6%;  top: 20px; }
+.download-cv .cv-sparkles .sparkle.s2 { left: 20%; top: 8px;  }
+.download-cv .cv-sparkles .sparkle.s3 { left: 37%; top: 18px; }
+.download-cv .cv-sparkles .sparkle.s4 { left: 52%; top: 6px;  }
+.download-cv .cv-sparkles .sparkle.s5 { left: 70%; top: 16px; }
+.download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 8px;  }
+
+/* show + animate on hover */
+.download-cv.hover .cv-sparkles .sparkle {
+  opacity: 1;
+  animation: sparkle-wiggle 1s ease-in-out infinite;
+}
+
+
+
+/* pressed state */
+.download-cv.active .cv-sparkles .sparkle {
+  opacity: 1;
+  animation: none;
+  transform: translateY(2px);
+}
+
+
+
+/* --- NAV BAR --- */
+
+/* Navbar container */
+/* Navbar Container */
+nav {
+  display: flex;  /* Enables flexible layout */
+  justify-content: space-between; /* Spreads items across the navbar */
+  align-items: center; /* Aligns items vertically */
+  width: 100%; /* Make sure the navbar spans the full width */
+  padding:  20px; /* Optional: Add some horizontal padding */
+  background-color: #FFFAFA; /* Optional: Background color for the navbar */
+}
+
+/* Navbar Buttons (adjust button layout) */
+nav button {
+  margin-right: 20px; /* Adds space between the buttons */
+  padding: 10px 20px;
+}
+
+
+
+/* --- HOMEPAGE --- */
+/* bagel font special words */
+.highlight {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+}
+

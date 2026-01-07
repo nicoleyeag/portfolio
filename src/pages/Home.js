@@ -1,0 +1,42 @@
+import React from "react";
+import SkillCard from "../components/SkillCard";
+import DownloadCV from "../components/DownloadCV";
+
+
+export default function Home() {
+  return (
+    <main className="home">
+      <section className="hero">
+        <div className="heroLeft">
+          <h1>
+            👋 hi I’m <span className="highlight">Nicole Yeager</span>
+          </h1>
+
+            <p>
+            I’m a <span className="highlight">front-end software engineer</span> with a
+            passion for building bright, intuitive, and engaging{" "}
+            <span className="highlight">user experiences</span>. I love crafting clean,
+            accessible designs that make technology feel effortless. Whether it’s coding
+            sleek interfaces, optimizing performance, or experimenting with the latest web
+            technologies, I’m always eager to{" "}
+            <span className="highlight">learn and create</span>.
+            </p>
+
+        {/* button */}
+          <DownloadCV label="Download CV" />
+
+
+        </div>
+
+        <div className="heroRight">
+          <img src="/assets/your-photo.png" alt="Nicole Yeager" />
+        </div>
+      </section>
+
+      <section className="cards">
+        <SkillCard title="Front Development" />
+        <SkillCard title="Backend Development" />
+      </section>
+    </main>
+  );
+}

@@ -1,23 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar.js';
-import HomeButton from './components/HomeButton.js';
-import AboutMeButton from './components/AboutMeButton.js'
-import ProjectsButton from './components/ProjectsButton.js';
-import HireMeButton from './components/HireMeButton.js';
-import GitHubButton from './components/GitHubButton.js';
-import LinkedInButton from './components/LinkedInButton.js';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const App = () => {
-  return <>
-   <Navbar/>
-   {/* <HomeButton/>
-   <AboutMeButton/>
-   <ProjectsButton/>
-   <HireMeButton/>
-   <GitHubButton/>
-   <LinkedInButton/> */}
-  </>;
-};
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Hire from "./pages/Hire";
 
-export default App;
+import "./css/style.css";
+
+export default function App() {
+  return (
+    <Router>
+      <Navbar />
+
+      <main className="page">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/hire" element={<Hire />} />
+        </Routes>
+      </main>
+    </Router>
+  );
+}
+
