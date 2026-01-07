@@ -231,6 +231,11 @@ nav {
   font-weight: 700;
 }
 
+.bold{
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+}
+
 /* hero responsive */
 .hero {
   display: grid;
@@ -315,4 +320,14 @@ nav {
   .skills {
     grid-template-columns: 1fr;
   }
+}
+
+
+
+/* --- ABOUT ME PAGE --- */
+
+.about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
