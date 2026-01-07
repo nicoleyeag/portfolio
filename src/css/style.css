@@ -40,12 +40,13 @@ body {
   opacity: 0; /* Hide by default */
   /* transition: opacity 0.3s ease; Smooth transition only for opacity */
   /* Don't transition `top` or `left` */
+  transition: opacity 250ms ease, transform 250ms ease;
 }
 
 /* Large Sparkle */
 .sparkle-large {
-  width: 1.5em;  /* Larger sparkle size */
-  height: 1.5em; /* Larger sparkle size */
+  width: 1.75em;  /* Larger sparkle size */
+  height: 1.75em; /* Larger sparkle size */
   left: 100%;  /* Position relative to the right edge of the button */
   top: 10px; /* Move sparkle up or down */
   margin-left: -20px;  /* Adjust space between the button and sparkle */
@@ -59,7 +60,7 @@ body {
   height: 0.75em; /* Smaller sparkle size */
   left: 100%; /* Position relative to the right edge of the button */
   margin-left: -20px; /* Increase space between large and small sparkle */
-  top: 5px; /* Move sparkle up or down */
+  top: 10px; /* Move sparkle up or down */
   opacity: 0;  /* Initially hidden */
   /* No transition on position, only opacity */
 }
@@ -82,13 +83,10 @@ body {
 /* Keyframes for wiggle */
 @keyframes sparkle-wiggle {
   0%, 100% {
-    transform: translateY(-50%) rotate(0deg);
+    transform: rotate(-8deg);
   }
-  25% {
-    transform: translateY(-50%) rotate(-20deg);
-  }
-  75% {
-    transform: translateY(-50%) rotate(20deg);
+  50% {
+    transform: rotate(8deg);
   }
 }
 
@@ -140,6 +138,7 @@ body {
   opacity: 0;
   width: 2em;   /* same-ish scale as your other large sparkle */
   height: 2em;
+  transition: opacity 250ms ease, transform 250ms ease;
 }
 
 /* spread them across the top (separated like your mock) */
@@ -325,8 +324,21 @@ nav {
 
 
 /* --- ABOUT ME PAGE --- */
-
 .about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- PROJECTS PAGE --- */
+.projects {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- HIRE ME PAGE --- */
+.hire {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
