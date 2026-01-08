@@ -445,6 +445,50 @@ nav {
   margin-top: 12px;
 }
 
+/* project photos! */
+
+.media-row {
+  display: grid;
+  grid-template-columns: 1fr; /* stacked by design */
+  margin-top: 32px;
+}
+
+
+
+.media-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 64px;
+
+  background: #fff;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.media-card:last-child {
+  margin-bottom: 0;
+}
+
+
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;           /* keeps aspect ratio */
+  border-radius: 16px;    /* optional */
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* project captions */
+
+.media-caption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
 /* Mobile */
 @media (max-width: 900px) {
   .projects-layout {
