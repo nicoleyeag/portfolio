@@ -12,29 +12,44 @@ const CV_SPARKLES = [
 
 export default function DownloadCV() {
   const [buttonState, setButtonState] = useState("default");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleClick = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2500);
+  };
 
   return (
-    <button
-      type="button"
-      className={`download-cv ${buttonState}`}
-      onMouseEnter={() => setButtonState("hover")}
-      onMouseLeave={() => setButtonState("default")}
-      onMouseDown={() => setButtonState("active")}
-      onMouseUp={() => setButtonState("hover")}
-      onClick={() => window.open("/Nicole-Yeager-CV.pdf", "_blank")}
-    >
-      <span className="download-label">Download CV</span>
+    <div className="download-wrap">
+      <a
+        className={`download-cv ${buttonState}`}
+        href="/Nicole-Yeager-CV.pdf"
+        download
+        onClick={handleClick}
+        onMouseEnter={() => setButtonState("hover")}
+        onMouseLeave={() => setButtonState("default")}
+        onMouseDown={() => setButtonState("active")}
+        onMouseUp={() => setButtonState("hover")}
+      >
+        <span className="download-label">Download CV</span>
 
-      <span className="cv-sparkles" aria-hidden="true">
-        {CV_SPARKLES.map((s, i) => (
-          <img
-            key={`${s.color}-${i}`}
-            src={`/assets/${s.color}-${s.size}.png`}
-            alt=""
-            className={`sparkle ${s.className}`}
-          />
-        ))}
-      </span>
-    </button>
+        <span className="cv-sparkles" aria-hidden="true">
+          {CV_SPARKLES.map((s, i) => (
+            <img
+              key={`${s.color}-${i}`}
+              src={`/assets/${s.color}-${s.size}.png`}
+              alt=""
+              className={`sparkle ${s.className}`}
+            />
+          ))}
+        </span>
+      </a>
+
+      {showToast && (
+        <div className="toast" role="status" aria-live="polite">
+          Thanks for the opportunity! 💛
+        </div>
+      )}
+    </div>
   );
 }
