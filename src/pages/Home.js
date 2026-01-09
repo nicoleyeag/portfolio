@@ -48,18 +48,23 @@ export default function Home() {
                 "CSS3",
                 "Responsive Design",
                 "CSS Grid & Flexbox",
+                "Bootstrap",
+                "Jinja Templating",
+                "UX-Focused UI Development"
             ]}
             />
 
             <SkillCard
             title="Back-End Development"
             skills={[
-                "Node.js",
-                "Express",
-                "REST APIs",
+                "Python",
+                "Flask",
+                "RESTful APIs",
                 "PostgreSQL",
-                "Authentication",
+                "SQL & Relational Data Modeling",
+                "User Authentication (Bcrypt)",
                 "API Integration",
+                "Server-Side Logic"
             ]}
             />
         </section>

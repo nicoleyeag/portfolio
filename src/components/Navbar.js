@@ -26,7 +26,7 @@ export default function Navbar() {
         <StatefulButton label="home" to="/" sparkleColor="red" />
         <StatefulButton label="about me" to="/about" sparkleColor="orange" />
         <StatefulButton label="projects" to="/projects" sparkleColor="yellow" />
-        <StatefulButton label="hire me" to="/hire" sparkleColor="green" />
+        <StatefulButton label="hire me!" to="/hire" sparkleColor="green" />
       </div>
 
       <div className="nav-right">
