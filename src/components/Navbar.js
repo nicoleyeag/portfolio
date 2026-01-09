@@ -21,7 +21,7 @@ export default function Navbar() {
         <span />
         <span />
       </button>
-
+    <div className="navbar-inner">
       <div className={`nav-left ${menuOpen ? "is-open" : ""}`}>
         <StatefulButton label="home" to="/" sparkleColor="red" />
         <StatefulButton label="about me" to="/about" sparkleColor="orange" />
@@ -33,6 +33,7 @@ export default function Navbar() {
         <GitHubButton />
         <LinkedInButton />
       </div>
+     </div> 
     </nav>
   );
 }

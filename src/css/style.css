@@ -1,9 +1,50 @@
 /* --- GLOBAL PARAMETERS --- */
+html {
+  background: #fff7f3;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  height: auto;
+}
+
 body {
-  font-family: "Jost", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+  background: linear-gradient(
+    180deg,
+    #fff7f3 0%,
+    #f6f6f6 60%,
+    #ffffff 100%
+  );
+}
+
+#root,
+.App {
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 48px 24px;
+  flex: 1;
+}
+
+
+
+
+/* --- GLOBAL CARD STYLES (base) --- */
+.card,
+.skill-card,
+.media-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 
@@ -142,12 +183,12 @@ body {
 }
 
 /* spread them across the top (separated like your mock) */
-.download-cv .cv-sparkles .sparkle.s1 { left: 6%;  top: 20px; }
-.download-cv .cv-sparkles .sparkle.s2 { left: 20%; top: 8px;  }
-.download-cv .cv-sparkles .sparkle.s3 { left: 37%; top: 18px; }
-.download-cv .cv-sparkles .sparkle.s4 { left: 52%; top: 6px;  }
-.download-cv .cv-sparkles .sparkle.s5 { left: 70%; top: 16px; }
-.download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 8px;  }
+.download-cv .cv-sparkles .sparkle.s1 { left: 6%;  top: 16px; }
+.download-cv .cv-sparkles .sparkle.s2 { left: 20%; top: 4px;  }
+.download-cv .cv-sparkles .sparkle.s3 { left: 37%; top: 14px; }
+.download-cv .cv-sparkles .sparkle.s4 { left: 52%; top: 2px;  }
+.download-cv .cv-sparkles .sparkle.s5 { left: 70%; top: 12px; }
+.download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 4px;  }
 
 /* show + animate on hover */
 /* Odd sparkles rotate left → right */
@@ -195,8 +236,12 @@ body {
 
 
 /* --- NAV BAR --- */
-
 .navbar {
+  width: 100%;
+  background-color: #FFFAFA;
+}
+
+.navbar-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -388,7 +433,11 @@ body {
   border: 2px solid #111;
   border-radius: 20px;
   padding: 28px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
 }
+
 
 /* Card title */
 .skill-card h3 {
@@ -428,26 +477,35 @@ body {
 }
 
 /* --- PROJECTS PAGE --- */
-.projects {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
 
 /* ===== PROJECTS PAGE ===== */
 
+/* Full-page background for Projects route */
 .projects-page {
+  min-height: 100vh;
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
+  background: transparent; /* IMPORTANT */
 }
+
+
+
+
+/* this keeps it at 1100px - responsive  */
+.projects-layout,
+.projects-mobile-controls,
+.projects-mobile-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 
 .projects-layout {
   display: grid;
   grid-template-columns: 260px 1px 1fr;
   gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+
 }
 
 .projects-nav {
@@ -542,6 +600,7 @@ body {
   margin-top: 12px;
 }
 
+
 /* project photos! */
 
 .media-row {
@@ -603,6 +662,10 @@ body {
 }
 
 
+
+
+
+
 /* --- HIRE ME PAGE --- */
 .hire {
   max-width: 1100px;
@@ -630,7 +693,7 @@ body {
     position: relative;
     top: auto;
     z-index: 1;
-    background: white; /* important if things overlap */
+    background: transparent; /* important if things overlap */
     padding-bottom: 8px;
   }
 
@@ -756,4 +819,17 @@ body {
   .case-section {
     padding: 18px 0;
   }
+}
+
+/* Project Background bottom of file so it wins */
+body.page-projects {
+  background:
+    radial-gradient(circle at top left, var(--bg-accent), transparent 60%),
+    linear-gradient(
+      180deg,
+      var(--bg-base) 0%,
+      #f6f6f6 70%,
+      #ffffff 100%
+    );
+    transition: background 500ms ease;
 }

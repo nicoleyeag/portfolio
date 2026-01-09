@@ -50,7 +50,7 @@ export default function Home() {
                 "CSS Grid & Flexbox",
                 "Bootstrap",
                 "Jinja Templating",
-                "UX-Focused UI Development"
+                "UX-Focused UI Development",
             ]}
             />
 

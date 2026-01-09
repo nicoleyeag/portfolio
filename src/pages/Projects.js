@@ -1,9 +1,13 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 const PROJECTS = [
   {
     id: "project-1",
     name: "OMW Fullstack Web App",
+    bg: {
+      base: "rgba(144, 164, 128, 0.65)",
+      accent: "rgba(11, 60, 73, 0.35)",
+    },
     sections: [
       { id: "overview", label: "Overview" },
       { id: "problem", label: "Problem" },
@@ -283,7 +287,11 @@ const PROJECTS = [
   },
   {
     id: "project-2",
-    name: "Project 2",
+    name: "Living Local",
+    bg: {
+      base: "rgba(225, 157, 142, 0.65)",
+      accent: "rgba(188, 191, 176, 0.95)",
+    },
     sections: [{ id: "overview", label: "Overview" }],
     content: (
       <section id="overview" className="case-section">
@@ -323,8 +331,27 @@ export default function Projects() {
     if (el2) el2.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const bgBase = activeProject?.bg?.base ?? "rgba(255,250,245,1)";
+  const bgAccent = activeProject?.bg?.accent ?? "rgba(240,230,255,0.6)";
+
+  useEffect(() => {
+  document.body.classList.add("page-projects");
+
+  // Set the CSS variables on the body so the whole page background updates
+  document.body.style.setProperty("--bg-base", bgBase);
+  document.body.style.setProperty("--bg-accent", bgAccent);
+
+  return () => {
+    document.body.classList.remove("page-projects");
+    document.body.style.removeProperty("--bg-base");
+    document.body.style.removeProperty("--bg-accent");
+  };
+}, [bgBase, bgAccent]);
+
   return (
-    <div className="projects-page">
+      <div className="projects-page">
+
+
       {/* MOBILE HEADER CONTROLS (shows on mobile only) */}
       <div className="projects-mobile-controls">
         <h1 className="projects-title">Projects</h1>
@@ -403,6 +430,7 @@ export default function Projects() {
           </div>
         </main>
       </div>
+
 
       {/* MOBILE CONTENT (shows on mobile only) */}
       <div className="projects-mobile-content">
