@@ -28,6 +28,8 @@ export default function About() {
                 spend a lot of time swimming, biking, paddleboarding, and exploring 
                 the outdoors.
             </p>
+            <h1><span className="highlight">Let’s Connect!</span></h1>
+            
             </div>
         </section>
     </main>
