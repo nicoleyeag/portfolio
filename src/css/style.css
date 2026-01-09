@@ -223,6 +223,7 @@ body {
   padding: 10px 20px;
 }
 
+<<<<<<< HEAD
 /* navbar for mobile */
 
 .hamburger {
@@ -275,6 +276,13 @@ body {
 }
 
 
+=======
+.icon-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+>>>>>>> dev
 
 
 
@@ -328,6 +336,31 @@ body {
   border-radius: 16px;   /* optional, looks nice */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+/* cv button */
+.download-cv {
+  text-decoration: none;   /* removes underline */
+  display: inline-flex;       /* makes whole area “button-like” */
+  align-items: center;
+  justify-content: center;
+}
+
+.download-cv:hover,
+.download-cv:visited,
+.download-cv:active {
+  text-decoration: none;
+}
+
+
+/* cv button center under heroleft */
+.cv-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem; /* spacing from paragraph */
+}
+
+
+
 
 /* SKILLS CARDS */
 /* Skills section layout */
@@ -566,4 +599,66 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
+}
+
+
+/* ===== Projects: Mobile Fix ===== */
+/* mobile overrides must come after the desktop rules */
+@media (max-width: 900px) {
+  .projects-page {
+    padding: 24px 16px;
+  }
+
+  /* Force a true single-column layout */
+  .projects-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Stop sticky on mobile so it doesn't overlap */
+  .projects-nav {
+    position: relative;
+    top: auto;
+    z-index: 1;
+    background: white; /* important if things overlap */
+    padding-bottom: 8px;
+  }
+
+  /* Remove divider */
+  .projects-divider {
+    display: none;
+  }
+
+  /* Make right content normal flow, not a fixed scroll container */
+  .projects-content {
+    min-width: 0;
+  }
+
+  .case-scroll {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  /* Add breathing room so accordion doesn't sit on content */
+  .projects-nav + .projects-content {
+    margin-top: 8px;
+  }
+
+  /* Optional: reduce heading size so it doesn’t crowd */
+  .projects-title {
+    font-size: 26px;
+  }
+
+  .case-title {
+    font-size: 22px;
+    margin-top: 12px;
+  }
+
+  /* Make section links easier to tap */
+  .section-link {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
 }
