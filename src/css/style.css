@@ -209,6 +209,19 @@ body {
   position: relative; /* for mobile dropdown */
 }
 
+.hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+}
+
 
 /* this styles the left and right sections of the navbar */
 .nav-left,
