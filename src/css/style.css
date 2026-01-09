@@ -225,9 +225,8 @@ body {
 
 <<<<<<< HEAD
 /* navbar for mobile */
-
 .hamburger {
-  display: none; /* ✅ desktop: no hamburger */
+  display: none; /* desktop: no hamburger */
   width: 44px;
   height: 44px;
   border: none;
@@ -247,9 +246,15 @@ body {
   border-radius: 2px;
 }
 
+.icon-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
 @media (max-width: 768px) {
   .hamburger {
-    display: flex; /* ✅ mobile: show hamburger */
+    display: flex; /* mobile: show hamburger */
   }
 
   /* hide links by default on mobile */
@@ -273,14 +278,6 @@ body {
   .nav-left.is-open {
     display: flex;
   }
-}
-
-
-=======
-.icon-link {
-  display: inline-flex;
-  text-decoration: none;
-  color: inherit;
 }
 >>>>>>> dev
 
@@ -660,5 +657,32 @@ body {
   .section-link {
     padding: 10px 8px;
     font-size: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-page {
+    padding: 24px 16px;
+  }
+
+  .projects-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .projects-nav {
+    position: relative;
+    top: auto;
+  }
+
+  .projects-divider {
+    display: none;
+  }
+
+  .case-scroll {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
   }
 }
