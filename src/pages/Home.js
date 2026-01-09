@@ -23,7 +23,9 @@ export default function Home() {
             </p>
 
         {/* button */}
+        <div className="cv-button-wrapper">
           <DownloadCV label="Download CV" />
+        </div>
 
 
         </div>

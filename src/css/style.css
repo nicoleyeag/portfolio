@@ -220,6 +220,11 @@ nav {
   padding: 10px 20px;
 }
 
+.icon-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
 
 
 
@@ -273,6 +278,16 @@ nav {
   border-radius: 16px;   /* optional, looks nice */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+/* cv button center under heroleft */
+.cv-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem; /* spacing from paragraph */
+}
+
+
+
 
 /* SKILLS CARDS */
 /* Skills section layout */
