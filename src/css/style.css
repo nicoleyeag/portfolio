@@ -279,6 +279,21 @@ nav {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* cv button */
+.download-cv {
+  text-decoration: none;   /* removes underline */
+  display: inline-flex;       /* makes whole area “button-like” */
+  align-items: center;
+  justify-content: center;
+}
+
+.download-cv:hover,
+.download-cv:visited,
+.download-cv:active {
+  text-decoration: none;
+}
+
+
 /* cv button center under heroleft */
 .cv-button-wrapper {
   display: flex;

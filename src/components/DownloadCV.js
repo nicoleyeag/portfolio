@@ -25,12 +25,13 @@ export default function DownloadCV() {
         className={`download-cv ${buttonState}`}
         href="/Nicole-Yeager-CV.pdf"
         download
+        role="button"
         onClick={handleClick}
         onMouseEnter={() => setButtonState("hover")}
         onMouseLeave={() => setButtonState("default")}
         onMouseDown={() => setButtonState("active")}
         onMouseUp={() => setButtonState("hover")}
-      >
+      > 
         <span className="download-label">Download CV</span>
 
         <span className="cv-sparkles" aria-hidden="true">
