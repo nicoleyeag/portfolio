@@ -314,14 +314,50 @@ export default function Projects() {
   };
 
   const scrollToSection = (id) => {
+    // On desktop: scroll inside right panel
     const el = contentRef.current?.querySelector(`#${id}`);
-    el?.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // On mobile: scroll the page to the section
+    const el2 = document.getElementById(id);
+    if (el2) el2.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <div className="projects-page">
+      {/* MOBILE HEADER CONTROLS (shows on mobile only) */}
+      <div className="projects-mobile-controls">
+        <h1 className="projects-title">Projects</h1>
+
+        <button
+          className="project-button mobile"
+          onClick={() =>
+            setOpenProjectId((prev) => (prev === activeProjectId ? "" : activeProjectId))
+          }
+          type="button"
+        >
+          <span>{activeProject.name}</span>
+          <span className="chevron">{openProjectId ? "▾" : "▸"}</span>
+        </button>
+
+        {openProjectId === activeProjectId && (
+          <div className="projects-mobile-sections">
+            {activeProject.sections.map((section) => (
+              <button
+                key={section.id}
+                className="section-pill"
+                type="button"
+                onClick={() => scrollToSection(section.id)}
+              >
+                {section.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* DESKTOP LAYOUT (shows on desktop only) */}
       <div className="projects-layout">
-        {/* LEFT NAV */}
         <aside className="projects-nav">
           <h1 className="projects-title">Projects</h1>
 
@@ -332,6 +368,7 @@ export default function Projects() {
                   activeProjectId === project.id ? "active" : ""
                 }`}
                 onClick={() => handleProjectClick(project.id)}
+                type="button"
               >
                 <span>{project.name}</span>
                 <span className="chevron">
@@ -345,6 +382,7 @@ export default function Projects() {
                     <button
                       key={section.id}
                       className="section-link"
+                      type="button"
                       onClick={() => scrollToSection(section.id)}
                     >
                       {section.label}
@@ -356,16 +394,20 @@ export default function Projects() {
           ))}
         </aside>
 
-        {/* DIVIDER */}
         <div className="projects-divider" />
 
-        {/* RIGHT CONTENT */}
         <main className="projects-content">
           <div ref={contentRef} className="case-scroll">
             <h2 className="case-title">{activeProject.name}</h2>
             {activeProject.content}
           </div>
         </main>
+      </div>
+
+      {/* MOBILE CONTENT (shows on mobile only) */}
+      <div className="projects-mobile-content">
+        <h2 className="case-title">{activeProject.name}</h2>
+        {activeProject.content}
       </div>
     </div>
   );

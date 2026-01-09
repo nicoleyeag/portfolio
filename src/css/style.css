@@ -686,3 +686,62 @@ body {
     padding-right: 0;
   }
 }
+
+/* ===== Projects Mobile Rebuild ===== */
+
+/* Hide mobile version by default (desktop) */
+.projects-mobile-controls,
+.projects-mobile-content {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* Hide desktop layout on mobile */
+  .projects-layout {
+    display: none;
+  }
+
+  /* Show mobile layout */
+  .projects-mobile-controls,
+  .projects-mobile-content {
+    display: block;
+  }
+
+  .projects-mobile-controls {
+    margin-bottom: 16px;
+  }
+
+  .projects-mobile-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .section-pill {
+    background: #FFFAFA;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .project-button.mobile {
+    width: 100%;
+    background: #FFFAFA;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 12px;
+    padding: 14px 12px;
+    margin-top: 10px;
+  }
+
+  /* Ensure content reads clean on mobile */
+  .projects-page {
+    padding: 24px 16px;
+  }
+
+  .case-section {
+    padding: 18px 0;
+  }
+}
