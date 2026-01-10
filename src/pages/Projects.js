@@ -292,12 +292,100 @@ const PROJECTS = [
       base: "rgba(225, 157, 142, 0.65)",
       accent: "rgba(188, 191, 176, 0.95)",
     },
-    sections: [{ id: "overview", label: "Overview" }],
+      sections: [
+        { id: "overview", label: "Overview" },
+        { id: "problem", label: "Problem" },
+        { id: "solution", label: "Solution" },
+        { id: "my-role", label: "My Role" },
+        { id: "key-design-decisions", label: "Key Design Decisions" },
+        { id: "outcome", label: "Outcome" },
+        { id: "demo", label: "Demo" },
+      ],
     content: (
-      <section id="overview" className="case-section">
-        <h2>Overview</h2>
-        <p>Second project description.</p>
-      </section>
+      <>
+        <section id="overview" className="case-section">
+          <h2>Overview</h2>
+          <p>
+            Living Local is a location-based e‑commerce platform that helps 
+            users discover and shop from nearby small businesses. The goal was 
+            to make supporting local shops as seamless as online shopping—
+            without requiring each business to build or maintain its own 
+            website. The product focuses on clarity, trust, and ease of use for 
+            first-time users.
+          </p>
+        </section>
+
+        <section id="problem" className="case-section">
+          <h2>Problem</h2>
+          <p>
+            Local businesses often lack the time, budget, or technical expertise 
+            to create their own online stores, while shoppers struggle to find 
+            local options through traditional e‑commerce platforms.
+            Users needed a way to:
+          </p>
+          <ul>
+            <li>Easily discover nearby businesses</li>
+            <li>Browse products from multiple vendors without confusion</li>
+            <li>Complete purchases through a familiar, trustworthy checkout flow</li>
+          </ul>
+        </section>
+
+        <section id="solution" className="case-section">
+          <h2>Solution</h2>
+          <p>
+            Living Local centralizes local businesses into one intuitive 
+            platform that mirrors common e‑commerce patterns while highlighting 
+            location-based discovery.</p>
+            <p>Key solutions included:
+          </p>
+          <ul>
+            <li>Location-first browsing to surface relevant businesses immediately</li>
+            <li>Standardized product cards across vendors to reduce cognitive load</li>
+            <li>A unified checkout experience that feels familiar and trustworthy</li>
+          </ul>
+        </section>
+
+        <section id="my-role" className="case-section">
+          <h2>My Role</h2>
+          <p>As the UX Researcher and UX/UI Designer, I owned the end-to-end design process.</p>
+          <p>Responsibilities included:</p>
+          <ul>
+            <li>Conducting user research to understand pain points around shopping local</li>
+            <li>Mapping user flows from discovery through checkout</li>
+            <li>Creating wireframes and high-fidelity prototypes in Figma</li>
+            <li>Running usability tests and iterating designs based on feedback</li>
+            <li>Designing responsive layouts for desktop and mobile</li>
+          </ul>
+        </section>
+
+        <section id="key-design-decisions" className="case-section">
+          <h2>Key Design Decisions</h2>
+          <ul>
+            <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
+            <li><span className="bold">Consistent UI patterns:</span> Used standardized layouts and components to create trust across multiple vendors.</li>
+            <li><span className="bold">Streamlined checkout:</span> Reduced steps and mirrored familiar e‑commerce flows to lower abandonment.</li>
+            <li><span className="bold">Clear visual hierarchy:</span> Emphasized products and calls to action while keeping vendor information accessible.</li>
+          </ul>
+        </section>
+
+
+        <section id="outcome" className="case-section">
+          <h2>Outcome</h2>
+          <p>
+            The final product delivers a clear, approachable shopping experience 
+            that supports both users and local businesses. Usability testing 
+            showed improved task completion and reduced confusion during product 
+            selection and checkout compared to early wireframes.
+          </p>
+        </section>
+
+        <section id="demo" className="case-section">
+          <h2>Demo</h2>
+            <p>End-to-End Product Walkthrough</p>
+            <p>https://www.youtube.com/watch?v=Cm7OS1kXuPs</p>
+        </section>
+
+      </>
     ),
   },
 ];
