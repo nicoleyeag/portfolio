@@ -72,7 +72,7 @@ export default function Hire() {
           </p>
           <p>
             Feel free to reach out via email at 
-            <span className="bold">your.email@example.com</span> or connect with 
+            <span className="bold"> nyeager95@gmail.com</span> or connect with 
             me on <span className="bold">LinkedIn</span>. Let’s make something 
             amazing happen!
             </p>
