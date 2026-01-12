@@ -23,10 +23,17 @@ const PROJECTS = [
       { id: "ui-styling", label: "UI & Styling" },
       { id: "challenges-learnings", label: "Challenges & Learnings" },
       { id: "outcome", label: "Outcome" },
+      { id: "demo", label: "Demo" }
     ],
     content: (
       <>
         <section id="overview" className="case-section">
+          <div className="case-hero">
+            <img
+              src="/omwPhotos/OMW-exploreexcursions.png"
+              alt="location-based trip planning webapp"
+            />
+          </div>
           <h2>Overview</h2>
           <p>
             On My Way is a full-stack trip planning application that helps users
@@ -282,12 +289,232 @@ const PROJECTS = [
             component architecture and API integration.
           </p>
         </section>
+
+        <section id="demo" className="case-section">
+          <h2>Demo</h2>
+            <div className="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/gZG9oJgQPjc?si=m2tFswJq4dYQZLF7" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
+        </section>
+
       </>
     ),
   },
   {
     id: "project-2",
     name: "Living Local",
+    bg: {
+      base: "rgba(225, 157, 142, 0.65)",
+      accent: "rgba(188, 191, 176, 0.95)",
+    },
+      sections: [
+        { id: "overview", label: "Overview" },
+        { id: "problem", label: "Problem" },
+        { id: "wireframes", label: "Wireframes" },
+        { id: "solution", label: "Solution" },
+        { id: "my-role", label: "My Role" },
+        { id: "key-design-decisions", label: "Key Design Decisions" },
+        { id: "outcome", label: "Outcome" },
+        { id: "demo", label: "Demo" },
+      ],
+    content: (
+      <>
+        <section id="overview" className="case-section">
+          <div className="case-hero">
+            <img
+              src="/livingLocalPhotos/Group 2.png"
+              alt="Living Local homepage and browsing experience"
+            />
+          </div>
+          <h2>Overview</h2>
+          <p>
+            Living Local is a location-based e-commerce platform designed to 
+            help users discover and shop from nearby small businesses. The goal 
+            was to make supporting local shops as seamless as traditional online 
+            shopping—without requiring each business to build or maintain its 
+            own website. The product prioritizes clarity, trust, and ease of 
+            use, especially for first-time users.
+          </p>
+        </section>
+
+        <section id="problem" className="case-section">
+          <h2>Problem</h2>
+          <p>
+            Many local businesses lack the time, budget, or technical expertise 
+            to create standalone online stores. At the same time, shoppers 
+            struggle to find and confidently purchase from local businesses 
+            using existing e-commerce platforms.
+          </p>
+          <p>
+            Users needed a way to:
+          </p>
+          <ul>
+            <li>Easily discover nearby businesses</li>
+            <li>Browse products from multiple vendors without confusion</li>
+            <li>Complete purchases through a familiar, trustworthy checkout flow</li>
+          </ul>
+        </section>
+        <section id="wireframes" className="case-section">
+          <h2>Wireframes</h2>
+          <p>Early wireframes explored how users could discover local businesses 
+            and complete purchases using familiar e-commerce patterns, without 
+            overwhelming choice or complexity.
+            </p>
+          <div className="media-row">
+            <div className="media-card">
+              <img
+                src="/livingLocalPhotos/homepageWireframe.PNG"
+                alt="homepage wireframes"
+                />
+                <figcaption className="media-caption">
+                  Homepage wireframes
+                </figcaption>
+                <img
+                  src="/livingLocalPhotos/productsWrireframe.png"
+                  alt="product page wireframes"
+                />
+                <figcaption className="media-caption">
+                  Product page wireframes
+                </figcaption>
+                <img
+                  src="/livingLocalPhotos/profileWireframe.PNG"
+                  alt="profile page wireframes"
+                  />
+                <figcaption className="media-caption">
+                  Profile page wireframes
+                </figcaption>
+              </div>
+          </div>
+        </section>
+
+        <section id="solution" className="case-section">
+          <h2>Solution</h2>
+          <p>
+            Living Local centralizes local businesses into one intuitive 
+            platform that mirrors common e‑commerce patterns while highlighting 
+            location-based discovery.</p>
+            <p>Key solutions included:
+          </p>
+          <ul>
+            <li>Location-first browsing to surface relevant businesses immediately</li>
+            <li>Standardized product cards across vendors to reduce cognitive load</li>
+            <li>A unified checkout experience that feels familiar and trustworthy</li>
+          </ul>
+        </section>
+
+        <section id="my-role" className="case-section">
+          <h2>My Role</h2>
+          <p>As the UX Researcher and UX/UI Designer, I owned the end-to-end design process.</p>
+          <p>Responsibilities included:</p>
+          <ul>
+            <li>Conducting user research to understand pain points around shopping local</li>
+            <li>Mapping user flows from discovery through checkout</li>
+            <li>Creating wireframes and high-fidelity prototypes in Figma</li>
+            <li>Running usability tests and iterating designs based on feedback</li>
+            <li>Designing responsive layouts for desktop and mobile</li>
+          </ul>
+        </section>
+
+        <section id="key-design-decisions" className="case-section">
+          <h2>Key Design Decisions</h2>
+          <div className="media-row">
+            <div className="media-card">
+              <img
+                src="/livingLocalPhotos/products.png"
+                alt="products page"
+                />
+                <figcaption className="media-caption">
+                  Browsing surfaces nearby businesses using consistent product layouts.
+                </figcaption>
+                <img
+                  src="/livingLocalPhotos/item page.png"
+                  alt="item page"
+                />
+                <figcaption className="media-caption">
+                  The product page supports confident purchasing through rich imagery, reviews, and seller transparency.
+                </figcaption>
+     {/* Checkout grid */}
+                <div className="checkout-grid">
+                  <img
+                    src="/livingLocalPhotos/shipping info.png"
+                    alt="Shipping information step"
+                  />
+                  <img
+                    src="/livingLocalPhotos/payment info.png"
+                    alt="Payment information step"
+                  />
+                  <img
+                    src="/livingLocalPhotos/review.png"
+                    alt="Order review step"
+                  />
+                </div>
+                <figcaption className="media-caption">
+                  A multi-step checkout flow reduces cognitive load and mirrors familiar e-commerce patterns.
+                </figcaption>
+              </div>
+          </div>
+        </section>
+
+        <section id="key-design-decisions" className="case-section">
+          <h2>Key Design Decisions</h2>
+          <ul>
+            <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
+            <li><span className="bold">Consistent UI patterns:</span> Standardized layouts, product cards, and navigation created trust across multiple vendors and reduced cognitive load when browsing.</li>
+            <li><span className="bold">Product-focused evaluation:</span> Detailed product pages emphasized imagery, reviews, pricing clarity, and seller attribution to support confident purchasing decisions.</li>
+            <li><span className="bold">Streamlined checkout flow:</span> A multi-step checkout process mirrored familiar e-commerce experiences, reducing friction and helping users complete purchases with confidence.</li>
+          </ul>
+          <div className="media-row">
+          <div className="media-card">
+            <img
+              src="/livingLocalPhotos/item page.png"
+              alt="product page"
+              />
+              <figcaption className="media-caption">
+                The product page was designed to support confident purchasing through clear pricing, rich imagery, seller attribution, and reviews.
+              </figcaption>
+            </div>
+        </div>
+        </section>
+
+        <section id="outcome" className="case-section">
+          <h2>Outcome</h2>
+          <p>
+            On My Way successfully delivers a complete trip planning 
+            workflow—from account creation to itinerary management—within a 
+            polished, responsive interface. The project strengthened my full-
+            stack development skills and reinforced the importance of thoughtful 
+            component architecture and API integration.
+          </p>
+        </section>
+
+        <section id="demo" className="case-section">
+          <h2>Demo</h2>
+            <div className="video-wrapper">
+              <iframe  
+                src="https://www.youtube.com/embed/Cm7OS1kXuPs?si=o2171YVgcGE_N-m0" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
+        </section>
+      </>
+    ),
+  },
+  {
+    id: "project-3",
+    name: "Lindi Tilli",
     bg: {
       base: "rgba(225, 157, 142, 0.65)",
       accent: "rgba(188, 191, 176, 0.95)",
@@ -328,6 +555,11 @@ const PROJECTS = [
             <li>Browse products from multiple vendors without confusion</li>
             <li>Complete purchases through a familiar, trustworthy checkout flow</li>
           </ul>
+        </section>
+
+        <section>
+
+          
         </section>
 
         <section id="solution" className="case-section">

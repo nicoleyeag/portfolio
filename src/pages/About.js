@@ -30,6 +30,7 @@ export default function About() {
             </p>
             <h1><span className="highlight">Let’s Connect!</span></h1>
             
+            
             </div>
         </section>
     </main>
