@@ -236,6 +236,7 @@ main {
 
 
 /* --- NAV BAR --- */
+/* --- NAV BAR --- */
 .navbar {
   width: 100%;
   background-color: #FFFAFA;
@@ -251,24 +252,10 @@ main {
   padding: 20px 20px;
   background-color: #FFFAFA;
 
-  position: relative; /* for mobile dropdown */
+  position: relative; /* for mobile dropdown positioning */
 }
 
-.hamburger {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 6px;
-}
-
-
-/* this styles the left and right sections of the navbar */
+/* left + right sections */
 .nav-left,
 .nav-right {
   display: flex;
@@ -276,19 +263,27 @@ main {
   gap: 28px;
 }
 
-/* Keepexisting button styles — this just ensures spacing consistency */
+/* optional: spacing consistency for buttons on the left */
 .nav-left button {
   padding: 10px 20px;
 }
 
-/* navbar for mobile */
+/* icon links (github/linkedin etc.) */
+.icon-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- HAMBURGER --- */
 .hamburger {
-  display: none; /* desktop: no hamburger */
+  display: none; /* desktop hidden */
   width: 44px;
   height: 44px;
   border: none;
   background: transparent;
   cursor: pointer;
+
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -303,48 +298,30 @@ main {
   border-radius: 2px;
 }
 
-.icon-link {
-  display: inline-flex;
-  text-decoration: none;
-  color: inherit;
-}
-
+/* --- MOBILE STYLES --- */
 @media (max-width: 768px) {
   .hamburger {
-    display: flex; /* mobile: show hamburger */
+    display: flex; /* mobile show */
   }
 
+  /* hide right icons unless you want them always visible */
   .nav-right {
     display: none;
   }
-}
 
-/* mobile-only socials inside dropdown */
-.mobile-socials {
-  display: flex;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-@media (min-width: 769px) {
-  .mobile-socials {
-    display: none;
-  }
-}
-
-
-
-  /* hide links by default on mobile */
+  /* turn nav-left into a dropdown ONLY on mobile */
   .nav-left {
-    display: none;
+    display: none;            /* hidden until opened */
     position: absolute;
     top: 100%;
     left: 20px;
     right: 20px;
+
     padding: 14px;
     border-radius: 12px;
     background: #FFFAFA;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
@@ -356,6 +333,20 @@ main {
     display: flex;
   }
 
+  /* mobile-only socials inside dropdown */
+  .mobile-socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+}
+
+/* --- DESKTOP ONLY --- */
+@media (min-width: 769px) {
+  .mobile-socials {
+    display: none;
+  }
+}
 
 
 

@@ -7,6 +7,8 @@ import LinkedInButton from "./LinkedInButton";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -25,10 +27,10 @@ export default function Navbar() {
 
         {/* Left / dropdown */}
         <div className={`nav-left ${menuOpen ? "is-open" : ""}`}>
-          <StatefulButton label="home" to="/" sparkleColor="red" />
-          <StatefulButton label="about me" to="/about" sparkleColor="orange" />
-          <StatefulButton label="projects" to="/projects" sparkleColor="yellow" />
-          <StatefulButton label="hire me!" to="/hire" sparkleColor="green" />
+          <StatefulButton label="home" to="/" sparkleColor="red" onClick={closeMenu} />
+          <StatefulButton label="about me" to="/about" sparkleColor="orange" onClick={closeMenu} />
+          <StatefulButton label="projects" to="/projects" sparkleColor="yellow" onClick={closeMenu} />
+          <StatefulButton label="hire me!" to="/hire" sparkleColor="green" onClick={closeMenu} />
 
           {/* MOBILE-ONLY social icons */}
           <div className="mobile-socials">
