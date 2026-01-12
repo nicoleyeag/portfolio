@@ -314,6 +314,26 @@ main {
     display: flex; /* mobile: show hamburger */
   }
 
+  .nav-right {
+    display: none;
+  }
+}
+
+/* mobile-only socials inside dropdown */
+.mobile-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+@media (min-width: 769px) {
+  .mobile-socials {
+    display: none;
+  }
+}
+
+
+
   /* hide links by default on mobile */
   .nav-left {
     display: none;
@@ -335,7 +355,7 @@ main {
   .nav-left.is-open {
     display: flex;
   }
-}
+
 
 
 

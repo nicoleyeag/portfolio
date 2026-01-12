@@ -9,31 +9,40 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      {/* Hamburger (CSS will hide this on desktop) */}
-      <button
-        type="button"
-        className="hamburger"
-        aria-label="Toggle navigation menu"
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen((v) => !v)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-    <div className="navbar-inner">
-      <div className={`nav-left ${menuOpen ? "is-open" : ""}`}>
-        <StatefulButton label="home" to="/" sparkleColor="red" />
-        <StatefulButton label="about me" to="/about" sparkleColor="orange" />
-        <StatefulButton label="projects" to="/projects" sparkleColor="yellow" />
-        <StatefulButton label="hire me!" to="/hire" sparkleColor="green" />
-      </div>
+      <div className="navbar-inner">
+        {/* Hamburger (hidden on desktop via CSS) */}
+        <button
+          type="button"
+          className="hamburger"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
 
-      <div className="nav-right">
-        <GitHubButton />
-        <LinkedInButton />
+        {/* Left / dropdown */}
+        <div className={`nav-left ${menuOpen ? "is-open" : ""}`}>
+          <StatefulButton label="home" to="/" sparkleColor="red" />
+          <StatefulButton label="about me" to="/about" sparkleColor="orange" />
+          <StatefulButton label="projects" to="/projects" sparkleColor="yellow" />
+          <StatefulButton label="hire me!" to="/hire" sparkleColor="green" />
+
+          {/* MOBILE-ONLY social icons */}
+          <div className="mobile-socials">
+            <GitHubButton />
+            <LinkedInButton />
+          </div>
+        </div>
+
+        {/* Desktop-only social icons */}
+        <div className="nav-right">
+          <GitHubButton />
+          <LinkedInButton />
+        </div>
       </div>
-     </div> 
     </nav>
   );
 }

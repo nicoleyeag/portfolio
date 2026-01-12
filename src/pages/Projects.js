@@ -471,17 +471,6 @@ const PROJECTS = [
             <li><span className="bold">Product-focused evaluation:</span> Detailed product pages emphasized imagery, reviews, pricing clarity, and seller attribution to support confident purchasing decisions.</li>
             <li><span className="bold">Streamlined checkout flow:</span> A multi-step checkout process mirrored familiar e-commerce experiences, reducing friction and helping users complete purchases with confidence.</li>
           </ul>
-          <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/livingLocalPhotos/item page.png"
-              alt="product page"
-              />
-              <figcaption className="media-caption">
-                The product page was designed to support confident purchasing through clear pricing, rich imagery, seller attribution, and reviews.
-              </figcaption>
-            </div>
-        </div>
         </section>
 
         <section id="outcome" className="case-section">
