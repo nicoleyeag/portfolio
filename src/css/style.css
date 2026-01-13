@@ -501,14 +501,14 @@ main {
 }
 
 
-
-
-/* this keeps it at 1100px - responsive  */
-.projects-layout,
+/* default: desktop */
 .projects-mobile-controls,
 .projects-mobile-content {
-  max-width: 1100px;
-  margin: 0 auto;
+  display: none;
+}
+
+.projects-layout {
+  display: flex; /* or whatever you already use */
 }
 
 
@@ -746,103 +746,28 @@ main {
 
 
 /* ===== Projects: Mobile Fix ===== */
-/* mobile overrides must come after the desktop rules */
-@media (max-width: 900px) {
-  .projects-page {
-    padding: 24px 16px;
-  }
+/* ===== Projects: Responsive Layout (Clean Replacement) ===== */
 
-  /* Force a true single-column layout */
-  .projects-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* Stop sticky on mobile so it doesn't overlap */
-  .projects-nav {
-    position: relative;
-    top: auto;
-    z-index: 1;
-    background: transparent; /* important if things overlap */
-    padding-bottom: 8px;
-  }
-
-  /* Remove divider */
-  .projects-divider {
-    display: none;
-  }
-
-  /* Make right content normal flow, not a fixed scroll container */
-  .projects-content {
-    min-width: 0;
-  }
-
-  .case-scroll {
-    height: auto;
-    overflow: visible;
-    padding-right: 0;
-  }
-
-  /* Add breathing room so accordion doesn't sit on content */
-  .projects-nav + .projects-content {
-    margin-top: 8px;
-  }
-
-  /* Optional: reduce heading size so it doesn’t crowd */
-  .projects-title {
-    font-size: 26px;
-  }
-
-  .case-title {
-    font-size: 22px;
-    margin-top: 12px;
-  }
-
-  /* Make section links easier to tap */
-  .section-link {
-    padding: 10px 8px;
-    font-size: 16px;
-  }
+/* --- DESKTOP DEFAULTS (>= 901px) --- */
+/* Show desktop layout, hide mobile layout */
+.projects-layout {
+  display: flex;
 }
 
-@media (max-width: 900px) {
-  .projects-page {
-    padding: 24px 16px;
-  }
-
-  .projects-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .projects-nav {
-    position: relative;
-    top: auto;
-  }
-
-  .projects-divider {
-    display: none;
-  }
-
-  .case-scroll {
-    height: auto;
-    overflow: visible;
-    padding-right: 0;
-  }
-}
-
-/* ===== Projects Mobile Rebuild ===== */
-
-/* Hide mobile version by default (desktop) */
 .projects-mobile-controls,
 .projects-mobile-content {
   display: none;
 }
 
+/* Keep desktop behavior (sticky nav + scroll panel) as-is.
+   If you already define these earlier, you can omit these here. */
+.projects-divider {
+  display: block;
+}
+
+/* --- MOBILE (<= 900px) --- */
 @media (max-width: 900px) {
-  /* Hide desktop layout on mobile */
+  /* Hide desktop layout completely so nothing duplicates */
   .projects-layout {
     display: none;
   }
@@ -853,10 +778,16 @@ main {
     display: block;
   }
 
+  /* Page spacing */
+  .projects-page {
+    padding: 24px 16px;
+  }
+
   .projects-mobile-controls {
     margin-bottom: 16px;
   }
 
+  /* Pills layout */
   .projects-mobile-sections {
     display: flex;
     flex-wrap: wrap;
@@ -866,31 +797,57 @@ main {
 
   .section-pill {
     background: #FFFAFA;
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 999px;
     padding: 10px 14px;
     font-size: 14px;
     cursor: pointer;
   }
 
+  /* If you're using a <select> for project switching */
+  .project-select {
+    width: 100%;
+    max-width: 520px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #FFFAFA;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  /* If you still have the old mobile button picker, keep it styled too */
   .project-button.mobile {
     width: 100%;
     background: #FFFAFA;
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
     padding: 14px 12px;
     margin-top: 10px;
   }
 
-  /* Ensure content reads clean on mobile */
-  .projects-page {
-    padding: 24px 16px;
+  /* Content should flow naturally on mobile */
+  .case-scroll {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .case-section {
     padding: 18px 0;
   }
+
+  /* Optional: reduce headings slightly */
+  .projects-title {
+    font-size: 26px;
+  }
+
+  .case-title {
+    font-size: 22px;
+    margin-top: 12px;
+  }
 }
+/* ===== End Projects Mobile Fix ===== */
 
 /* Project Background bottom of file so it wins */
 body.page-projects {

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+
 const PROJECTS = [
   {
     id: "project-1",
@@ -461,9 +462,7 @@ const PROJECTS = [
                 </figcaption>
               </div>
           </div>
-        </section>
 
-        <section id="key-design-decisions" className="case-section">
           <h2>Key Design Decisions</h2>
           <ul>
             <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
@@ -612,9 +611,15 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
+  const contentRef = useRef(null);
+  const mobileContentRef = useRef(null);
+
   const [openProjectId, setOpenProjectId] = useState(PROJECTS[0].id);
   const [activeProjectId, setActiveProjectId] = useState(PROJECTS[0].id);
-  const contentRef = useRef(null);
+
+  // rest of your code...
+
+
 
   const activeProject = useMemo(
     () => PROJECTS.find((p) => p.id === activeProjectId),
@@ -630,15 +635,19 @@ export default function Projects() {
     });
   };
 
-  const scrollToSection = (id) => {
-    // On desktop: scroll inside right panel
-    const el = contentRef.current?.querySelector(`#${id}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+const scrollToSection = (id) => {
+  const isMobile = window.matchMedia("(max-width: 900px)").matches;
 
-    // On mobile: scroll the page to the section
-    const el2 = document.getElementById(id);
-    if (el2) el2.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  if (isMobile) {
+    const mobileEl = mobileContentRef.current?.querySelector(`#${id}`);
+    if (mobileEl) mobileEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  const desktopEl = contentRef.current?.querySelector(`#${id}`);
+  if (desktopEl) desktopEl.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 
   const bgBase = activeProject?.bg?.base ?? "rgba(255,250,245,1)";
   const bgAccent = activeProject?.bg?.accent ?? "rgba(240,230,255,0.6)";
@@ -660,23 +669,29 @@ export default function Projects() {
   return (
       <div className="projects-page">
 
-
       {/* MOBILE HEADER CONTROLS (shows on mobile only) */}
-      <div className="projects-mobile-controls">
-        <h1 className="projects-title">Projects</h1>
+        <div className="projects-mobile-controls">
+          <h1 className="projects-title">Projects</h1>
 
-        <button
-          className="project-button mobile"
-          onClick={() =>
-            setOpenProjectId((prev) => (prev === activeProjectId ? "" : activeProjectId))
-          }
-          type="button"
-        >
-          <span>{activeProject.name}</span>
-          <span className="chevron">{openProjectId ? "▾" : "▸"}</span>
-        </button>
+          <select
+            className="project-select"
+            value={activeProjectId}
+            onChange={(e) => {
+              const id = e.target.value;
+              setActiveProjectId(id);
+              setOpenProjectId(id); // optional — keeps desktop accordion in sync
+              requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              });
+            }}
+          >
+            {PROJECTS.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))}
+          </select>
 
-        {openProjectId === activeProjectId && (
           <div className="projects-mobile-sections">
             {activeProject.sections.map((section) => (
               <button
@@ -689,8 +704,9 @@ export default function Projects() {
               </button>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+
+
 
       {/* DESKTOP LAYOUT (shows on desktop only) */}
       <div className="projects-layout">
@@ -742,10 +758,11 @@ export default function Projects() {
 
 
       {/* MOBILE CONTENT (shows on mobile only) */}
-      <div className="projects-mobile-content">
+      <div ref={mobileContentRef} className="projects-mobile-content">
         <h2 className="case-title">{activeProject.name}</h2>
         {activeProject.content}
       </div>
+
     </div>
   );
 }
