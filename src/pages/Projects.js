@@ -505,15 +505,17 @@ const PROJECTS = [
     id: "project-3",
     name: "Lindi Tilli",
     bg: {
-      base: "rgba(225, 157, 142, 0.65)",
-      accent: "rgba(188, 191, 176, 0.95)",
+      base: "rgba(93, 22, 2, 0.45)",
+      accent: "rgba(169, 104, 41, 0.95)",
     },
       sections: [
         { id: "overview", label: "Overview" },
         { id: "problem", label: "Problem" },
-        { id: "solution", label: "Solution" },
-        { id: "my-role", label: "My Role" },
-        { id: "key-design-decisions", label: "Key Design Decisions" },
+        { id: "goals", label: "Goals" },
+        { id: "research&insights", label: "Research & Insights" },
+        { id: "key-ux-decisions", label: "Key UX Decisions" },
+        { id: "visual-brand-direction", label: "Visual & Brand Direction" },
+        { id: "usability-testing", label: "Usability Testing" },
         { id: "outcome", label: "Outcome" },
         { id: "demo", label: "Demo" },
       ],
@@ -522,88 +524,129 @@ const PROJECTS = [
         <section id="overview" className="case-section">
           <h2>Overview</h2>
           <p>
-            Living Local is a location-based e‑commerce platform that helps 
-            users discover and shop from nearby small businesses. The goal was 
-            to make supporting local shops as seamless as online shopping—
-            without requiring each business to build or maintain its own 
-            website. The product focuses on clarity, trust, and ease of use for 
-            first-time users.
+            LindiTilli is a floral designer and personal brand specializing in 
+            custom arrangements for weddings, events, and floral gifts. I designed 
+            a responsive website and interactive prototype that showcases her 
+            work and guides potential clients toward booking a consultation.
+          </p>
+          <p>
+            This project was completed for a real client looking to grow a 
+            part-time floral practice into a future full-time business.
           </p>
         </section>
 
         <section id="problem" className="case-section">
           <h2>Problem</h2>
           <p>
-            Local businesses often lack the time, budget, or technical expertise 
-            to create their own online stores, while shoppers struggle to find 
-            local options through traditional e‑commerce platforms.
-            Users needed a way to:
+            The client lacked an online presence that could:
           </p>
           <ul>
-            <li>Easily discover nearby businesses</li>
-            <li>Browse products from multiple vendors without confusion</li>
-            <li>Complete purchases through a familiar, trustworthy checkout flow</li>
+            <li>Clearly showcase her floral work</li>
+            <li>Support multiple use cases (weddings, events, gifts)</li>
+            <li>Feel personal, warm, and trustworthy</li>
+            <li>Make it easy for users to initiate contact</li>
           </ul>
-        </section>
-
-        <section>
-
-          
-        </section>
-
-        <section id="solution" className="case-section">
-          <h2>Solution</h2>
           <p>
-            Living Local centralizes local businesses into one intuitive 
-            platform that mirrors common e‑commerce patterns while highlighting 
-            location-based discovery.</p>
-            <p>Key solutions included:
+            The initial vision focused only on weddings, which limited the 
+            business’s growth potential.
+          </p>
+        </section>
+
+        <section id="goals" className="case-section">
+          <h2>Goals</h2>
+          <p>The website needed to:</p>
+          <ul>
+            <li>Create a cohesive brand experience</li>
+            <li>Allow users to browse floral work by event or gift type</li>
+            <li>Prioritize contact and consultation as the primary conversion</li>
+            <li>Make it easy for users to initiate contact and consultations</li>
+          </ul>
+        </section>
+
+        <section id="reasearch&insights" className="case-section">
+          <h2>Research & Insights</h2>
+          <p>Competitive analysis of local Denver-based florists revealed that:</p>
+          <ul>
+            <li>Florists are most often hired for weddings</li>
+            <li>Flowers are most frequently purchased as gifts</li>
+            </ul>
+          <p><span className="bold">Key insight:</span> The site needed to support 
+          both planned events and spontaneous gifting, leading to a pivot from a 
+          wedding-only experience to a more flexible floral platform.</p>
+  
+        </section>
+
+        <section id="key-ux-decisions" className="case-section">
+          <h2>Key UX Decisions</h2>
+          <p>
+            The visual design reflects the client’s floral style and personality:
           </p>
           <ul>
-            <li>Location-first browsing to surface relevant businesses immediately</li>
-            <li>Standardized product cards across vendors to reduce cognitive load</li>
-            <li>A unified checkout experience that feels familiar and trustworthy</li>
+            <li>Earthy tones inspired by greenery-forward arrangements</li>
+            <li>Serif typeface to convey craftsmanship and care</li>
+            <li>Soft contrast and spacing to create a calm, welcoming feel</li>
           </ul>
+          <p>
+            Multiple logo and color explorations were tested before finalizing a 
+            grounded, refined direction aligned with the client’s vision.
+            </p>
+
         </section>
 
-        <section id="my-role" className="case-section">
-          <h2>My Role</h2>
-          <p>As the UX Researcher and UX/UI Designer, I owned the end-to-end design process.</p>
-          <p>Responsibilities included:</p>
+
+        <section id="visual-brand-direction" className="case-section">
+          <h2>Wireframes → Prototype</h2>
+          <p>
+            I created low-fidelity wireframes for key pages (Home, About, Pricing, 
+            Contact), then translated them into high-fidelity responsive designs.
+          </p>
+          <p>
+            The final deliverable was a fully interactive prototype designed for 
+            desktop and mobile, ready to support future development.
+          </p>
+        </section>
+
+        <section id="usability-testing" className="case-section">
+          <h2>Usability Testing</h2>
+          <p>
+            Users completed task-based testing while thinking aloud.
+          </p>
+          <p>
+            <span className="bold">Key improvements made:</span>
+          </p>
           <ul>
-            <li>Conducting user research to understand pain points around shopping local</li>
-            <li>Mapping user flows from discovery through checkout</li>
-            <li>Creating wireframes and high-fidelity prototypes in Figma</li>
-            <li>Running usability tests and iterating designs based on feedback</li>
-            <li>Designing responsive layouts for desktop and mobile</li>
+            <li>Added clear calls to action on the homepage to guide users toward booking a consultation</li>
+            <li>Refined navigation labels to better reflect user mental models</li>
+            <li>Introduced hover states to provide context for past floral work</li>
           </ul>
         </section>
-
-        <section id="key-design-decisions" className="case-section">
-          <h2>Key Design Decisions</h2>
-          <ul>
-            <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
-            <li><span className="bold">Consistent UI patterns:</span> Used standardized layouts and components to create trust across multiple vendors.</li>
-            <li><span className="bold">Streamlined checkout:</span> Reduced steps and mirrored familiar e‑commerce flows to lower abandonment.</li>
-            <li><span className="bold">Clear visual hierarchy:</span> Emphasized products and calls to action while keeping vendor information accessible.</li>
-          </ul>
-        </section>
-
 
         <section id="outcome" className="case-section">
           <h2>Outcome</h2>
+          <ul>
+            <li>Delivered a polished, interactive prototype</li>
+            <li>Validated usability through testing</li>
+            <li>Provided the client with a scalable foundation for launching her business</li>
+          </ul>
           <p>
-            The final product delivers a clear, approachable shopping experience 
-            that supports both users and local businesses. Usability testing 
-            showed improved task completion and reduced confusion during product 
-            selection and checkout compared to early wireframes.
+            This project strengthened my experience working with real clients 
+            and adapting designs to evolving business needs.
           </p>
         </section>
 
         <section id="demo" className="case-section">
           <h2>Demo</h2>
-            <p>End-to-End Product Walkthrough</p>
-            <p>https://www.youtube.com/watch?v=Cm7OS1kXuPs</p>
+            <div className="video-wrapper">
+              <iframe  
+                src="https://www.youtube.com/embed/QAmfz25-598?si=kY8mQYJzOzOgfJZa" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
         </section>
 
       </>
