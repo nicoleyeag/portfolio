@@ -314,7 +314,7 @@ const PROJECTS = [
     name: "Living Local",
     bg: {
       base: "rgba(225, 157, 142, 0.65)",
-      accent: "rgba(188, 191, 176, 0.95)",
+      accent: "rgba(188, 191, 176, 1)",
     },
       sections: [
         { id: "overview", label: "Overview" },
@@ -515,6 +515,7 @@ const PROJECTS = [
         { id: "research&insights", label: "Research & Insights" },
         { id: "key-ux-decisions", label: "Key UX Decisions" },
         { id: "visual-brand-direction", label: "Visual & Brand Direction" },
+        { id: "wireframes-prototype", label: "Wireframes → Prototype" },
         { id: "usability-testing", label: "Usability Testing" },
         { id: "outcome", label: "Outcome" },
         { id: "demo", label: "Demo" },
@@ -522,6 +523,12 @@ const PROJECTS = [
     content: (
       <>
         <section id="overview" className="case-section">
+          <div className="case-hero">
+            <img
+              src="/lindiTilli/Homepage.png"
+              alt="Lindi Tilli homepage"
+            />
+          </div>
           <h2>Overview</h2>
           <p>
             LindiTilli is a floral designer and personal brand specializing in 
@@ -577,7 +584,51 @@ const PROJECTS = [
         </section>
 
         <section id="key-ux-decisions" className="case-section">
-          <h2>Key UX Decisions</h2>
+        <h2>Key UX Decisions</h2>
+          <div className="media-row">
+            <div className="media-card">
+     {/* Checkout grid */}
+                <div className="checkout-grid">
+                  <img
+                    src="/lindiTilli/Screenshot 2026-01-12 235933.png"
+                    alt="Shipping information step"
+                  />
+                  <img
+                    src="/lindiTilli/Screenshot 2026-01-12 235922.png"
+                    alt="Payment information step"
+                  />
+                </div>
+                <figcaption className="media-caption">
+                  Users can browse floral work by event type or gift, supporting both planned and spontaneous purchases.
+                </figcaption>
+              </div>
+          </div>
+          <ul>
+            <li>Designed two primary browsing paths: by event and by gift</li>
+            <li>Structured navigation to reduce decision fatigue</li>
+            <li>Positioned contact and consultation as the main call-to-action</li>
+            <li>Kept layouts minimal to let floral photography lead</li>
+          </ul>
+          <p>
+            Multiple logo and color explorations were tested before finalizing a 
+            grounded, refined direction aligned with the client’s vision.
+            </p>
+
+        </section>
+
+        <section id="visual-brand-direction" className="case-section">
+          <h2>Visual & Brand Direction</h2>
+          <div className="media-row">
+            <div className="media-card">
+              <img
+                src="/lindiTilli/MacBook Pro - 1.jpg"
+                alt="logo design"
+                />
+                <figcaption className="media-caption">
+                  Browsing surfaces nearby businesses using consistent product layouts.
+                </figcaption>
+              </div>
+          </div>
           <p>
             The visual design reflects the client’s floral style and personality:
           </p>
@@ -589,17 +640,27 @@ const PROJECTS = [
           <p>
             Multiple logo and color explorations were tested before finalizing a 
             grounded, refined direction aligned with the client’s vision.
-            </p>
-
+          </p>
         </section>
 
-
-        <section id="visual-brand-direction" className="case-section">
+        <section id="wireframes-prototype" className="case-section">
           <h2>Wireframes → Prototype</h2>
+
           <p>
             I created low-fidelity wireframes for key pages (Home, About, Pricing, 
             Contact), then translated them into high-fidelity responsive designs.
           </p>
+          <div className="media-row">
+            <div className="media-card">
+              <img
+                src="/lindiTilli/1Homepage.png"
+                alt="wireframe design"
+                />
+                <figcaption className="media-caption">
+                  Low-fidelity wireframe of the homepage.
+                </figcaption>
+              </div>
+          </div>
           <p>
             The final deliverable was a fully interactive prototype designed for 
             desktop and mobile, ready to support future development.
