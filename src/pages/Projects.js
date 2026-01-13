@@ -475,11 +475,12 @@ const PROJECTS = [
         <section id="outcome" className="case-section">
           <h2>Outcome</h2>
           <p>
-            On My Way successfully delivers a complete trip planning 
-            workflow—from account creation to itinerary management—within a 
-            polished, responsive interface. The project strengthened my full-
-            stack development skills and reinforced the importance of thoughtful 
-            component architecture and API integration.
+            Living Local is a location-based e-commerce platform that helps 
+            users discover and shop from nearby small businesses. The product 
+            removes friction for both shoppers and vendors by centralizing local 
+            storefronts into a single, intuitive experience. By combining 
+            familiar e-commerce patterns with location-first discovery, Living 
+            Local makes supporting local businesses easy and approachable.
           </p>
         </section>
 
