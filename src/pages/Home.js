@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SkillCard from "../components/SkillCard";
 import DownloadCV from "../components/DownloadCV";
-
+import { setFaviconColor } from "../favicon";
 
 export default function Home() {
+  useEffect(() => {
+    setFaviconColor("#F82553"); // Set the favicon color to match your theme
+  }, []);
+
   return (
     <main className="home">
       <section className="hero">

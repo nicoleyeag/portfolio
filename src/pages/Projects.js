@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import { setFaviconColor } from "../favicon";
 
 const PROJECTS = [
   {
@@ -741,6 +741,10 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
+  useEffect(() => {
+        setFaviconColor("#F8C421"); // Set the favicon color to match your theme
+      }, []);
+
   const contentRef = useRef(null);
   const mobileContentRef = useRef(null);
 

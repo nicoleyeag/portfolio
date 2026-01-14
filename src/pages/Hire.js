@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { setFaviconColor } from "../favicon";
 
 export default function Hire() {
+  useEffect(() => {
+        setFaviconColor("#49CC5C"); // Set the favicon color to match your theme
+      }, []);
   return (
     <main className="hire">
       <section className="hire">

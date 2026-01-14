@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { setFaviconColor } from "../favicon";
 
 export default function About() {
+  useEffect(() => {
+      setFaviconColor("#FB6640"); // Set the favicon color to match your theme
+    }, []);
+
   return (
     <main className="about">
         <section className = "about">
