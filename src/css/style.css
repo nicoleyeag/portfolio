@@ -1,10 +1,14 @@
-/* --- GLOBAL PARAMETERS --- */
+/* =========================================================
+   1) GLOBAL BASE + PAGE BACKGROUND
+   ========================================================= */
+
+/* Base page background (default) */
 html {
   background: #fff7f3;
 }
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -12,12 +16,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    #fff7f3 0%,
-    #f6f6f6 60%,
-    #ffffff 100%
-  );
+  background: linear-gradient(180deg, #fff7f3 0%, #f6f6f6 60%, #ffffff 100%);
 }
 
 #root,
@@ -34,9 +33,11 @@ main {
 }
 
 
+/* =========================================================
+   2) GLOBAL REUSABLE STYLES
+   ========================================================= */
 
-
-/* --- GLOBAL CARD STYLES (base) --- */
+/* Base card look used across the site */
 .card,
 .skill-card,
 .media-card {
@@ -47,110 +48,112 @@ main {
     0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+/* Text helpers */
+.highlight {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+}
 
-/* --- BUTTON --- */
+.bold {
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+}
 
-/* Button */
+
+/* =========================================================
+   3) BUTTONS (Stateful) + SPARKLES
+   ========================================================= */
+
 .stateful-button {
-  position: relative;  /* Allows absolute positioning of children */
-  font-family: 'Jost', sans-serif;
+  position: relative;
+  font-family: "Jost", sans-serif;
   color: black;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #FFFAFA;
+  background-color: #ffFAFA;
   border: none;
   border-radius: 5px;
-  display: inline-flex; /* Use flexbox to align text and sparkles */
-  align-items: center;  /* Align text and sparkles vertically in the center */
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
 }
 
-/* Image */
+/* Icon image inside buttons */
 .button-image {
-  width: 1em; /* Set width to match the font size */
-  height: auto; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align image vertically with the text */
+  width: 1em;
+  height: auto;
+  vertical-align: middle;
 }
 
-
-/* Position sparkles */
+/* Sparkles (generic button sparkles) */
 .sparkle {
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  opacity: 0; /* Hide by default */
-  /* transition: opacity 0.3s ease; Smooth transition only for opacity */
-  /* Don't transition `top` or `left` */
+  opacity: 0;
   transition: opacity 250ms ease, transform 250ms ease;
 }
 
-/* Large Sparkle */
 .sparkle-large {
-  width: 1.75em;  /* Larger sparkle size */
-  height: 1.75em; /* Larger sparkle size */
-  left: 100%;  /* Position relative to the right edge of the button */
-  top: 10px; /* Move sparkle up or down */
-  margin-left: -20px;  /* Adjust space between the button and sparkle */
-  opacity: 0;  /* Initially hidden */
-  /* No transition on position, only opacity */
+  width: 1.75em;
+  height: 1.75em;
+  left: 100%;
+  top: 10px;
+  margin-left: -20px;
 }
 
-/* Small Sparkle */
 .sparkle-small {
-  width: 0.75em; /* Smaller sparkle size */
-  height: 0.75em; /* Smaller sparkle size */
-  left: 100%; /* Position relative to the right edge of the button */
-  margin-left: -20px; /* Increase space between large and small sparkle */
-  top: 10px; /* Move sparkle up or down */
-  opacity: 0;  /* Initially hidden */
-  /* No transition on position, only opacity */
+  width: 0.75em;
+  height: 0.75em;
+  left: 100%;
+  top: 10px;
+  margin-left: -20px;
 }
 
-/* Hover animation */
+/* Show + animate on hover */
 .stateful-button.hover .sparkle {
-  opacity: 1; /* Make the sparkles visible when hovered */
+  opacity: 1;
   animation: sparkle-wiggle 1s ease-in-out infinite;
 }
 
-/* Optional: delay animation for each sparkle */
-.sparkle-large {
-  animation-delay: 0s;
-}
+.sparkle-large { animation-delay: 0s; }
+.sparkle-small { animation-delay: 0.5s; }
 
-.sparkle-small {
-  animation-delay: 0.5s;
-}
-
-/* Keyframes for wiggle */
 @keyframes sparkle-wiggle {
-  0%, 100% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(8deg);
-  }
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
 }
 
-/* --- DOWNLOAD CV --- */
 
-/* =========================
-   DOWNLOAD CV sparkles ONLY
-   ========================= */
+/* =========================================================
+   4) DOWNLOAD CV (scoped sparkles) — merged into ONE block
+   ========================================================= */
 
 .download-cv {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   padding: 10px 20px;
   border-radius: 999px;
-  background: #FFFAFA;
+  background: #ffFAFA;
   border: none;
   cursor: pointer;
   overflow: visible;
+
+  text-decoration: none;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
 }
 
-/* label above sparkles */
+.download-cv:hover,
+.download-cv:visited,
+.download-cv:active {
+  text-decoration: none;
+}
+
+/* Label */
 .download-cv .download-label {
   position: relative;
   z-index: 2;
@@ -160,7 +163,7 @@ main {
   font-size: 16px;
 }
 
-/* sparkle container on top of button */
+/* Sparkle container */
 .download-cv .cv-sparkles {
   position: absolute;
   left: 50%;
@@ -171,27 +174,24 @@ main {
   pointer-events: none;
 }
 
-
-/* base sparkle for CV (scoped!) */
+/* Sparkles for CV only */
 .download-cv .cv-sparkles .sparkle {
   position: absolute;
   z-index: 1;
   opacity: 0;
-  width: 2em;   /* same-ish scale as your other large sparkle */
+  width: 2em;
   height: 2em;
   transition: opacity 250ms ease, transform 250ms ease;
 }
 
-/* spread them across the top (separated like your mock) */
 .download-cv .cv-sparkles .sparkle.s1 { left: 6%;  top: 16px; }
-.download-cv .cv-sparkles .sparkle.s2 { left: 20%; top: 4px;  }
+.download-cv .cv-sparkles .sparkle.s2 { left: 20%; top: 4px; }
 .download-cv .cv-sparkles .sparkle.s3 { left: 37%; top: 14px; }
-.download-cv .cv-sparkles .sparkle.s4 { left: 52%; top: 2px;  }
+.download-cv .cv-sparkles .sparkle.s4 { left: 52%; top: 2px; }
 .download-cv .cv-sparkles .sparkle.s5 { left: 70%; top: 12px; }
-.download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 4px;  }
+.download-cv .cv-sparkles .sparkle.s6 { left: 84%; top: 4px; }
 
-/* show + animate on hover */
-/* Odd sparkles rotate left → right */
+/* Hover animation (odd vs even) */
 .download-cv.hover .cv-sparkles .sparkle.s1,
 .download-cv.hover .cv-sparkles .sparkle.s3,
 .download-cv.hover .cv-sparkles .sparkle.s5 {
@@ -199,7 +199,6 @@ main {
   animation: sparkle-wiggle-left 1s ease-in-out infinite;
 }
 
-/* Even sparkles rotate right → left */
 .download-cv.hover .cv-sparkles .sparkle.s2,
 .download-cv.hover .cv-sparkles .sparkle.s4,
 .download-cv.hover .cv-sparkles .sparkle.s6 {
@@ -207,39 +206,38 @@ main {
   animation: sparkle-wiggle-right 1s ease-in-out infinite;
 }
 
-/* pressed state */
+/* Active pressed state */
 .download-cv.active .cv-sparkles .sparkle {
   opacity: 1;
   animation: none;
   transform: translateY(2px);
 }
 
-/* Keyframes for wiggle */
 @keyframes sparkle-wiggle-left {
-  0%, 100% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(8deg);
-  }
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
 }
 
 @keyframes sparkle-wiggle-right {
-  0%, 100% {
-    transform: rotate(8deg);
-  }
-  50% {
-    transform: rotate(-8deg);
-  }
+  0%, 100% { transform: rotate(8deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+/* Center wrapper under hero */
+.cv-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 
+/* =========================================================
+   5) NAVBAR + MOBILE DROPDOWN
+   ========================================================= */
 
-/* --- NAV BAR --- */
-/* --- NAV BAR --- */
 .navbar {
   width: 100%;
-  background-color: #FFFAFA;
+  background-color: #ffFAFA;
 }
 
 .navbar-inner {
@@ -250,12 +248,11 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px 20px;
-  background-color: #FFFAFA;
+  background-color: #ffFAFA;
 
   position: relative; /* for mobile dropdown positioning */
 }
 
-/* left + right sections */
 .nav-left,
 .nav-right {
   display: flex;
@@ -275,9 +272,9 @@ main {
   color: inherit;
 }
 
-/* --- HAMBURGER --- */
+/* Hamburger (hidden on desktop) */
 .hamburger {
-  display: none; /* desktop hidden */
+  display: none;
   width: 44px;
   height: 44px;
   border: none;
@@ -298,20 +295,14 @@ main {
   border-radius: 2px;
 }
 
-/* --- MOBILE STYLES --- */
+/* Navbar mobile */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex; /* mobile show */
-  }
+  .hamburger { display: flex; }
 
-  /* hide right icons unless you want them always visible */
-  .nav-right {
-    display: none;
-  }
+  .nav-right { display: none; }
 
-  /* turn nav-left into a dropdown ONLY on mobile */
   .nav-left {
-    display: none;            /* hidden until opened */
+    display: none;
     position: absolute;
     top: 100%;
     left: 20px;
@@ -319,7 +310,7 @@ main {
 
     padding: 14px;
     border-radius: 12px;
-    background: #FFFAFA;
+    background: #ffFAFA;
     border: 1px solid rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
@@ -328,12 +319,8 @@ main {
     z-index: 10;
   }
 
-  /* show links when menu is open */
-  .nav-left.is-open {
-    display: flex;
-  }
+  .nav-left.is-open { display: flex; }
 
-  /* mobile-only socials inside dropdown */
   .mobile-socials {
     display: flex;
     gap: 16px;
@@ -341,29 +328,16 @@ main {
   }
 }
 
-/* --- DESKTOP ONLY --- */
 @media (min-width: 769px) {
-  .mobile-socials {
-    display: none;
-  }
+  .mobile-socials { display: none; }
 }
 
 
+/* =========================================================
+   6) HOMEPAGE (Hero + Skills)
+   ========================================================= */
 
-
-/* --- HOMEPAGE --- */
-/* bagel font special words */
-.highlight {
-  font-family: "Fredoka", sans-serif;
-  font-weight: 700;
-}
-
-.bold{
-  font-family: "Jost", sans-serif;
-  font-weight: 700;
-}
-
-/* hero responsive */
+/* Hero */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -381,7 +355,20 @@ main {
   font-family: "Jost", sans-serif;
 }
 
-/* hero mobile responsive */
+.heroRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroRight img {
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
@@ -394,50 +381,7 @@ main {
   }
 }
 
-/* hero right */
-.heroRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroRight img {
-  max-width: 100%;
-  height: auto;
-  max-height: 420px;     /* 👈 controls how big it can get */
-  border-radius: 16px;   /* optional, looks nice */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* cv button */
-.download-cv {
-  text-decoration: none;   /* removes underline */
-  display: inline-flex;       /* makes whole area “button-like” */
-  align-items: center;
-  justify-content: center;
-  font-family: "Fredoka", sans-serif;
-  font-weight: 700;
-}
-
-.download-cv:hover,
-.download-cv:visited,
-.download-cv:active {
-  text-decoration: none;
-}
-
-
-/* cv button center under heroleft */
-.cv-button-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem; /* spacing from paragraph */
-}
-
-
-
-
-/* SKILLS CARDS */
-/* Skills section layout */
+/* Skills cards */
 .skills {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -447,9 +391,8 @@ main {
   padding: 0 20px;
 }
 
-/* Individual card */
 .skill-card {
-  background: #FFFAFA;
+  background: #ffFAFA;
   border: 2px solid #111;
   border-radius: 20px;
   padding: 28px;
@@ -458,16 +401,12 @@ main {
     0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-
-/* Card title */
 .skill-card h3 {
   font-family: "Fredoka", sans-serif;
   font-size: 24px;
-  margin-bottom: 16px;
-  margin-top: 10px;
+  margin: 10px 0 16px;
 }
 
-/* Skill list */
 .skill-card ul {
   list-style: none;
   padding: 0;
@@ -480,20 +419,19 @@ main {
   margin-bottom: 8px;
 }
 
-/* on mobile */
 @media (max-width: 768px) {
-  .skills {
-    grid-template-columns: 1fr;
-  }
+  .skills { grid-template-columns: 1fr; }
 }
 
 
+/* =========================================================
+   7) ABOUT PAGE
+   ========================================================= */
 
-/* --- ABOUT ME PAGE --- */
 .about {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 10px 20px;
   font-family: "Jost", sans-serif;
 }
 
@@ -505,9 +443,7 @@ main {
   z-index: 10;
 }
 
-.connect-links li {
-  margin-bottom: 12px;
-}
+.connect-links li { margin-bottom: 12px; }
 
 .connect-links a {
   text-decoration: none;
@@ -523,13 +459,9 @@ main {
   transition: opacity 0.2s ease;
 }
 
-.connect-links a:hover::after {
-  opacity: 1;
-}
+.connect-links a:hover::after { opacity: 1; }
 
-.about-page::before {
-  pointer-events: none;
-}
+.about-page::before { pointer-events: none; }
 
 .about-photo {
   width: 280px;
@@ -546,39 +478,29 @@ main {
 }
 
 
+/* =========================================================
+   8) PROJECTS PAGE (Desktop + Mobile)
+   ========================================================= */
 
-
-
-/* --- PROJECTS PAGE --- */
-
-/* ===== PROJECTS PAGE ===== */
-
-/* Full-page background for Projects route */
 .projects-page {
   min-height: 100vh;
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
-  background: transparent; /* IMPORTANT */
+  background: transparent;
 }
 
-
-/* default: desktop */
-.projects-mobile-controls,
-.projects-mobile-content {
-  display: none;
-}
-
-.projects-layout {
-  display: flex; /* or whatever you already use */
-}
-
-
+/* Desktop layout defaults */
 .projects-layout {
   display: grid;
   grid-template-columns: 260px 1px 1fr;
   gap: 24px;
+}
 
+.projects-divider {
+  width: 1px;
+  background: rgba(0, 0, 0, 0.2);
+  display: block;
 }
 
 .projects-nav {
@@ -593,9 +515,7 @@ main {
   font-family: "Fredoka", sans-serif;
 }
 
-.project-group {
-  margin-bottom: 8px;
-}
+.project-group { margin-bottom: 8px; }
 
 .project-button {
   width: 100%;
@@ -608,17 +528,11 @@ main {
   font-size: 16px;
 }
 
-.project-button.active {
-  font-weight: 700;
-}
+.project-button.active { font-weight: 700; }
 
-.chevron {
-  opacity: 0.6;
-}
+.chevron { opacity: 0.6; }
 
-.project-sections {
-  padding-left: 12px;
-}
+.project-sections { padding-left: 12px; }
 
 .section-link {
   display: block;
@@ -636,14 +550,7 @@ main {
   opacity: 1;
 }
 
-.projects-divider {
-  width: 1px;
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.projects-content {
-  min-width: 0;
-}
+.projects-content { min-width: 0; }
 
 .case-scroll {
   height: calc(100vh - 100px);
@@ -662,7 +569,6 @@ main {
   padding: 16px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   font-family: "Jost", sans-serif;
-  
 }
 
 .image-placeholder {
@@ -673,16 +579,12 @@ main {
   margin-top: 12px;
 }
 
-
-/* project photos! */
-
+/* Media row + media cards */
 .media-row {
   display: grid;
-  grid-template-columns: 1fr; /* stacked by design */
+  grid-template-columns: 1fr;
   margin-top: 32px;
 }
-
-
 
 .media-card {
   display: flex;
@@ -695,19 +597,49 @@ main {
   border-radius: 20px;
 }
 
-.media-card:last-child {
-  margin-bottom: 0;
-}
-
+.media-card:last-child { margin-bottom: 0; }
 
 .media-card img {
-  display: block;
   width: 100%;
-  height: auto;           /* keeps aspect ratio */
-  border-radius: 16px;    /* optional */
+  height: auto;
+  border-radius: 16px;
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
 }
 
+.media-caption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Case hero image */
+.case-hero { margin-bottom: 32px; }
+
+.case-hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+/* Video responsive */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-top: 32px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+/* Checkout grid */
 .checkout-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -721,136 +653,35 @@ main {
   border-radius: 12px;
 }
 
-
-
-
-/* project captions */
-
-.media-caption {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* hero image */
-
-.case-hero {
-  margin-bottom: 32px;
-}
-
-.case-hero img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  display: block;
-}
-
-
-
-/* Video responsive design */
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-  margin-top: 32px;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-}
-
-
-/* Mobile */
-@media (max-width: 900px) {
-  .projects-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-divider {
-    display: none;
-  }
-
-  .case-scroll {
-    height: auto;
-    overflow: visible;
-  }
-}
-
 /* Tablet */
 @media (max-width: 900px) {
-  .checkout-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .checkout-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Mobile */
+/* Small mobile */
 @media (max-width: 600px) {
-  .checkout-grid {
-    grid-template-columns: 1fr;
-  }
+  .checkout-grid { grid-template-columns: 1fr; }
 }
 
-
-
-
-/* --- HIRE ME PAGE --- */
-.hire {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: "Jost", sans-serif;
-}
-
-
-/* ===== Projects: Mobile Fix ===== */
-/* ===== Projects: Responsive Layout (Clean Replacement) ===== */
-
-/* --- DESKTOP DEFAULTS (>= 901px) --- */
-/* Show desktop layout, hide mobile layout */
-.projects-layout {
-  display: flex;
-}
-
+/* --- Projects: Mobile Layout (Clean, no duplicates) --- */
 .projects-mobile-controls,
 .projects-mobile-content {
   display: none;
 }
 
-/* Keep desktop behavior (sticky nav + scroll panel) as-is.
-   If you already define these earlier, you can omit these here. */
-.projects-divider {
-  display: block;
-}
-
-/* --- MOBILE (<= 900px) --- */
 @media (max-width: 900px) {
-  /* Hide desktop layout completely so nothing duplicates */
-  .projects-layout {
-    display: none;
-  }
+  /* Hide desktop layout fully */
+  .projects-layout { display: none; }
+  .projects-divider { display: none; }
 
   /* Show mobile layout */
   .projects-mobile-controls,
-  .projects-mobile-content {
-    display: block;
-  }
+  .projects-mobile-content { display: block; }
 
-  /* Page spacing */
-  .projects-page {
-    padding: 24px 16px;
-  }
+  .projects-page { padding: 24px 16px; }
 
-  .projects-mobile-controls {
-    margin-bottom: 16px;
-  }
+  .projects-mobile-controls { margin-bottom: 16px; }
 
-  /* Pills layout */
   .projects-mobile-sections {
     display: flex;
     flex-wrap: wrap;
@@ -859,7 +690,7 @@ main {
   }
 
   .section-pill {
-    background: #FFFAFA;
+    background: #ffFAFA;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 999px;
     padding: 10px 14px;
@@ -867,60 +698,58 @@ main {
     cursor: pointer;
   }
 
-  /* If you're using a <select> for project switching */
   .project-select {
     width: 100%;
     max-width: 520px;
     padding: 14px 18px;
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    background: #FFFAFA;
+    background: #ffFAFA;
     font-size: 16px;
     margin-top: 10px;
   }
 
-  /* If you still have the old mobile button picker, keep it styled too */
   .project-button.mobile {
     width: 100%;
-    background: #FFFAFA;
+    background: #ffFAFA;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
     padding: 14px 12px;
     margin-top: 10px;
   }
 
-  /* Content should flow naturally on mobile */
   .case-scroll {
     height: auto;
     overflow: visible;
     padding-right: 0;
   }
 
-  .case-section {
-    padding: 18px 0;
-  }
+  .case-section { padding: 18px 0; }
 
-  /* Optional: reduce headings slightly */
-  .projects-title {
-    font-size: 26px;
-  }
-
-  .case-title {
-    font-size: 22px;
-    margin-top: 12px;
-  }
+  .projects-title { font-size: 26px; }
+  .case-title { font-size: 22px; margin-top: 12px; }
 }
-/* ===== End Projects Mobile Fix ===== */
 
-/* Project Background bottom of file so it wins */
+
+/* =========================================================
+   9) HIRE ME PAGE
+   ========================================================= */
+
+.hire {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-family: "Jost", sans-serif;
+}
+
+
+/* =========================================================
+   10) PAGE-SPECIFIC BACKGROUND OVERRIDES (KEEP LAST)
+   ========================================================= */
+
 body.page-projects {
   background:
     radial-gradient(circle at top left, var(--bg-accent), transparent 60%),
-    linear-gradient(
-      180deg,
-      var(--bg-base) 0%,
-      #f6f6f6 70%,
-      #ffffff 100%
-    );
-    transition: background 500ms ease;
+    linear-gradient(180deg, var(--bg-base) 0%, #f6f6f6 70%, #ffffff 100%);
+  transition: background 500ms ease;
 }
