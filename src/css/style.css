@@ -154,7 +154,7 @@ main {
 .download-cv .download-label {
   position: relative;
   z-index: 2;
-  font-family: "Jost", sans-serif;
+  font-family: "Fredoka", sans-serif;
   font-weight: 700;
   padding: 10px 20px;
   font-size: 16px;
@@ -374,6 +374,13 @@ main {
   padding: 40px 20px;
 }
 
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: "Jost", sans-serif;
+}
+
 /* hero mobile responsive */
 @media (max-width: 768px) {
   .hero {
@@ -408,6 +415,8 @@ main {
   display: inline-flex;       /* makes whole area “button-like” */
   align-items: center;
   justify-content: center;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
 }
 
 .download-cv:hover,
@@ -485,7 +494,44 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
+  font-family: "Jost", sans-serif;
 }
+
+.connect-links {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.connect-links li {
+  margin-bottom: 12px;
+}
+
+.connect-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  position: relative;
+  z-index: 10;
+}
+
+.connect-links a::after {
+  content: " →";
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.connect-links a:hover::after {
+  opacity: 1;
+}
+
+.about-page::before {
+  pointer-events: none;
+}
+
+
 
 /* --- PROJECTS PAGE --- */
 
