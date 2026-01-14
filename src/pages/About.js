@@ -6,6 +6,11 @@ export default function About() {
         <section className = "about">
             <div className = "about">
                 <h1><span className="highlight">About Me 🌟</span></h1>
+                <img
+                  src="/assets/Yeager Sisters Test Shoot - 20210915_19_50_34-2L2A8892.jpg"
+                  alt="Nicole Yeager, front-end software engineer"
+                  className="about-photo"
+                />
                  <p>
                 I’m a <span className="bold">front-end software engineer</span> with a passion for building sleek,
                 engaging, and <span className="bold">intuitive digital experiences</span>. My background spans 

@@ -531,6 +531,22 @@ main {
   pointer-events: none;
 }
 
+.about-photo {
+  width: 280px;
+  max-width: 40%;
+  margin: 24px auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .about-photo {
+    float: right;
+    margin: 0 0 24px 32px;
+  }
+}
+
+
+
 
 
 /* --- PROJECTS PAGE --- */
@@ -788,6 +804,7 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
+  font-family: "Jost", sans-serif;
 }
 
 
