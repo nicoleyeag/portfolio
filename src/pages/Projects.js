@@ -568,6 +568,18 @@ const PROJECTS = [
             <li>Prioritize contact and consultation as the primary conversion</li>
             <li>Make it easy for users to initiate contact and consultations</li>
           </ul>
+          <div className="media-row">
+            <div className="media-card">
+                  <img
+                    src="/lindiTilli/Prices.png"
+                    alt="prices page"
+                  />
+
+                <figcaption className="media-caption">
+                  Pricing page designed to set clear expectations and build trust.
+                </figcaption>
+                </div>
+          </div>
         </section>
 
         <section id="reasearch&insights" className="case-section">
@@ -587,8 +599,6 @@ const PROJECTS = [
         <h2>Key UX Decisions</h2>
           <div className="media-row">
             <div className="media-card">
-     {/* Checkout grid */}
-                <div className="checkout-grid">
                   <img
                     src="/lindiTilli/Screenshot 2026-01-12 235933.png"
                     alt="Shipping information step"
@@ -597,11 +607,11 @@ const PROJECTS = [
                     src="/lindiTilli/Screenshot 2026-01-12 235922.png"
                     alt="Payment information step"
                   />
-                </div>
+
                 <figcaption className="media-caption">
                   Users can browse floral work by event type or gift, supporting both planned and spontaneous purchases.
                 </figcaption>
-              </div>
+                </div>
           </div>
           <ul>
             <li>Designed two primary browsing paths: by event and by gift</li>
@@ -625,7 +635,7 @@ const PROJECTS = [
                 alt="logo design"
                 />
                 <figcaption className="media-caption">
-                  Browsing surfaces nearby businesses using consistent product layouts.
+                  Logo explorations reflecting the client’s floral style and personality.
                 </figcaption>
               </div>
           </div>
@@ -680,6 +690,21 @@ const PROJECTS = [
             <li>Refined navigation labels to better reflect user mental models</li>
             <li>Introduced hover states to provide context for past floral work</li>
           </ul>
+          <div className="media-row">
+            <div className="media-card">
+              <img
+                src="/lindiTilli/Contact me.png"
+                alt="contact page"
+                />
+              <img
+                src="/lindiTilli/Contact Me other.png"
+                alt="contact pag other"
+                />
+                <figcaption className="media-caption">
+                  Contact page with clear call-to-action to book a consultation.
+                </figcaption>
+              </div>
+          </div>
         </section>
 
         <section id="outcome" className="case-section">
