@@ -17,11 +17,10 @@ export default function About() {
                   className="about-photo"
                 />
                  <p>
-                I’m a <span className="bold">front-end software engineer</span> with a passion for building sleek,
-                engaging, and <span className="bold">intuitive digital experiences</span>. My background spans 
-                <span className="bold">engineering</span>, accounting, teaching, and <span className="bold">design</span>, giving me a unique 
-                mix  of analytical problem-solving and creative thinking that I 
-                bring into my work. 
+                I’m a <span className="bold">front-end software engineer</span> specializing in<span className="bold"> React</span> who loves building
+                <span className="bold"> clean, intuitive UI</span>that feels effortless to use. With experience across 
+                <span className="bold"> UX design</span> and <span className="bold">QA testing</span>,I bring a 
+                detail-oriented, user-first approach to every feature I ship.
                 </p>
 
                 <h2><span className="highlight">What I Work With</span></h2>
@@ -39,24 +38,23 @@ export default function About() {
                 refine. 
                 </p>
                 <p>
-                Right now, I’m focused on leveling up my skills, sharing my 
-                work on <span className="bold">GitHub</span>, and expanding my professional network.
+                Right now, I’m focused on building polished front-end projects, 
+                sharing consistent work on GitHub, and connecting with teams that 
+                care about thoughtful UI.
                 </p>
                 <h2><span className="highlight">Outside of Tech</span></h2>
                 <p>
-                Outside of 
-                tech, I’m always <span className="bold">learning</span> and <span className="bold">creating</span>—whether it’s baking macarons, 
-                designing, painting, or picking up new skills just for fun. I also 
-                spend a lot of time swimming, biking, paddleboarding, and exploring 
-                the outdoors.
+                Outside of tech, I’m always creating — baking macarons, painting, 
+                and exploring the outdoors through swimming, biking, and paddleboarding. 
+                That same curiosity and creativity shows up in how I approach design and development.
             </p>
             <p>
               Creativity and curiosity don’t stop at the screen—and they’re a big part of how I approach my work.
             </p>
             <h2><span className="highlight">Training and Certifications</span></h2>
             <ul>
-              <li>Software Engineering Fellowship — <span className="bold">Hackbright Academy</span></li>
-              <li>UX/UI Design Fellowship — <span className="bold">Designlab</span></li>
+              <li><span className="bold">Hackbright Academy</span> - Software Engineering Fellowship</li>
+              <li><span className="bold">Designlab</span> - UX/UI Design Fellowship</li>
             </ul>
             <h2><span className="highlight">Let’s Connect!</span></h2>
             <p>

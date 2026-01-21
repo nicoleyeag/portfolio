@@ -17,13 +17,15 @@ export default function Home() {
           </h1>
 
             <p>
-            I’m a <span className="highlight">front-end software engineer</span> with a
-            passion for building bright, intuitive, and engaging{" "}
-            <span className="highlight">user experiences</span>. I love crafting clean,
-            accessible designs that make technology feel effortless. Whether it’s coding
-            sleek interfaces, optimizing performance, or experimenting with the latest web
-            technologies, I’m always eager to{" "}
-            <span className="highlight">learn and create</span>.
+            I’m a <span className="highlight">front-end software engineer</span> specializing in
+            <span className="highlight"> React, JavaScript, HTML, and CSS,</span> building
+            <span className="highlight"> responsive, accessible interfaces</span> with a  
+            <span className="highlight"> UX-first mindset</span>
+            </p>
+
+            <p>I love crafting bright, intuitive user experiences that feel 
+              effortless — from clean UI components to thoughtful details and 
+              performance polish.
             </p>
 
         {/* button */}

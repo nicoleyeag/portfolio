@@ -463,7 +463,6 @@ const PROJECTS = [
               </div>
           </div>
 
-          <h2>Key Design Decisions</h2>
           <ul>
             <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
             <li><span className="bold">Consistent UI patterns:</span> Standardized layouts, product cards, and navigation created trust across multiple vendors and reduced cognitive load when browsing.</li>
@@ -582,7 +581,7 @@ const PROJECTS = [
           </div>
         </section>
 
-        <section id="reasearch&insights" className="case-section">
+        <section id="research&insights" className="case-section">
           <h2>Research & Insights</h2>
           <p>Competitive analysis of local Denver-based florists revealed that:</p>
           <ul>
