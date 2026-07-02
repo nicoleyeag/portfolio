@@ -3,6 +3,244 @@ import { setFaviconColor } from "../favicon";
 
 const PROJECTS = [
   {
+    id: "project-4",
+    name: "MTG Collection App",
+    bg: {
+      base: "rgba(30, 58, 95, 0.55)",
+      accent: "rgba(139, 92, 246, 0.4)",
+    },
+    sections: [
+      { id: "overview", label: "Overview" },
+      { id: "collection-management", label: "Collection Management" },
+      { id: "scanner-workflow", label: "Scanner Workflow" },
+      { id: "deck-building", label: "Deck Building" },
+      { id: "architecture-testing", label: "Architecture & Testing" },
+      { id: "planned-in-progress", label: "Planned & In Progress" },
+      { id: "challenges-learnings", label: "Challenges & Learnings" },
+      { id: "outcome", label: "Outcome" },
+      { id: "demo", label: "Demo" },
+    ],
+    content: (
+      <div className="mtg-case">
+        <section id="overview" className="case-section">
+          <div className="mtg-hero">
+            <figure className="mtg-hero-phone mtg-hero-phone--primary">
+              <img
+                src="/mtgPhotos/myCollectionPage.jpeg"
+                alt="MTG Collection App — searchable card collection grid"
+              />
+              <figcaption className="media-caption">
+                Collection grid — the core cataloging experience.
+              </figcaption>
+            </figure>
+            <figure className="mtg-hero-phone mtg-hero-phone--accent">
+              <img
+                src="/mtgPhotos/homePage.jpeg"
+                alt="MTG Collection App — home screen entry point"
+              />
+              <figcaption className="media-caption">
+                App home — entry point to collection, decks, and scanner.
+              </figcaption>
+            </figure>
+          </div>
+          <h2>Overview</h2>
+          <p>
+            MTG Collection App is a cross-platform React Native app that helps
+            Magic: The Gathering players scan physical cards, manage a local
+            collection, build decks, and prepare for future AI-powered deck
+            analysis. Built with Expo and TypeScript, it evolved from MVP mock
+            data into a production-oriented mobile app with SQLite persistence,
+            a typed scanner state machine, and 129 unit tests.
+          </p>
+          <p>
+            Physical collections are hard to track—players often juggle
+            spreadsheets and disconnected tools. This app centralizes scanning,
+            cataloging, and deck building in one offline-capable workflow.
+          </p>
+
+          <h3>Tech Stack</h3>
+          <ul>
+            <li><span className="bold">Mobile:</span> React Native, Expo, TypeScript</li>
+            <li><span className="bold">Persistence:</span> SQLite</li>
+            <li><span className="bold">APIs:</span> Scryfall API</li>
+            <li><span className="bold">Scanner:</span> OCR-powered recognition pipeline</li>
+            <li><span className="bold">Navigation & UI:</span> React Navigation, Reanimated</li>
+            <li><span className="bold">Testing:</span> Jest (129 unit tests)</li>
+          </ul>
+        </section>
+
+        <section id="collection-management" className="case-section">
+          <h2>Collection Management</h2>
+          <p>
+            From the app home, users navigate to a searchable collection grid
+            that serves as the hub for owned cards. Data is backed by SQLite,
+            so reads and writes stay fast without a network connection.
+          </p>
+          <ul>
+            <li>Local SQLite persistence as the source of truth</li>
+            <li>Searchable collection grid for quick card lookup</li>
+            <li>Scryfall API integration for accurate card metadata and images</li>
+            <li>Reusable UI components shared across collection and deck screens</li>
+          </ul>
+        </section>
+
+        <section id="scanner-workflow" className="case-section">
+          <h2>Scanner Workflow</h2>
+          <p>
+            Adding cards starts with the scanner. OCR extracts text from a
+            captured image, results are parsed and ranked against Scryfall
+            matches, and a typed state machine coordinates each step—from
+            capture through review to final confirmation.
+          </p>
+          <div className="mtg-scanner-gallery">
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/scanCardPage.jpeg"
+                alt="Scanner — card capture screen"
+              />
+              <figcaption className="media-caption">
+                <span className="bold">1. Capture</span> — photograph a physical card
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/scanCardReview.jpeg"
+                alt="Scanner — OCR review screen"
+              />
+              <figcaption className="media-caption">
+                <span className="bold">2. Review</span> — OCR parsing and match preview
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/scanCardResults.jpeg"
+                alt="Scanner — ranked match results"
+              />
+              <figcaption className="media-caption">
+                <span className="bold">3. Confirm</span> — ranked Scryfall matches to select
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="deck-building" className="case-section">
+          <h2>Deck Building</h2>
+          <p>
+            Deck flows follow the same Screen → Service → Repository architecture
+            as the rest of the app. Users create and manage decks, review card
+            composition and statistics, and explore a planned AI coaching
+            surface for future deck analysis.
+          </p>
+
+          <div className="mtg-deck-gallery">
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/deckHomePage.jpeg"
+                alt="Deck list home screen"
+              />
+              <figcaption className="media-caption">
+                Deck list with create and manage actions.
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/deckPage.jpeg"
+                alt="Individual deck detail screen"
+              />
+              <figcaption className="media-caption">
+                Deck detail view with card-level breakdown.
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/deckCards.jpeg"
+                alt="Deck cards list view"
+              />
+              <figcaption className="media-caption">
+                Scrollable card list within a deck.
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame">
+              <img
+                src="/mtgPhotos/deckOverview.jpeg"
+                alt="Deck statistics overview"
+              />
+              <figcaption className="media-caption">
+                Deck statistics and composition overview.
+              </figcaption>
+            </figure>
+            <figure className="mtg-phone-frame mtg-phone-frame--planned">
+              <img
+                src="/mtgPhotos/deckAI.jpeg"
+                alt="Planned AI deck coaching screen"
+              />
+              <figcaption className="media-caption">
+                <span className="bold">Planned:</span> AI deck coaching and analysis.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="architecture-testing" className="case-section">
+          <h2>Architecture & Testing</h2>
+          <p>
+            The codebase uses a Screen → Service → Repository pattern that
+            separates UI, business logic, and data access. This made it
+            straightforward to migrate from MVP mock data to SQLite-backed
+            persistence without rewriting screens.
+          </p>
+          <ul>
+            <li>Typed data flow across scanner, collection, and deck modules</li>
+            <li>Reusable component system for consistent mobile UI</li>
+            <li>129 Jest unit tests covering services, scanner logic, and the data layer</li>
+          </ul>
+        </section>
+
+        <section id="planned-in-progress" className="case-section">
+          <h2>Planned & In Progress</h2>
+          <p>The following features are not yet implemented:</p>
+          <ul>
+            <li>AI deck coaching</li>
+            <li>Cloud sync</li>
+            <li>Price tracking</li>
+            <li>Advanced filter logic</li>
+            <li>Add-to-deck from collection</li>
+            <li>Scryfall caching</li>
+            <li>Premium features</li>
+          </ul>
+        </section>
+
+        <section id="challenges-learnings" className="case-section">
+          <h2>Challenges & Learnings</h2>
+          <ul>
+            <li>Modeling scanner state as a typed state machine reduced edge-case bugs in the OCR flow</li>
+            <li>Separating repositories from services made it easier to swap mock data for SQLite without rewriting screens</li>
+            <li>Ranking OCR matches against Scryfall results required balancing accuracy with responsive UX</li>
+            <li>Constraining phone screenshots in layout grids kept case study pages skimmable on desktop and mobile</li>
+          </ul>
+        </section>
+
+        <section id="outcome" className="case-section">
+          <h2>Outcome</h2>
+          <p>
+            MTG Collection App delivers a working mobile workflow for scanning
+            cards, managing a local collection, and building decks—with a tested
+            architecture ready for planned features like AI coaching and cloud
+            sync. The project strengthened my React Native and Expo skills and
+            reinforced how layered mobile architecture supports iterative growth
+            from MVP to production.
+          </p>
+        </section>
+
+        <section id="demo" className="case-section">
+          <h2>Demo</h2>
+          <p>Demo video coming soon.</p>
+        </section>
+      </div>
+    ),
+  },
+
+    {
     id: "project-1",
     name: "OMW Fullstack Web App",
     bg: {
@@ -309,7 +547,8 @@ const PROJECTS = [
       </>
     ),
   },
-  {
+
+    {
     id: "project-2",
     name: "Living Local",
     bg: {
@@ -500,7 +739,8 @@ const PROJECTS = [
       </>
     ),
   },
-  {
+
+    {
     id: "project-3",
     name: "Lindi Tilli",
     bg: {
