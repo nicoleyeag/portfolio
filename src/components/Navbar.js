@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/style.css";
 import StatefulButton from "./StatefulButton";
@@ -10,10 +10,41 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectsMenuOpen, setProjectsMenuOpen] = useState(false);
   const projectsMenuRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const closeMenu = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
     setMenuOpen(false);
     setProjectsMenuOpen(false);
+  };
+
+  const openProjectsMenu = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setProjectsMenuOpen(true);
+  };
+
+  const scheduleProjectsMenuClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setProjectsMenuOpen(false);
+      closeTimeoutRef.current = null;
+    }, 240);
   };
 
   const handleProjectsBlur = (event) => {
@@ -45,9 +76,9 @@ export default function Navbar() {
           <div
             ref={projectsMenuRef}
             className={`nav-projects ${projectsMenuOpen ? "is-open" : ""}`}
-            onMouseEnter={() => setProjectsMenuOpen(true)}
-            onMouseLeave={() => setProjectsMenuOpen(false)}
-            onFocusCapture={() => setProjectsMenuOpen(true)}
+            onMouseEnter={openProjectsMenu}
+            onMouseLeave={scheduleProjectsMenuClose}
+            onFocusCapture={openProjectsMenu}
             onBlurCapture={handleProjectsBlur}
           >
             <StatefulButton
@@ -63,7 +94,7 @@ export default function Navbar() {
                   key={project.id}
                   to={getProjectPath(project.slug)}
                   className="nav-projects-dropdown-link"
-                  onClick={() => setProjectsMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   {project.title}
                 </Link>

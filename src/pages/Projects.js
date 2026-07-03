@@ -5,9 +5,6 @@ import { PROJECT_REGISTRY } from "../data/projects";
 import { setFaviconColor } from "../favicon";
 import usePageMetadata from "../hooks/usePageMetadata";
 
-const OVERVIEW_BG_BASE = "rgba(255, 247, 243, 1)";
-const OVERVIEW_BG_ACCENT = "rgba(248, 196, 33, 0.22)";
-
 export default function Projects() {
   usePageMetadata(
     "Projects | Nicole Yeager",
@@ -16,15 +13,6 @@ export default function Projects() {
 
   useEffect(() => {
     setFaviconColor("#F8C421");
-    document.body.classList.add("page-projects");
-    document.body.style.setProperty("--bg-base", OVERVIEW_BG_BASE);
-    document.body.style.setProperty("--bg-accent", OVERVIEW_BG_ACCENT);
-
-    return () => {
-      document.body.classList.remove("page-projects");
-      document.body.style.removeProperty("--bg-base");
-      document.body.style.removeProperty("--bg-accent");
-    };
   }, []);
 
   return (
