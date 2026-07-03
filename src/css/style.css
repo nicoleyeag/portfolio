@@ -481,8 +481,96 @@ main {
 
 
 /* =========================================================
-   8) PROJECTS PAGE (Desktop + Mobile)
+   8) PROJECT OVERVIEW + PROJECTS PAGE
    ========================================================= */
+
+.projects-overview {
+  width: 100%;
+}
+
+.projects-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.project-overview-card {
+  overflow: hidden;
+}
+
+.project-overview-card-media {
+  display: block;
+  text-decoration: none;
+}
+
+.project-overview-card-media img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-overview-card-body {
+  padding: 24px;
+  font-family: "Jost", sans-serif;
+}
+
+.project-overview-card-title {
+  margin: 0 0 12px;
+  font-size: 24px;
+  font-family: "Fredoka", sans-serif;
+}
+
+.project-overview-card-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-overview-card-title-link:hover {
+  text-decoration: underline;
+}
+
+.project-overview-card-description {
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.project-overview-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+
+.project-overview-card-chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 250, 250, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+.project-overview-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fffafa;
+  color: inherit;
+  text-decoration: none;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.project-overview-card-cta:hover {
+  text-decoration: underline;
+}
 
 .projects-page {
   min-height: 100vh;
@@ -802,6 +890,15 @@ main {
 }
 
 @media (max-width: 900px) {
+  .projects-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-overview-card-media img {
+    height: auto;
+    max-height: 360px;
+  }
+
   /* Hide desktop layout fully */
   .projects-layout { display: none; }
   .projects-divider { display: none; }

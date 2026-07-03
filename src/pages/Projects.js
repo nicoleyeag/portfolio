@@ -1,25 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { setFaviconColor } from "../favicon";
+import { getProjectById } from "../data/projects";
 
 const PROJECTS = [
   {
-    id: "project-4",
-    name: "MTG Collection App",
-    bg: {
-      base: "rgba(30, 58, 95, 0.55)",
-      accent: "rgba(139, 92, 246, 0.4)",
-    },
-    sections: [
-      { id: "overview", label: "Overview" },
-      { id: "collection-management", label: "Collection Management" },
-      { id: "scanner-workflow", label: "Scanner Workflow" },
-      { id: "deck-building", label: "Deck Building" },
-      { id: "architecture-testing", label: "Architecture & Testing" },
-      { id: "planned-in-progress", label: "Planned & In Progress" },
-      { id: "challenges-learnings", label: "Challenges & Learnings" },
-      { id: "outcome", label: "Outcome" },
-      { id: "demo", label: "Demo" },
-    ],
+    ...getProjectById("project-4"),
     content: (
       <div className="mtg-case">
         <section id="overview" className="case-section">
@@ -241,29 +226,7 @@ const PROJECTS = [
   },
 
     {
-    id: "project-1",
-    name: "OMW Fullstack Web App",
-    bg: {
-      base: "rgba(144, 164, 128, 0.65)",
-      accent: "rgba(11, 60, 73, 0.35)",
-    },
-    sections: [
-      { id: "overview", label: "Overview" },
-      { id: "problem", label: "Problem" },
-      { id: "solution", label: "Solution" },
-      { id: "tech-stack", label: "Tech Stack" },
-      { id: "key-features-implementation", label: "Key Features & Implementation" },
-      { id: "user-authentication", label: "User Authentication" },
-      { id: "database-design", label: "Database Design" },
-      { id: "trip-creation-management", label: "Trip Creation & Management" },
-      { id: "excursion-search-tripadvisor-api", label: "Excursion Search (TripAdvisor API)" },
-      { id: "user-profile", label: "User Profile" },
-      { id: "editing-updates", label: "Editing & Updates" },
-      { id: "ui-styling", label: "UI & Styling" },
-      { id: "challenges-learnings", label: "Challenges & Learnings" },
-      { id: "outcome", label: "Outcome" },
-      { id: "demo", label: "Demo" }
-    ],
+    ...getProjectById("project-1"),
     content: (
       <>
         <section id="overview" className="case-section">
@@ -549,22 +512,7 @@ const PROJECTS = [
   },
 
     {
-    id: "project-2",
-    name: "Living Local",
-    bg: {
-      base: "rgba(225, 157, 142, 0.65)",
-      accent: "rgba(188, 191, 176, 1)",
-    },
-      sections: [
-        { id: "overview", label: "Overview" },
-        { id: "problem", label: "Problem" },
-        { id: "wireframes", label: "Wireframes" },
-        { id: "solution", label: "Solution" },
-        { id: "my-role", label: "My Role" },
-        { id: "key-design-decisions", label: "Key Design Decisions" },
-        { id: "outcome", label: "Outcome" },
-        { id: "demo", label: "Demo" },
-      ],
+    ...getProjectById("project-2"),
     content: (
       <>
         <section id="overview" className="case-section">
@@ -741,24 +689,7 @@ const PROJECTS = [
   },
 
     {
-    id: "project-3",
-    name: "Lindi Tilli",
-    bg: {
-      base: "rgba(93, 22, 2, 0.45)",
-      accent: "rgba(169, 104, 41, 0.95)",
-    },
-      sections: [
-        { id: "overview", label: "Overview" },
-        { id: "problem", label: "Problem" },
-        { id: "goals", label: "Goals" },
-        { id: "research&insights", label: "Research & Insights" },
-        { id: "key-ux-decisions", label: "Key UX Decisions" },
-        { id: "visual-brand-direction", label: "Visual & Brand Direction" },
-        { id: "wireframes-prototype", label: "Wireframes → Prototype" },
-        { id: "usability-testing", label: "Usability Testing" },
-        { id: "outcome", label: "Outcome" },
-        { id: "demo", label: "Demo" },
-      ],
+    ...getProjectById("project-3"),
     content: (
       <>
         <section id="overview" className="case-section">
@@ -1060,7 +991,7 @@ const scrollToSection = (id) => {
           >
             {PROJECTS.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.name}
+                {p.title}
               </option>
             ))}
           </select>
@@ -1095,7 +1026,7 @@ const scrollToSection = (id) => {
                 onClick={() => handleProjectClick(project.id)}
                 type="button"
               >
-                <span>{project.name}</span>
+                <span>{project.title}</span>
                 <span className="chevron">
                   {openProjectId === project.id ? "▾" : "▸"}
                 </span>
@@ -1123,7 +1054,7 @@ const scrollToSection = (id) => {
 
         <main className="projects-content">
           <div ref={contentRef} className="case-scroll">
-            <h2 className="case-title">{activeProject.name}</h2>
+            <h2 className="case-title">{activeProject.title}</h2>
             {activeProject.content}
           </div>
         </main>
@@ -1132,7 +1063,7 @@ const scrollToSection = (id) => {
 
       {/* MOBILE CONTENT (shows on mobile only) */}
       <div ref={mobileContentRef} className="projects-mobile-content">
-        <h2 className="case-title">{activeProject.name}</h2>
+        <h2 className="case-title">{activeProject.title}</h2>
         {activeProject.content}
       </div>
 
