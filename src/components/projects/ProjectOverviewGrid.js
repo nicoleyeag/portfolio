@@ -2,12 +2,21 @@ import React from "react";
 
 import ProjectOverviewCard from "./ProjectOverviewCard";
 
-export default function ProjectOverviewGrid({ projects }) {
+export default function ProjectOverviewGrid({
+  projects,
+  enableLinks = true,
+  ctaLabel = "View Case Study",
+}) {
   return (
     <section className="projects-overview" aria-label="Project case studies">
       <div className="projects-overview-grid">
         {projects.map((project) => (
-          <ProjectOverviewCard key={project.id} project={project} />
+          <ProjectOverviewCard
+            key={project.id}
+            project={project}
+            enableLinks={enableLinks}
+            ctaLabel={ctaLabel}
+          />
         ))}
       </div>
     </section>
