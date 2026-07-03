@@ -70,22 +70,24 @@ export default function ProjectOverviewCard({
       )}
 
       <div className="project-overview-card-body">
-        <h2 className="project-overview-card-title">{titleContent}</h2>
+        <div className="project-overview-card-content">
+          <h2 className="project-overview-card-title">{titleContent}</h2>
 
-        <p className="project-overview-card-description">
-          {project.shortDescription}
-        </p>
+          <p className="project-overview-card-description">
+            {project.shortDescription}
+          </p>
 
-        <ul
-          className="project-overview-card-stack"
-          aria-label={`${project.title} technologies`}
-        >
-          {project.techStack.map((tech) => (
-            <li key={tech} className="project-overview-card-chip">
-              {tech}
-            </li>
-          ))}
-        </ul>
+          <ul
+            className="project-overview-card-stack"
+            aria-label={`${project.title} technologies`}
+          >
+            {project.techStack.map((tech) => (
+              <li key={tech} className="project-overview-card-chip">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {ctaContent}
       </div>
