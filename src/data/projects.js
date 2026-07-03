@@ -5,9 +5,15 @@ export const PROJECT_REGISTRY = [
     title: "MTG Collection Manager",
     shortDescription:
       "A React Native app for scanning cards, managing a local collection, and building decks with an offline-first architecture.",
-    heroImage: "/mtgPhotos/myCollectionPage.jpeg",
+    heroImage: "/mtgPhotos/mtgHero.png",
     heroImageAlt:
-      "MTG Collection Manager collection grid showing searchable cards",
+      "MTG Collection Manager hero banner showing scanner, collection, and deck building screens",
+    cardHero: {
+      variant: "mtg-static-image",
+      src: "/mtgPhotos/mtgHero.png",
+      ariaLabel:
+        "MTG Collection Manager hero banner showing scanner, collection management, and deck building mobile screens",
+    },
     techStack: ["React Native", "Expo", "TypeScript", "SQLite", "Jest"],
     bg: {
       base: "rgba(30, 58, 95, 0.55)",
