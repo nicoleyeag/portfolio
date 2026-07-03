@@ -265,6 +265,56 @@ main {
   padding: 10px 20px;
 }
 
+.nav-projects {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.nav-projects-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 240px;
+  padding: 10px;
+  border-radius: 16px;
+  background: #ffFAFA;
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 20;
+}
+
+.nav-projects-dropdown.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-projects-dropdown-link {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  font-family: "Jost", sans-serif;
+  transition: background-color 180ms ease;
+}
+
+.nav-projects-dropdown-link:hover,
+.nav-projects-dropdown-link:focus-visible {
+  background: rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.nav-projects-mobile-links {
+  display: none;
+}
+
 /* icon links (github/linkedin etc.) */
 .icon-link {
   display: inline-flex;
@@ -320,6 +370,39 @@ main {
   }
 
   .nav-left.is-open { display: flex; }
+
+  .nav-projects {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-projects-dropdown {
+    display: none;
+  }
+
+  .nav-projects-mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 12px;
+  }
+
+  .nav-projects-mobile-link {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    font-family: "Jost", sans-serif;
+    transition: background-color 180ms ease;
+  }
+
+  .nav-projects-mobile-link:hover,
+  .nav-projects-mobile-link:focus-visible {
+    background: rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
 
   .mobile-socials {
     display: flex;

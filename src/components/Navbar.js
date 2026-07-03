@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/style.css";
 import StatefulButton from "./StatefulButton";
 import GitHubButton from "./GitHubButton";
 import LinkedInButton from "./LinkedInButton";
+import { PROJECT_REGISTRY, getProjectPath } from "../data/projects";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [projectsMenuOpen, setProjectsMenuOpen] = useState(false);
+  const projectsMenuRef = useRef(null);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setProjectsMenuOpen(false);
+  };
+
+  const handleProjectsBlur = (event) => {
+    if (!projectsMenuRef.current?.contains(event.relatedTarget)) {
+      setProjectsMenuOpen(false);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -29,7 +42,47 @@ export default function Navbar() {
         <div className={`nav-left ${menuOpen ? "is-open" : ""}`}>
           <StatefulButton label="home" to="/" sparkleColor="red" onClick={closeMenu} />
           <StatefulButton label="about me" to="/about" sparkleColor="orange" onClick={closeMenu} />
-          <StatefulButton label="projects" to="/projects" sparkleColor="yellow" onClick={closeMenu} />
+          <div
+            ref={projectsMenuRef}
+            className={`nav-projects ${projectsMenuOpen ? "is-open" : ""}`}
+            onMouseEnter={() => setProjectsMenuOpen(true)}
+            onMouseLeave={() => setProjectsMenuOpen(false)}
+            onFocusCapture={() => setProjectsMenuOpen(true)}
+            onBlurCapture={handleProjectsBlur}
+          >
+            <StatefulButton
+              label="projects"
+              to="/projects"
+              sparkleColor="yellow"
+              onClick={closeMenu}
+            />
+
+            <div className={`nav-projects-dropdown ${projectsMenuOpen ? "is-open" : ""}`}>
+              {PROJECT_REGISTRY.map((project) => (
+                <Link
+                  key={project.id}
+                  to={getProjectPath(project.slug)}
+                  className="nav-projects-dropdown-link"
+                  onClick={() => setProjectsMenuOpen(false)}
+                >
+                  {project.title}
+                </Link>
+              ))}
+            </div>
+
+            <div className="nav-projects-mobile-links">
+              {PROJECT_REGISTRY.map((project) => (
+                <Link
+                  key={project.id}
+                  to={getProjectPath(project.slug)}
+                  className="nav-projects-mobile-link"
+                  onClick={closeMenu}
+                >
+                  {project.title}
+                </Link>
+              ))}
+            </div>
+          </div>
           <StatefulButton label="hire me!" to="/hire" sparkleColor="green" onClick={closeMenu} />
 
           {/* MOBILE-ONLY social icons */}
