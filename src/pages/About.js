@@ -95,7 +95,12 @@ export default function About() {
                 </a>
               </li>
               <li>
-                <a href="/Nicole-Yeager-CV.pdf" download>
+                <a
+                  href="/assets/masterResume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
                   Download my CV
                 </a>
               </li>

@@ -23,7 +23,9 @@ export default function DownloadCV() {
     <div className="download-wrap">
       <a
         className={`download-cv ${buttonState}`}
-        href="/Nicole-Yeager-CV.pdf"
+        href="/assets/masterResume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
         download
         role="button"
         onClick={handleClick}
