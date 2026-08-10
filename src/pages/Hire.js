@@ -17,7 +17,7 @@ export default function Hire() {
             design, and teaching, I thrive in team environments where 
             collaboration and creativity are key to success. Whether I’m 
             building dynamic user interfaces, designing 
-            <span className="bold">full-stack applications</span>, or ensuring 
+            <span className="bold"> full-stack applications</span>, or ensuring 
             high-quality code through automated testing, I’m always eager to 
             expand my skill set and contribute to meaningful projects.
           </p>
@@ -52,8 +52,8 @@ export default function Hire() {
           
           <p>
             If you’re looking for someone who is <span className="bold">curious
-            </span>, <span className="bold">adaptable</span>, and excited to 
-            <span className="bold">collaborate</span>contribute, I’d love to 
+            </span>, <span className="bold">adaptable</span>, and excited to  
+            <span className="bold"> collaborate,</span> and contribute, I’d love to 
             connect.
           </p>
           <p>

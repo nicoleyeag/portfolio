@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import SkillCard from "../components/SkillCard";
 import DownloadCV from "../components/DownloadCV";
+import FeaturedWork from "../components/FeaturedWork";
+import HowIBuild from "../components/HowIBuild";
 import { setFaviconColor } from "../favicon";
 
 export default function Home() {
@@ -9,31 +12,32 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="home">
+    <div className="home">
       <section className="hero">
         <div className="heroLeft">
           <h1>
             👋 hi I’m <span className="highlight">Nicole Yeager</span>
           </h1>
 
-            <p>
-            I’m a <span className="highlight">front-end software engineer</span> specializing in
-            <span className="highlight"> React, JavaScript, HTML, and CSS,</span> building
-            <span className="highlight"> responsive, accessible interfaces</span> with a  
-            <span className="highlight"> UX-first mindset</span>
-            </p>
+          <p>
+            I’m a <span className="highlight">front-end engineer</span> building
+            thoughtful web and mobile products with React, React Native, and
+            TypeScript — combining engineering, UX, and testing to create
+            interfaces that work as well as they look.
+          </p>
 
-            <p>I love crafting bright, intuitive user experiences that feel 
-              effortless — from clean UI components to thoughtful details and 
-              performance polish.
-            </p>
+          <p>
+            I take products from design through implementation, testing, and
+            refinement, with experience in API integration, application
+            architecture, automated testing, and production development.
+          </p>
 
-        {/* button */}
-        <div className="cv-button-wrapper">
-          <DownloadCV label="Download CV" />
-        </div>
-
-
+          <div className="cv-button-wrapper">
+            <Link to="/projects" className="hero-cta hero-cta--primary">
+              View My Work
+            </Link>
+            <DownloadCV label="Download CV" />
+          </div>
         </div>
 
         <div className="heroRight">
@@ -44,36 +48,64 @@ export default function Home() {
         </div>
       </section>
 
-    <section className="skills">
-        <SkillCard
-            title="Front-End Development"
-            skills={[
-                "React",
-                "JavaScript (ES6+)",
-                "HTML5",
-                "CSS3",
-                "Responsive Design",
-                "CSS Grid & Flexbox",
-                "Bootstrap",
-                "Jinja Templating",
-                "UX-Focused UI Development",
-            ]}
-            />
+      <FeaturedWork />
 
-            <SkillCard
-            title="Back-End Development"
-            skills={[
-                "Python",
-                "Flask",
-                "RESTful APIs",
-                "PostgreSQL",
-                "SQL & Relational Data Modeling",
-                "User Authentication (Bcrypt)",
-                "API Integration",
-                "Server-Side Logic"
-            ]}
-            />
-        </section>
-    </main>
+      <HowIBuild />
+
+      <section className="skills" aria-label="Capabilities">
+        <SkillCard
+          title="Front-End & Mobile"
+          skills={[
+            "React",
+            "React Native",
+            "TypeScript",
+            "JavaScript (ES6+)",
+            "HTML5",
+            "CSS3",
+            "Responsive UI",
+            "Expo",
+          ]}
+        />
+
+        <SkillCard
+          title="UX & Product Design"
+          skills={[
+            "Figma",
+            "Interaction Design",
+            "Prototyping",
+            "User Flows",
+            "Accessibility",
+            "Design Systems",
+            "Usability Testing",
+          ]}
+        />
+
+        <SkillCard
+          title="Testing & Quality"
+          skills={[
+            "Jest",
+            "Unit Testing",
+            "Workflow Validation",
+            "Debugging",
+            "QA",
+            "Performance Optimization",
+            "Accessibility Testing",
+          ]}
+        />
+
+        <SkillCard
+          title="APIs & Architecture"
+          skills={[
+            "REST APIs",
+            "API Integration",
+            "Caching",
+            "Modular Services",
+            "Reusable Components",
+            "PostgreSQL",
+            "SQLite",
+          ]}
+        />
+      </section>
+    </div>
   );
 }

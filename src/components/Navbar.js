@@ -114,7 +114,7 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-          <StatefulButton label="hire me!" to="/hire" sparkleColor="green" onClick={closeMenu} />
+          <StatefulButton label="let's work together" to="/hire" sparkleColor="green" onClick={closeMenu} />
 
           {/* MOBILE-ONLY social icons */}
           <div className="mobile-socials">

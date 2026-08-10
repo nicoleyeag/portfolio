@@ -27,7 +27,6 @@ export default function DownloadCV() {
         target="_blank"
         rel="noopener noreferrer"
         download
-        role="button"
         onClick={handleClick}
         onMouseEnter={() => setButtonState("hover")}
         onMouseLeave={() => setButtonState("default")}
