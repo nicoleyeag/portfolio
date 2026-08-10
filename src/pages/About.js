@@ -17,97 +17,71 @@ export default function About() {
                   className="about-photo"
                 />
                  <p>
-                I’m a <span className="bold">front-end software engineer</span> specializing in<span className="bold"> React</span> who loves building
-                <span className="bold"> clean, intuitive UI</span>that feels effortless to use. With experience across 
-                <span className="bold"> UX design</span> and <span className="bold">QA testing</span>,I bring a 
-                detail-oriented, user-first approach to every feature I ship.
+                I’m a <span className="bold">front-end engineer</span> and <span className="bold">UX designer</span> who builds thoughtful web and mobile products from concept through implementation, testing, and refinement. My background in UX shapes how I approach engineering: I care about architecture and maintainability, but also about how a product feels to the person using it.
+                </p>
+                <p>
+                I work primarily with <span className="bold">React</span>, <span className="bold">React Native</span>, <span className="bold">TypeScript</span>, and <span className="bold">JavaScript</span>, with experience across API integration, automated testing, responsive design, and production development.
                 </p>
 
                 <h2><span className="highlight">What I Work With</span></h2>
-                <p><span className="bold">Front End & UX</span></p>
-                <p>React · JavaScript · HTML · CSS · Responsive Design · Accessibility · Figma</p>
-                <p><span className="bold">Engineering & QA</span></p>
-                <p>Python · Flask · SQL · Git · GitHub · Selenium · Manual & Automated Testing</p>
+                <p><span className="bold">Engineering</span></p>
+                <p>React · React Native · TypeScript · JavaScript · REST APIs · Jest</p>
+                <p><span className="bold">Design & Product</span></p>
+                <p>Figma · Prototyping · Interaction Design · Accessibility · User Flows</p>
+                <p><span className="bold">Quality & Workflow</span></p>
+                <p>Testing · Debugging · QA · Git/GitHub · AI-Assisted Development</p>
 
                 <h2><span className="highlight">My Journey</span></h2>
-                <p>
-                I started my software engineering journey as a 
-                self-taught developer, fueled by curiosity and a love for tech. Over 
-                the years, I’ve worked on <span className="bold">full-stack applications</span>, <span className="bold">UX/UI design</span>, and 
-                <span className="bold"> QA automation</span>, constantly pushing myself to learn, build, and 
-                refine. 
-                </p>
-                <p>
-                Right now, I’m focused on building polished front-end projects, 
-                sharing consistent work on GitHub, and connecting with teams that 
-                care about thoughtful UI.
+                <ol className="about-journey" aria-label="Background progression">
+                  <li className="about-journey__stage">
+                    <p className="about-journey__title">UX Design</p>
+                    <p className="about-journey__meta">Designlab · 2022</p>
+                  </li>
+                  <li className="about-journey__stage">
+                    <p className="about-journey__title">Software Engineering</p>
+                    <p className="about-journey__meta">Hackbright Academy · 2024</p>
+                  </li>
+                  <li className="about-journey__stage">
+                    <p className="about-journey__title">Front-End &amp; Product Engineering</p>
+                    <p className="about-journey__meta">Web · Mobile · UX · Testing · Production</p>
+                  </li>
+                </ol>
+                <p className="about-journey__summary">
+                I started in UX design wanting to understand how digital products should work, then moved into software engineering to learn how to build them. Today, I bring those disciplines together—designing interfaces, building web and mobile applications, integrating APIs, testing complex workflows, and shipping production front-end work.
                 </p>
                 <h2><span className="highlight">Outside of Tech</span></h2>
                 <p>
-                Outside of tech, I’m always creating — baking macarons, painting, 
-                and exploring the outdoors through swimming, biking, and paddleboarding. 
-                That same curiosity and creativity shows up in how I approach design and development.
-            </p>
-            <p>
-              Creativity and curiosity don’t stop at the screen—and they’re a big part of how I approach my work.
-            </p>
-            <h2><span className="highlight">Training and Certifications</span></h2>
-            <ul>
-              <li><span className="bold">Hackbright Academy</span> - Software Engineering Fellowship</li>
-              <li><span className="bold">Designlab</span> - UX/UI Design Fellowship</li>
-            </ul>
-            <h2><span className="highlight">Let’s Connect!</span></h2>
-            <p>
-              I’m currently open to front-end, UX-focused, and QA-related roles.
-            </p>
-            <p>
-              If you’d like to collaborate, chat about a project, or learn more about my work:
-            </p>
-            <ul className="connect-links">
-              <li>
-                <a href="/projects">View my projects</a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/nicoleyeag"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Check out my GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/nicoleyeager-thenydesign/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Connect on LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=nyeager95@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Send me an email
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/assets/masterResume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                >
-                  Download my CV
-                </a>
-              </li>
-            </ul>
-
-            
-            
+                Outside of tech, I’m usually creating something—baking macarons, painting, or getting outside to swim, bike, and paddleboard. Creativity has always been a big part of who I am, and that same curiosity naturally finds its way into how I design and build products.
+                </p>
+            <div className="about-connect">
+              <h2><span className="highlight">Let’s Work Together ✨</span></h2>
+              <p>
+                I’m interested in front-end, design engineering, and UX-focused product work where thoughtful design and strong implementation go hand in hand.
+              </p>
+              <ul className="connect-links">
+                <li>
+                  <a href="/projects">View Projects</a>
+                </li>
+                <li>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=nyeager95@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Email Me
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/nicoleyeager-thenydesign/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
             </div>
         </section>
     </main>
