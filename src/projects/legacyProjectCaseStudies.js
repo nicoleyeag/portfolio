@@ -6,40 +6,74 @@ import React from "react";
 export function MtgCollectionManagerCaseStudy() {
   return (
     <div className="mtg-case">
-      <section id="overview" className="case-section">
-        <div className="mtg-hero">
-          <figure className="mtg-hero-phone mtg-hero-phone--primary">
-            <img
-              src="/mtgPhotos/myCollectionPage.jpeg"
-              alt="MTG Collection App — searchable card collection grid"
-            />
-            <figcaption className="media-caption">
-              Collection grid — the core cataloging experience.
-            </figcaption>
-          </figure>
-          <figure className="mtg-hero-phone mtg-hero-phone--accent">
-            <img
-              src="/mtgPhotos/homePage.jpeg"
-              alt="MTG Collection App — home screen entry point"
-            />
-            <figcaption className="media-caption">
-              App home — entry point to collection, decks, and scanner.
-            </figcaption>
-          </figure>
+      <header className="case-study-header">
+        <div className="case-study-header-meta">
+          <p className="case-study-header-type">
+            Cross-Platform Mobile Engineering
+          </p>
+          <span className="case-study-header-status">Active Development</span>
         </div>
+
+        <h1 className="case-study-header-title">MTG Collection Manager</h1>
+
+        <p className="case-study-header-description">
+          A React Native application for scanning and recognizing trading
+          cards, managing collections, building decks, and exploring
+          intelligent collection workflows.
+        </p>
+
+        <p className="case-study-header-role">
+          <span className="case-study-header-role-label">My Role</span>
+          <span className="case-study-header-role-values">
+            Mobile Engineering · Interface Design · API Integration · Testing
+          </span>
+        </p>
+
+        <p className="case-study-header-role case-study-header-role--last">
+          <span className="case-study-header-role-label">Technologies</span>
+          <span className="case-study-header-role-values">
+            React Native · TypeScript · Expo · REST APIs · Jest
+          </span>
+        </p>
+
+        <div className="case-study-header-visual">
+          <div className="mtg-hero">
+            <figure className="mtg-hero-phone mtg-hero-phone--primary">
+              <img
+                src="/mtgPhotos/myCollectionPage.jpeg"
+                alt="MTG Collection App — searchable card collection grid"
+              />
+              <figcaption className="media-caption">
+                Collection grid — the core cataloging experience.
+              </figcaption>
+            </figure>
+            <figure className="mtg-hero-phone mtg-hero-phone--accent">
+              <img
+                src="/mtgPhotos/homePage.jpeg"
+                alt="MTG Collection App — home screen entry point"
+              />
+              <figcaption className="media-caption">
+                App home — entry point to collection, decks, and scanner.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </header>
+
+      <section id="overview" className="case-section">
         <h2>Overview</h2>
         <p>
-          MTG Collection App is a cross-platform React Native app that helps
-          Magic: The Gathering players scan physical cards, manage a local
-          collection, build decks, and prepare for future AI-powered deck
-          analysis. Built with Expo and TypeScript, it evolved from MVP mock
-          data into a production-oriented mobile app with SQLite persistence,
-          a typed scanner state machine, and 129 unit tests.
+          MTG Collection Manager is a cross-platform React Native application
+          for scanning, organizing, and managing Magic: The Gathering
+          collections. I designed and built the application end to end,
+          including the mobile UI, card-recognition workflow, Scryfall API
+          integration, local data handling, deck-building features, caching,
+          and automated testing.
         </p>
         <p>
-          Physical collections are hard to track-players often juggle
-          spreadsheets and disconnected tools. This app centralizes scanning,
-          cataloging, and deck building in one offline-capable workflow.
+          The project started as a collection-management tool and evolved into
+          a broader engineering challenge: how to make card recognition fast,
+          reliable, explainable, and easy to correct when automation fails.
         </p>
 
         <h3>Tech Stack</h3>
@@ -68,14 +102,33 @@ export function MtgCollectionManagerCaseStudy() {
         </ul>
       </section>
 
-      <section id="scanner-workflow" className="case-section">
-        <h2>Scanner Workflow</h2>
+      <section id="scanner-engineering" className="case-section">
+        <h2>Scanner Engineering</h2>
+
+        <h3>The Challenge</h3>
         <p>
-          Adding cards starts with the scanner. OCR extracts text from a
-          captured image, results are parsed and ranked against Scryfall
-          matches, and a typed state machine coordinates each step-from
-          capture through review to final confirmation.
+          Card-title OCR became reliable relatively quickly, but identifying
+          the correct card printing and artwork was harder. Alternate artwork,
+          visually similar candidates, imperfect image crops, and stale scan
+          data could all produce incorrect matches.
         </p>
+
+        <h3>Recognition Approach</h3>
+        <p>
+          I built a multi-stage recognition workflow that combines title OCR,
+          Scryfall candidate search, image comparison, confidence checks,
+          fallback logic, and manual correction. The goal was not only to
+          return a match, but to avoid confidently returning the wrong one.
+        </p>
+
+        <h3>Iteration &amp; Debugging</h3>
+        <p>
+          I iterated on crop geometry, candidate filtering, caching, ambiguity
+          thresholds, stale-result handling, and scanner instrumentation. I
+          also added evaluation tooling to compare scan results across repeated
+          tests and identify where failures were occurring.
+        </p>
+
         <div className="mtg-scanner-gallery">
           <figure className="mtg-phone-frame">
             <img
@@ -167,52 +220,99 @@ export function MtgCollectionManagerCaseStudy() {
 
       <section id="architecture-testing" className="case-section">
         <h2>Architecture & Testing</h2>
+
+        <h3>Architecture</h3>
         <p>
-          The codebase uses a Screen -&gt; Service -&gt; Repository pattern that
-          separates UI, business logic, and data access. This made it
-          straightforward to migrate from MVP mock data to SQLite-backed
-          persistence without rewriting screens.
+          The app separates UI screens, services, and repository/data
+          responsibilities so scanner logic, Scryfall integration, caching, and
+          collection data can evolve independently from presentation
+          components. Reusable React Native components handle shared UI, while
+          modular service layers isolate scanner logic from the screens that
+          display it. Caching, data handling, and local collection persistence
+          live in their own layers so those concerns can change without
+          rewriting presentation code.
         </p>
+
+        <h3>Testing</h3>
+        <p>
+          Jest tests cover core recognition behavior, caching logic, scanner
+          workflows, and data-layer behavior — currently{" "}
+          <span className="bold">129+ unit tests</span>.
+        </p>
+      </section>
+
+      <section id="next-iterations" className="case-section">
+        <h2>Next Iterations</h2>
+        <p>
+          Current development is focused on improving recognition reliability,
+          persistence, and higher-level collection intelligence.
+        </p>
+
+        <h3>Recognition</h3>
         <ul>
-          <li>Typed data flow across scanner, collection, and deck modules</li>
-          <li>Reusable component system for consistent mobile UI</li>
-          <li>129 Jest unit tests covering services, scanner logic, and the data layer</li>
+          <li>Improve art matching reliability</li>
+          <li>Improve adaptive crop handling</li>
+        </ul>
+
+        <h3>Persistence</h3>
+        <ul>
+          <li>Expand SQLite-backed local persistence</li>
+          <li>Improve offline collection behavior</li>
+        </ul>
+
+        <h3>Product Intelligence</h3>
+        <ul>
+          <li>AI-assisted deck coaching</li>
+          <li>Future premium feature exploration</li>
         </ul>
       </section>
 
-      <section id="planned-in-progress" className="case-section">
-        <h2>Planned & In Progress</h2>
-        <p>The following features are not yet implemented:</p>
+      <section id="engineering-decisions" className="case-section">
+        <h2>Engineering Decisions &amp; Tradeoffs</h2>
         <ul>
-          <li>AI deck coaching</li>
-          <li>Cloud sync</li>
-          <li>Price tracking</li>
-          <li>Advanced filter logic</li>
-          <li>Add-to-deck from collection</li>
-          <li>Scryfall caching</li>
-          <li>Premium features</li>
-        </ul>
-      </section>
-
-      <section id="challenges-learnings" className="case-section">
-        <h2>Challenges & Learnings</h2>
-        <ul>
-          <li>Modeling scanner state as a typed state machine reduced edge-case bugs in the OCR flow</li>
-          <li>Separating repositories from services made it easier to swap mock data for SQLite without rewriting screens</li>
-          <li>Ranking OCR matches against Scryfall results required balancing accuracy with responsive UX</li>
-          <li>Constraining phone screenshots in layout grids kept case study pages skimmable on desktop and mobile</li>
+          <li>
+            <span className="bold">Recognition accuracy vs automation:</span>{" "}
+            the scanner should avoid auto-selecting a weak match just to
+            complete the flow.
+          </li>
+          <li>
+            <span className="bold">Confidence vs speed:</span> additional image
+            comparison and candidate checks can improve certainty, but they
+            also increase processing time.
+          </li>
+          <li>
+            <span className="bold">Fixed crop geometry vs real-world camera variance:</span>{" "}
+            consistent crop regions improve matching, but card position and
+            framing are not always identical.
+          </li>
+          <li>
+            <span className="bold">Automation vs correction:</span> manual
+            correction is intentionally part of the workflow because a
+            recoverable uncertain result is better than a confidently wrong
+            result.
+          </li>
+          <li>
+            <span className="bold">Debug visibility vs production simplicity:</span>{" "}
+            developer evaluation tools and timing instrumentation help diagnose
+            recognition failures but should remain separate from the normal
+            user experience.
+          </li>
         </ul>
       </section>
 
       <section id="outcome" className="case-section">
         <h2>Outcome</h2>
         <p>
-          MTG Collection App delivers a working mobile workflow for scanning
-          cards, managing a local collection, and building decks-with a tested
-          architecture ready for planned features like AI coaching and cloud
-          sync. The project strengthened my React Native and Expo skills and
-          reinforced how layered mobile architecture supports iterative growth
-          from MVP to production.
+          The result is a working cross-platform mobile application that
+          supports collection management, deck building, API-backed card data,
+          OCR-assisted scanning, manual correction, caching, and automated
+          testing.
+        </p>
+        <p>
+          More importantly, the project has become an ongoing engineering
+          testbed for recognition reliability, mobile architecture, UX recovery
+          states, and performance tradeoffs—areas I continue to measure and
+          refine rather than treating the first implementation as finished.
         </p>
       </section>
 
@@ -226,35 +326,71 @@ export function MtgCollectionManagerCaseStudy() {
 
 export function OnMyWayCaseStudy() {
   return (
-    <>
-      <section id="overview" className="case-section">
-        <div className="case-hero">
+    <div className="omw-case">
+      <header className="case-study-header">
+        <div className="case-study-header-meta">
+          <p className="case-study-header-type">Full-Stack Web Application</p>
+        </div>
+
+        <h1 className="case-study-header-title">On My Way</h1>
+
+        <p className="case-study-header-description">
+          A full-stack travel planning application that brings trip
+          organization, excursion discovery, authentication, and itinerary
+          management into one connected experience.
+        </p>
+
+        <p className="case-study-header-role">
+          <span className="case-study-header-role-label">My Role</span>
+          <span className="case-study-header-role-values">
+            Full-Stack Development · Front-End Development · UX/UI Design ·
+            Database Design
+          </span>
+        </p>
+
+        <p className="case-study-header-role case-study-header-role--last">
+          <span className="case-study-header-role-label">Technologies</span>
+          <span className="case-study-header-role-values">
+            React · JavaScript · Flask · PostgreSQL · SQLAlchemy · TripAdvisor
+            API
+          </span>
+        </p>
+
+        <div className="case-study-header-visual">
           <img
+            className="case-study-header-hero-image"
             src="/omwPhotos/OMW-exploreexcursions.png"
-            alt="location-based trip planning webapp"
+            alt="On My Way excursion search results page"
           />
         </div>
+      </header>
+
+      <section id="overview" className="case-section">
         <h2>Overview</h2>
         <p>
-          On My Way is a full-stack trip planning application that helps users
-          create, organize, and personalize travel itineraries. Users can create
-          trips with key details such as dates, budget, and descriptions, search
-          for excursions by location, and save selected activities with notes and
-          scheduled dates.
+          Planning a trip often means switching between travel sites, saved
+          links, notes, and itinerary tools. I built On My Way to bring those
+          workflows together in one application where users can create trips,
+          discover excursions, save activities, and manage their itinerary.
+        </p>
+        <p>
+          I developed the application across the stack, building the React
+          interface, Flask server, PostgreSQL data model, authentication flows,
+          and external travel API integration.
         </p>
       </section>
 
       <section id="problem" className="case-section">
         <h2>Problem</h2>
         <p>
-          Planning trips often requires juggling multiple tools-notes, calendars,
-          booking sites, and spreadsheets-making it difficult to keep everything
-          organized in one place.
+          Planning trips often requires juggling multiple tools—notes,
+          calendars, booking sites, and spreadsheets—making it difficult to keep
+          everything organized in one place.
         </p>
         <h3>Goal:</h3>
         <p>
-          Create a centralized platform where users can plan trips end-to-
-          end, discover excursions, and manage all trip details in a single,
+          Create a centralized platform where users can plan trips end-to-end,
+          discover excursions, and manage all trip details in a single,
           intuitive interface.
         </p>
       </section>
@@ -288,20 +424,18 @@ export function OnMyWayCaseStudy() {
         </ul>
       </section>
 
-      <section id="key-features-implementation" className="case-section">
-        <h2>Key Features & Implementation</h2>
+      <section id="authentication-user-state" className="case-section">
+        <h2>Authentication &amp; User State</h2>
         <p>
-          Core functionality and how major features were implemented across the
-          stack.
+          Account creation and login associate trip data with individual users
+          so each person only sees and manages their own itineraries.
+          Authentication is handled through Flask backend endpoints, while the
+          React frontend provides the login, registration, and error flows that
+          guide users through those interactions.
         </p>
-      </section>
-
-      <section id="user-authentication" className="case-section">
-        <h2>User Authentication</h2>
         <p>
-          Users can sign up and sign in through React forms connected to Flask
-          endpoints. Passwords are securely hashed using bcrypt before being
-          stored in the database.
+          Passwords are hashed with bcrypt before storage, matching the
+          backend implementation shown below.
         </p>
         <div className="media-row">
           <div className="media-card">
@@ -323,13 +457,19 @@ export function OnMyWayCaseStudy() {
         </div>
       </section>
 
-      <section id="database-design" className="case-section">
-        <h2>Database Design</h2>
+      <section id="data-model-relationships" className="case-section">
+        <h2>Data Model &amp; Relationships</h2>
         <p>
-          I began by defining core user actions and translating them into
-          database relationships. The primary tables include Users, Trips, and
-          Excursions, with additional tables planned for future feature
-          expansion.
+          The application persists user, trip, and excursion data in PostgreSQL
+          through SQLAlchemy models. Users own trips, and each trip can hold
+          saved excursions with notes and scheduled dates so itinerary details
+          stay attached to a specific trip rather than floating as standalone
+          records.
+        </p>
+        <p>
+          That relational structure supports the core workflow: create an
+          account, build a trip, discover activities, and save selected
+          excursions into the trip for later review and editing.
         </p>
         <div className="media-row">
           <div className="media-card">
@@ -344,15 +484,26 @@ export function OnMyWayCaseStudy() {
         </div>
       </section>
 
-      <section id="trip-creation-management" className="case-section">
-        <h2>Trip Creation & Management</h2>
+      <section id="trip-discovery-management" className="case-section">
+        <h2>Trip Discovery &amp; Management</h2>
         <p>
-          Users can create trips with custom details and edit them at any
-          time. Each trip serves as a container for saved excursions, notes,
-          and scheduled dates.
+          The core application workflow connects trip setup, external activity
+          discovery, and itinerary management in one loop: users create and
+          manage trips, search for excursions, retrieve travel data through the
+          TripAdvisor API, save relevant activities to a trip, and return later
+          to view or update that itinerary.
         </p>
-        <div className="media-row">
-          <div className="media-card">
+
+        <h3>Trip Creation &amp; Editing</h3>
+        <p>
+          Users create trips with custom details and can revise those details
+          over time. Each trip acts as the container for saved excursions,
+          notes, and scheduled dates. Edit flows use React forms that send
+          updates to Flask endpoints and refresh the UI after the database
+          changes.
+        </p>
+        <div className="case-evidence-gallery">
+          <figure>
             <img
               src="/omwPhotos/OMW-createtrip.png"
               alt="react create trip card"
@@ -360,37 +511,51 @@ export function OnMyWayCaseStudy() {
             <figcaption className="media-caption">
               React create trip UI connected to Flask endpoints.
             </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="/omwPhotos/OMW-edittrip.png"
+              alt="react edit trip card"
+            />
+            <figcaption className="media-caption">
+              React edit trip UI for updating trip details after creation.
+            </figcaption>
+          </figure>
+          <figure>
             <img
               src="/omwPhotos/OMW-viewtrip.png"
               alt="trip detail view"
             />
             <figcaption className="media-caption">
-              React trip detail view UI connected to Flask endpoints.
+              Trip detail view with saved itinerary context.
             </figcaption>
-          </div>
+          </figure>
         </div>
-      </section>
 
-      <section id="excursion-search-tripadvisor-api" className="case-section">
-        <h2>Excursion Search (TripAdvisor API)</h2>
+        <h3>Excursion Search &amp; TripAdvisor API</h3>
         <p>
-          To provide rich excursion data, I integrated the TripAdvisor API.
-          The implementation required a two-step request process:
+          Excursion discovery depends on a backend TripAdvisor integration
+          rather than hardcoded activity data. The Flask route handles a
+          two-step request process: first resolving a user search into a
+          TripAdvisor location ID, then fetching excursion details such as
+          names, descriptions, and photos for that location.
         </p>
-        <ol>
-          <li>Retrieve a location ID</li>
-          <li>Fetch excursion details including names, descriptions, and photos</li>
-        </ol>
-        <p>Results are displayed using reusable React cards in a responsive grid layout.</p>
-        <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/omwPhotos/Screenshot 2026-01-08 155809.png"
-              alt="Backend route resolving user search queries into TripAdvisor location IDs"
-            />
-            <figcaption className="media-caption">
-              Backend route resolving user search queries into TripAdvisor location IDs.
-            </figcaption>
+        <p>
+          Those results are returned to the React client and rendered as
+          reusable cards in a responsive grid, including an expansion state for
+          longer descriptions.
+        </p>
+        <figure className="case-evidence-feature">
+          <img
+            src="/omwPhotos/Screenshot 2026-01-08 155809.png"
+            alt="Backend route resolving user search queries into TripAdvisor location IDs"
+          />
+          <figcaption className="media-caption">
+            Backend route resolving user search queries into TripAdvisor location IDs.
+          </figcaption>
+        </figure>
+        <div className="case-evidence-gallery">
+          <figure>
             <img
               src="/omwPhotos/OMW-exploreexcursions.png"
               alt="react explore excursions card"
@@ -398,65 +563,46 @@ export function OnMyWayCaseStudy() {
             <figcaption className="media-caption">
               Excursion search results grid rendered with reusable React cards.
             </figcaption>
+          </figure>
+          <figure>
             <img
               src="/omwPhotos/OMW-exploreexcursions2.png"
               alt="react explore excursions card expansion"
             />
             <figcaption className="media-caption">
-              Excursion search results card expansion to show full description.
+              Excursion card expansion for reading the full description before saving.
             </figcaption>
-          </div>
+          </figure>
         </div>
-      </section>
 
-      <section id="user-profile" className="case-section">
-        <h2>User Profile</h2>
+        <h3>Saving &amp; Reviewing Trips</h3>
         <p>
-          The profile page consolidates user information and all created
-          trips. Reusable React components render both trip summaries and
-          excursion cards, ensuring visual consistency and maintainability.
+          After discovery, users can save relevant activities to a trip and
+          revisit that itinerary from their profile. The profile dashboard
+          consolidates created trips so users can return to trip summaries and
+          continue managing their plans.
         </p>
-        <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/omwPhotos/OMW-tripdash.png"
-              alt="user profile trip dashboard"
-            />
-            <figcaption className="media-caption">
-              User profile trip dashboard displaying all created trips.
-            </figcaption>
-          </div>
-        </div>
+        <figure className="case-evidence-feature">
+          <img
+            src="/omwPhotos/OMW-tripdash.png"
+            alt="user profile trip dashboard"
+          />
+          <figcaption className="media-caption">
+            Profile trip dashboard displaying created trips for later review and management.
+          </figcaption>
+        </figure>
       </section>
 
-      <section id="editing-updates" className="case-section">
-        <h2>Editing & Updates</h2>
+      <section id="ui-system-responsive-design" className="case-section">
+        <h2>UI System &amp; Responsive Design</h2>
         <p>
-          Users can update trip details and excursions through modals built
-          with React forms. Changes trigger AJAX requests that update the
-          database and immediately re-render the UI.
-        </p>
-        <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/omwPhotos/OMW-edittrip.png"
-              alt="react edit trip card"
-            />
-            <figcaption className="media-caption">
-              React edit trip UI connected to Flask endpoints.
-            </figcaption>
-          </div>
-        </div>
-      </section>
-
-      <section id="ui-styling" className="case-section">
-        <h2>UI & Styling</h2>
-        <p>
-          I created a cohesive visual system using a defined color palette,
-          reusable buttons, and consistent card layouts. Modals were
-          refactored into React components for consistency. A "Read More"
-          interaction was added to excursion cards to maintain uniform sizing
-          while preserving content readability.
+          I created a consistent visual system for the application covering
+          typography, color, reusable interface patterns, and responsive
+          behavior. Drawing on my UX background, I treated the visual system
+          and React frontend implementation as one concern—shared buttons,
+          cards, and modal patterns carried the same design decisions into the
+          working interface rather than leaving styling as a separate
+          afterthought.
         </p>
         <div className="media-row">
           <div className="media-card">
@@ -471,23 +617,61 @@ export function OnMyWayCaseStudy() {
         </div>
       </section>
 
-      <section id="challenges-learnings" className="case-section">
-        <h2>Challenges & Learnings</h2>
+      <section id="engineering-decisions-challenges" className="case-section">
+        <h2>Engineering Decisions &amp; Challenges</h2>
         <ul>
-          <li>Designing a scalable database early helped support future features</li>
-          <li>Reusable React components significantly reduced code duplication</li>
-          <li>Integrating a third-party API required careful handling of asynchronous data flows</li>
+          <li>
+            <span className="bold">TripAdvisor lookup as a two-step backend flow:</span>{" "}
+            search could not be treated as a single frontend call. I routed
+            discovery through Flask so the server could resolve a location ID
+            first, then request excursion details before returning data to
+            React.
+          </li>
+          <li>
+            <span className="bold">External search results vs owned itinerary data:</span>{" "}
+            TripAdvisor results are useful for discovery, but trips need durable
+            user-owned records. To handle this, selected activities are saved
+            into the trip’s own excursion data with notes and scheduled dates
+            rather than depending on a live search result as the itinerary
+            source of truth.
+          </li>
+          <li>
+            <span className="bold">User-scoped trip state:</span> trip planning
+            only works if each itinerary belongs to an authenticated user. I
+            chose Flask-backed account creation/login with bcrypt-hashed
+            passwords so trip data could be associated with individual users and
+            surfaced through React login, registration, and error flows.
+          </li>
+          <li>
+            <span className="bold">Frontend forms coordinated with Flask mutations:</span>{" "}
+            create, view, and edit flows repeatedly required keeping React UI
+            state aligned with PostgreSQL updates. This required wiring trip and
+            excursion forms to Flask endpoints that persist changes and then
+            refresh the corresponding views.
+          </li>
+          <li>
+            <span className="bold">Shared UI patterns across trip workflows:</span>{" "}
+            create, explore, edit, and profile screens needed consistent
+            behavior. I chose reusable React cards, modals, and a small visual
+            system so the frontend implementation carried the same interaction
+            patterns across those workflows.
+          </li>
         </ul>
       </section>
 
       <section id="outcome" className="case-section">
         <h2>Outcome</h2>
         <p>
-          On My Way successfully delivers a complete trip planning
-          workflow-from account creation to itinerary management-within a
-          polished, responsive interface. The project strengthened my full-
-          stack development skills and reinforced the importance of thoughtful
-          component architecture and API integration.
+          On My Way became a complete full-stack travel-planning application
+          connecting a React interface, Flask backend, PostgreSQL database,
+          authentication, and external travel data in one cohesive user
+          workflow.
+        </p>
+        <p>
+          The project gave me experience owning both product design and
+          implementation across the stack, and it became an important bridge
+          between my UX background and the front-end engineering work I focus
+          on today.
         </p>
       </section>
 
@@ -504,53 +688,85 @@ export function OnMyWayCaseStudy() {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
 export function LivingLocalCaseStudy() {
   return (
-    <>
-      <section id="overview" className="case-section">
-        <div className="case-hero">
+    <div className="living-local-case">
+      <header className="case-study-header">
+        <div className="case-study-header-meta">
+          <p className="case-study-header-type">
+            UX / Product Design Case Study
+          </p>
+        </div>
+
+        <h1 className="case-study-header-title">Living Local</h1>
+
+        <p className="case-study-header-description">
+          A location-based e-commerce concept designed to help shoppers
+          discover and support nearby small businesses through a more
+          intuitive local shopping experience.
+        </p>
+
+        <p className="case-study-header-role">
+          <span className="case-study-header-role-label">My Role</span>
+          <span className="case-study-header-role-values">
+            UX/UI Design · Interaction Design · Wireframing · Prototyping
+          </span>
+        </p>
+
+        <p className="case-study-header-role case-study-header-role--last">
+          <span className="case-study-header-role-label">Tools</span>
+          <span className="case-study-header-role-values">Figma</span>
+        </p>
+
+        <div className="case-study-header-visual">
           <img
+            className="case-study-header-hero-image"
             src="/livingLocalPhotos/Group 2.png"
             alt="Living Local homepage and browsing experience"
           />
         </div>
+      </header>
+
+      <section id="overview" className="case-section">
         <h2>Overview</h2>
         <p>
           Living Local is a location-based e-commerce platform designed to
           help users discover and shop from nearby small businesses. The goal
           was to make supporting local shops as seamless as traditional online
-          shopping-without requiring each business to build or maintain its
+          shopping—without requiring each business to build or maintain its
           own website. The product prioritizes clarity, trust, and ease of
           use, especially for first-time users.
         </p>
       </section>
 
-      <section id="problem" className="case-section">
-        <h2>Problem</h2>
+      <section id="the-problem" className="case-section">
+        <h2>The Problem</h2>
         <p>
-          Many local businesses lack the time, budget, or technical expertise
-          to create standalone online stores. At the same time, shoppers
-          struggle to find and confidently purchase from local businesses
-          using existing e-commerce platforms.
+          Shoppers who want to support local businesses often have to discover
+          those businesses individually, move between separate websites or
+          social profiles, and determine for themselves what products are
+          available nearby. That friction makes local shopping less convenient
+          than larger centralized e-commerce platforms.
         </p>
-        <p>Users needed a way to:</p>
-        <ul>
-          <li>Easily discover nearby businesses</li>
-          <li>Browse products from multiple vendors without confusion</li>
-          <li>Complete purchases through a familiar, trustworthy checkout flow</li>
-        </ul>
+        <p>
+          <span className="bold">Design challenge:</span> How might we make
+          discovering and purchasing from local businesses feel as simple and
+          familiar as shopping through a larger online marketplace?
+        </p>
       </section>
 
-      <section id="wireframes" className="case-section">
-        <h2>Wireframes</h2>
+      <section id="from-structure-to-interface" className="case-section">
+        <h2>From Structure to Interface</h2>
         <p>
-          Early wireframes explored how users could discover local businesses
-          and complete purchases using familiar e-commerce patterns, without
-          overwhelming choice or complexity.
+          I used low-fidelity wireframes to establish the core shopping flow
+          before introducing visual styling. The early designs focused on
+          homepage discovery, product browsing and details, and profile
+          structure so I could validate the information hierarchy and
+          navigation first.
         </p>
         <div className="media-row">
           <div className="media-card">
@@ -577,38 +793,51 @@ export function LivingLocalCaseStudy() {
             </figcaption>
           </div>
         </div>
+        <ul>
+          <li>
+            The homepage structure established how users would begin discovery
+            and enter browsing without an overloaded landing layout.
+          </li>
+          <li>
+            Product-page wireframes defined how listing and detail views would
+            carry a consistent browsing hierarchy into purchase consideration.
+          </li>
+          <li>
+            The profile wireframe confirmed that account/profile context needed
+            a clear place in the overall navigation, separate from shopping
+            surfaces.
+          </li>
+        </ul>
       </section>
 
-      <section id="solution" className="case-section">
-        <h2>Solution</h2>
+      <section id="design-direction" className="case-section">
+        <h2>Design Direction</h2>
         <p>
-          Living Local centralizes local businesses into one intuitive
-          platform that mirrors common e-commerce patterns while highlighting
-          location-based discovery.
+          The design brings nearby businesses into one browsing experience that
+          still feels like familiar e-commerce. Location-first discovery sits
+          at the center of the product, while clear product layouts and a
+          recognizable checkout path keep evaluation and purchasing
+          straightforward. The overall approach balances local shopping
+          personality with the interaction patterns people already trust in
+          larger marketplaces.
         </p>
-        <p>Key solutions included:</p>
-        <ul>
-          <li>Location-first browsing to surface relevant businesses immediately</li>
-          <li>Standardized product cards across vendors to reduce cognitive load</li>
-          <li>A unified checkout experience that feels familiar and trustworthy</li>
-        </ul>
-      </section>
-
-      <section id="my-role" className="case-section">
-        <h2>My Role</h2>
-        <p>As the UX Researcher and UX/UI Designer, I owned the end-to-end design process.</p>
-        <p>Responsibilities included:</p>
-        <ul>
-          <li>Conducting user research to understand pain points around shopping local</li>
-          <li>Mapping user flows from discovery through checkout</li>
-          <li>Creating wireframes and high-fidelity prototypes in Figma</li>
-          <li>Running usability tests and iterating designs based on feedback</li>
-          <li>Designing responsive layouts for desktop and mobile</li>
-        </ul>
+        <p>
+          The decisions below show how that direction shows up across browsing,
+          product detail, and checkout.
+        </p>
       </section>
 
       <section id="key-design-decisions" className="case-section">
         <h2>Key Design Decisions</h2>
+
+        <h3>Location-first browsing with consistent product layouts</h3>
+        <p>
+          When shopping spans many small businesses, discovery can feel
+          fragmented and visually inconsistent. I designed browsing around
+          proximity-first surfacing and standardized product cards so users
+          could scan nearby inventory without relearning a different layout for
+          every vendor.
+        </p>
         <div className="media-row">
           <div className="media-card">
             <img
@@ -618,6 +847,19 @@ export function LivingLocalCaseStudy() {
             <figcaption className="media-caption">
               Browsing surfaces nearby businesses using consistent product layouts.
             </figcaption>
+          </div>
+        </div>
+
+        <h3>Product details that support confident evaluation</h3>
+        <p>
+          Once a shopper opens an item, they need enough clarity to decide
+          without losing trust in the seller behind it. I structured product
+          pages around rich imagery, pricing clarity, reviews, and seller
+          attribution so evaluation and local-business context sit together in
+          the same view.
+        </p>
+        <div className="media-row">
+          <div className="media-card">
             <img
               src="/livingLocalPhotos/item page.png"
               alt="item page"
@@ -625,6 +867,19 @@ export function LivingLocalCaseStudy() {
             <figcaption className="media-caption">
               The product page supports confident purchasing through rich imagery, reviews, and seller transparency.
             </figcaption>
+          </div>
+        </div>
+
+        <h3>Familiar multi-step checkout</h3>
+        <p>
+          Completing a purchase across local vendors only works if checkout
+          feels recognizable and manageable. I used a multi-step shipping,
+          payment, and review flow that mirrors common e-commerce patterns,
+          breaking the process into focused steps instead of presenting all
+          of the required information at once.
+        </p>
+        <div className="media-row">
+          <div className="media-card">
             <div className="checkout-grid">
               <img
                 src="/livingLocalPhotos/shipping info.png"
@@ -644,24 +899,17 @@ export function LivingLocalCaseStudy() {
             </figcaption>
           </div>
         </div>
-
-        <ul>
-          <li><span className="bold">Location-first discovery:</span> Prioritized proximity to help users quickly find relevant businesses.</li>
-          <li><span className="bold">Consistent UI patterns:</span> Standardized layouts, product cards, and navigation created trust across multiple vendors and reduced cognitive load when browsing.</li>
-          <li><span className="bold">Product-focused evaluation:</span> Detailed product pages emphasized imagery, reviews, pricing clarity, and seller attribution to support confident purchasing decisions.</li>
-          <li><span className="bold">Streamlined checkout flow:</span> A multi-step checkout process mirrored familiar e-commerce experiences, reducing friction and helping users complete purchases with confidence.</li>
-        </ul>
       </section>
 
       <section id="outcome" className="case-section">
         <h2>Outcome</h2>
         <p>
-          Living Local is a location-based e-commerce platform that helps
-          users discover and shop from nearby small businesses. The product
-          removes friction for both shoppers and vendors by centralizing local
-          storefronts into a single, intuitive experience. By combining
-          familiar e-commerce patterns with location-first discovery, Living
-          Local makes supporting local businesses easy and approachable.
+          Living Local resulted in a complete responsive e-commerce concept
+          spanning early structure, interaction design, and high-fidelity
+          interface work. The project strengthened the product-design
+          foundation I now bring into front-end engineering—thinking about
+          user flows, hierarchy, and interaction before treating
+          implementation as the final goal.
         </p>
       </section>
 
@@ -678,56 +926,98 @@ export function LivingLocalCaseStudy() {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
 export function LindiTilliCaseStudy() {
   return (
-    <>
-      <section id="overview" className="case-section">
-        <div className="case-hero">
+    <div className="lindi-tilli-case">
+      <header className="case-study-header">
+        <div className="case-study-header-meta">
+          <p className="case-study-header-type">
+            Branding / UX Design Case Study
+          </p>
+        </div>
+
+        <h1 className="case-study-header-title">Lindi Tilli</h1>
+
+        <p className="case-study-header-description">
+          A responsive portfolio and consultation website designed to showcase
+          a floral designer’s work, communicate her brand, and help
+          prospective clients explore services and get in touch.
+        </p>
+
+        <p className="case-study-header-role">
+          <span className="case-study-header-role-label">My Role</span>
+          <span className="case-study-header-role-values">
+            UX/UI Design · Brand Design · Interaction Design · Prototyping
+          </span>
+        </p>
+
+        <p className="case-study-header-role case-study-header-role--last">
+          <span className="case-study-header-role-label">Tools</span>
+          <span className="case-study-header-role-values">Figma</span>
+        </p>
+
+        <div className="case-study-header-visual">
           <img
+            className="case-study-header-hero-image"
             src="/lindiTilli/Homepage.png"
             alt="Lindi Tilli homepage"
           />
         </div>
+      </header>
+
+      <section id="overview" className="case-section">
         <h2>Overview</h2>
         <p>
-          LindiTilli is a floral designer and personal brand specializing in
-          custom arrangements for weddings, events, and floral gifts. I designed
-          a responsive website and interactive prototype that showcases her
-          work and guides potential clients toward booking a consultation.
+          Lindi Tilli is a floral designer building a professional online
+          presence for a real creative business. I designed a responsive
+          website and interactive prototype that keeps her floral work as the
+          visual focus while communicating the brand and helping prospective
+          clients understand her services and get in touch.
         </p>
         <p>
-          This project was completed for a real client looking to grow a
-          part-time floral practice into a future full-time business.
+          The project supported a client looking to grow a part-time floral
+          practice into a more established business presence.
         </p>
       </section>
 
-      <section id="problem" className="case-section">
-        <h2>Problem</h2>
-        <p>The client lacked an online presence that could:</p>
-        <ul>
-          <li>Clearly showcase her floral work</li>
-          <li>Support multiple use cases (weddings, events, gifts)</li>
-          <li>Feel personal, warm, and trustworthy</li>
-          <li>Make it easy for users to initiate contact</li>
-        </ul>
+      <section id="the-design-challenge" className="case-section">
+        <h2>The Design Challenge</h2>
         <p>
-          The initial vision focused only on weddings, which limited the
-          business's growth potential.
+          The client needed an online presence that could do more than
+          announce a business name. It had to keep floral photography at the
+          center, communicate a personal and trustworthy identity, help
+          prospective clients understand the work and services available, and
+          make contact or consultation requests easy to start.
+        </p>
+        <p>
+          An early wedding-only direction risked narrowing that story. The
+          design challenge was to support a broader creative offering while
+          staying clear, warm, and simple to navigate.
         </p>
       </section>
 
-      <section id="goals" className="case-section">
-        <h2>Goals</h2>
-        <p>The website needed to:</p>
+      <section id="project-goals" className="case-section">
+        <h2>Project Goals</h2>
         <ul>
-          <li>Create a cohesive brand experience</li>
-          <li>Allow users to browse floral work by event or gift type</li>
-          <li>Prioritize contact and consultation as the primary conversion</li>
-          <li>Make it easy for users to initiate contact and consultations</li>
+          <li>
+            <span className="bold">Keep the floral work visually central.</span>{" "}
+            The site needed to showcase arrangements and photography so the
+            craft remains the main impression of the brand.
+          </li>
+          <li>
+            <span className="bold">Communicate a cohesive brand personality.</span>{" "}
+            Visual and written presentation needed to feel personal, warm, and
+            trustworthy rather than generic or template-like.
+          </li>
+          <li>
+            <span className="bold">Clarify services and a path to contact.</span>{" "}
+            Prospective clients needed to understand the offering and easily
+            start a consultation or inquiry without hunting for next steps.
+          </li>
         </ul>
         <div className="media-row">
           <div className="media-card">
@@ -742,7 +1032,7 @@ export function LindiTilliCaseStudy() {
         </div>
       </section>
 
-      <section id="research&insights" className="case-section">
+      <section id="research-insights" className="case-section">
         <h2>Research & Insights</h2>
         <p>Competitive analysis of local Denver-based florists revealed that:</p>
         <ul>
@@ -758,6 +1048,15 @@ export function LindiTilliCaseStudy() {
 
       <section id="key-ux-decisions" className="case-section">
         <h2>Key UX Decisions</h2>
+
+        <h3>Two browsing paths for different intents</h3>
+        <p>
+          Prospective clients arrive with different reasons for hiring a
+          florist—planned events and spontaneous gifts are not the same entry
+          point. I designed two primary browsing paths, by event and by gift,
+          so people could start from the intent that matches their need instead
+          of forcing every visitor through a single wedding-centered journey.
+        </p>
         <div className="media-row">
           <div className="media-card">
             <img
@@ -768,84 +1067,27 @@ export function LindiTilliCaseStudy() {
               src="/lindiTilli/Screenshot 2026-01-12 235922.png"
               alt="Gift-focused browsing path"
             />
-
             <figcaption className="media-caption">
               Users can browse floral work by event type or gift, supporting both planned and spontaneous purchases.
             </figcaption>
           </div>
         </div>
-        <ul>
-          <li>Designed two primary browsing paths: by event and by gift</li>
-          <li>Structured navigation to reduce decision fatigue</li>
-          <li>Positioned contact and consultation as the main call-to-action</li>
-          <li>Kept layouts minimal to let floral photography lead</li>
-        </ul>
-        <p>
-          Multiple logo and color explorations were tested before finalizing a
-          grounded, refined direction aligned with the client's vision.
-        </p>
-      </section>
 
-      <section id="visual-brand-direction" className="case-section">
-        <h2>Visual & Brand Direction</h2>
-        <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/lindiTilli/MacBook Pro - 1.jpg"
-              alt="logo design"
-            />
-            <figcaption className="media-caption">
-              Logo explorations reflecting the client’s floral style and personality.
-            </figcaption>
-          </div>
-        </div>
-        <p>The visual design reflects the client's floral style and personality:</p>
-        <ul>
-          <li>Earthy tones inspired by greenery-forward arrangements</li>
-          <li>Serif typeface to convey craftsmanship and care</li>
-          <li>Soft contrast and spacing to create a calm, welcoming feel</li>
-        </ul>
+        <h3>Photography-first hierarchy</h3>
         <p>
-          Multiple logo and color explorations were tested before finalizing a
-          grounded, refined direction aligned with the client's vision.
+          In a floral portfolio, dense interface chrome can compete with the
+          work itself. I kept layouts minimal and let floral photography lead
+          the hierarchy so the arrangements remain the primary message while
+          navigation and supporting copy stay secondary.
         </p>
-      </section>
 
-      <section id="wireframes-prototype" className="case-section">
-        <h2>Wireframes → Prototype</h2>
-
+        <h3>Clear path to inquiry</h3>
         <p>
-          I created low-fidelity wireframes for key pages (Home, About, Pricing,
-          Contact), then translated them into high-fidelity responsive designs.
+          Browsing alone does not help if interested visitors cannot tell how
+          to continue. I positioned contact and consultation as the main
+          call-to-action so the path from looking at the work to starting a
+          conversation stays visible and straightforward.
         </p>
-        <div className="media-row">
-          <div className="media-card">
-            <img
-              src="/lindiTilli/1Homepage.png"
-              alt="wireframe design"
-            />
-            <figcaption className="media-caption">
-              Low-fidelity wireframe of the homepage.
-            </figcaption>
-          </div>
-        </div>
-        <p>
-          The final deliverable was a fully interactive prototype designed for
-          desktop and mobile, ready to support future development.
-        </p>
-      </section>
-
-      <section id="usability-testing" className="case-section">
-        <h2>Usability Testing</h2>
-        <p>Users completed task-based testing while thinking aloud.</p>
-        <p>
-          <span className="bold">Key improvements made:</span>
-        </p>
-        <ul>
-          <li>Added clear calls to action on the homepage to guide users toward booking a consultation</li>
-          <li>Refined navigation labels to better reflect user mental models</li>
-          <li>Introduced hover states to provide context for past floral work</li>
-        </ul>
         <div className="media-row">
           <div className="media-card">
             <img
@@ -863,16 +1105,88 @@ export function LindiTilliCaseStudy() {
         </div>
       </section>
 
+      <section id="brand-visual-system" className="case-section">
+        <h2>Brand &amp; Visual System</h2>
+        <div className="media-row">
+          <div className="media-card">
+            <img
+              src="/lindiTilli/MacBook Pro - 1.jpg"
+              alt="logo design"
+            />
+            <figcaption className="media-caption">
+              Logo explorations reflecting the client’s floral style and personality.
+            </figcaption>
+          </div>
+        </div>
+        <p>
+          The brand system and interface were designed together so the site
+          feels like an extension of the floral work rather than a separate
+          visual layer. Earthy tones drawn from greenery-forward arrangements,
+          a serif typeface for craftsmanship and care, and soft contrast with
+          generous spacing create a calm frame around the photography.
+        </p>
+        <p>
+          That system supports photography-first layouts: logo and color
+          choices stay refined enough to carry identity without competing with
+          the arrangements, while interface styling stays quiet so browsing and
+          contact pathways remain clear.
+        </p>
+      </section>
+
+      <section id="from-structure-to-visual-direction" className="case-section">
+        <h2>From Structure to Visual Direction</h2>
+        <p>
+          Low-fidelity layouts came first so structure could be settled before
+          branding. The homepage wireframe established content hierarchy,
+          primary navigation, how floral work would be introduced, and where
+          service and contact pathways would sit on the page.
+        </p>
+        <div className="media-row">
+          <div className="media-card">
+            <img
+              src="/lindiTilli/1Homepage.png"
+              alt="wireframe design"
+            />
+            <figcaption className="media-caption">
+              Low-fidelity wireframe of the homepage.
+            </figcaption>
+          </div>
+        </div>
+        <p>
+          From that structural foundation, the project moved into the branded
+          interface: high-fidelity responsive screens and an interactive
+          prototype that carried the same hierarchy into the final visual
+          direction.
+        </p>
+      </section>
+
+      <section id="design-iteration" className="case-section">
+        <h2>Design Iteration</h2>
+        <p>
+          As the high-fidelity designs developed, I refined key interface
+          details so browsing and inquiry stayed clear and intentional.
+        </p>
+        <ul>
+          <li>
+            Strengthened homepage calls to action toward booking a consultation
+          </li>
+          <li>Refined navigation labels for clearer wayfinding</li>
+          <li>
+            Added hover states to provide additional context for past floral
+            work
+          </li>
+        </ul>
+      </section>
+
       <section id="outcome" className="case-section">
         <h2>Outcome</h2>
-        <ul>
-          <li>Delivered a polished, interactive prototype</li>
-          <li>Validated usability through testing</li>
-          <li>Provided the client with a scalable foundation for launching her business</li>
-        </ul>
         <p>
-          This project strengthened my experience working with real clients
-          and adapting designs to evolving business needs.
+          Lindi Tilli resulted in a cohesive responsive website concept that
+          brings the floral work, brand identity, portfolio, and inquiry
+          experience into one system. Delivered as an interactive prototype for
+          desktop and mobile, the project strengthened my ability to balance
+          visual expression with practical interface decisions—an approach that
+          continues to influence how I design and build front-end experiences.
         </p>
       </section>
 
@@ -889,7 +1203,7 @@ export function LindiTilliCaseStudy() {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

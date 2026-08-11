@@ -20,12 +20,15 @@ export default function Projects() {
       <section className="projects-overview-header">
         <h1 className="projects-title">Projects</h1>
         <p className="projects-overview-intro">
-          A selection of front-end, full-stack, and UX case studies that show
-          how I approach product thinking, interface design, and implementation.
+          A selection of web, mobile, and UX work spanning{" "}
+          <span className="bold">front-end engineering</span>,{" "}
+          <span className="bold">product design</span>, APIs, testing, and{" "}
+          <span className="bold">full-stack development</span>.
         </p>
         <p className="projects-overview-intro">
-          Click any project card to open the full case study and explore the
-          problem, solution, technical decisions, and outcome.
+          Each case study explores not just what I built, but the{" "}
+          <span className="bold">problems, decisions, tradeoffs, and iterations</span>{" "}
+          behind the final product.
         </p>
       </section>
 

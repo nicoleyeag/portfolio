@@ -1219,6 +1219,60 @@ main:has(> .home) {
   overflow: hidden;
 }
 
+.project-overview-card--featured {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(30, 58, 95, 0.14);
+}
+
+.project-overview-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-overview-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 1.35em;
+}
+
+.project-overview-card-featured-label {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(30, 58, 95, 0.08);
+  border: 1px solid rgba(30, 58, 95, 0.14);
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(30, 58, 95, 0.78);
+  line-height: 1.2;
+}
+
+.project-overview-card-type-label {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.52);
+  line-height: 1.3;
+}
+
+.project-overview-card--featured .project-overview-card-description {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
 .project-overview-card-media {
   display: block;
   flex-shrink: 0;
@@ -1587,8 +1641,8 @@ main:has(> .home) {
 .projects-content { min-width: 0; }
 
 .case-scroll {
-  height: calc(100vh - 100px);
-  overflow-y: auto;
+  height: auto;
+  overflow: visible;
   padding-right: 12px;
 }
 
@@ -1603,6 +1657,26 @@ main:has(> .home) {
   padding: 16px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   font-family: "Jost", sans-serif;
+}
+
+.case-section > h2 {
+  margin: 0 0 12px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.case-section > h3 {
+  margin: 20px 0 8px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.case-section > h3:first-of-type {
+  margin-top: 8px;
 }
 
 .image-placeholder {
@@ -1624,7 +1698,7 @@ main:has(> .home) {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 
   background: #fff;
   padding: 24px;
@@ -1697,19 +1771,318 @@ main:has(> .home) {
   .checkout-grid { grid-template-columns: 1fr; }
 }
 
+/* Shared case-study project header */
+.case-study-header {
+  margin: 0 0 12px;
+  padding-bottom: 4px;
+}
+
+.case-study-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  min-height: 1.35em;
+}
+
+.case-study-header-type {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.3;
+}
+
+.case-study-header-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(30, 58, 95, 0.08);
+  border: 1px solid rgba(30, 58, 95, 0.16);
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(30, 58, 95, 0.8);
+  line-height: 1.2;
+}
+
+.case-study-header-title {
+  margin: 0 0 12px;
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.case-study-header-description {
+  margin: 0 0 16px;
+  max-width: 46rem;
+  font-family: "Jost", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.case-study-header-role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin: 0 0 12px;
+  max-width: 46rem;
+  font-family: "Jost", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.case-study-header-role-label {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.case-study-header-role-label::after {
+  content: ":";
+}
+
+.case-study-header-role-values {
+  font-weight: 500;
+}
+
+.case-study-header-role--last {
+  margin-bottom: 22px;
+}
+
+.case-study-header-tech {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+  font-family: "Jost", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.case-study-header-tech li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.case-study-header-tech li:not(:last-child)::after {
+  content: "·";
+  margin: 0 10px;
+  opacity: 0.45;
+  font-weight: 400;
+}
+
+.case-study-header-visual {
+  margin: 0;
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.case-study-header-hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 14px;
+  display: block;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.case-study-header-visual .case-hero {
+  margin: 0;
+}
+
+.case-study-header-visual .case-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 14px;
+  display: block;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Project-specific header accents */
+.mtg-case .case-study-header-type {
+  color: rgba(30, 58, 95, 0.78);
+}
+
+.mtg-case .case-study-header-visual {
+  border-color: rgba(30, 58, 95, 0.12);
+}
+
+.omw-case .case-study-header-type {
+  color: rgba(11, 60, 73, 0.78);
+}
+
+.omw-case .case-study-header-role-label {
+  color: rgba(11, 60, 73, 0.72);
+}
+
+.omw-case .case-study-header-visual {
+  border-color: rgba(11, 60, 73, 0.12);
+  background: rgba(255, 250, 245, 0.94);
+}
+
+.omw-case .case-study-header-hero-image {
+  background: rgba(144, 164, 128, 0.12);
+}
+
+.living-local-case .case-study-header-type,
+.living-local-case .case-study-header-role-label {
+  color: rgba(120, 96, 88, 0.82);
+}
+
+.living-local-case .case-study-header-visual {
+  border-color: rgba(188, 191, 176, 0.55);
+  background: rgba(255, 250, 246, 0.96);
+}
+
+.living-local-case .case-study-header-hero-image {
+  background: rgba(225, 157, 142, 0.12);
+}
+
+.lindi-tilli-case .case-study-header-type,
+.lindi-tilli-case .case-study-header-role-label {
+  color: rgba(93, 22, 2, 0.78);
+}
+
+.lindi-tilli-case .case-study-header-visual {
+  border-color: rgba(169, 104, 41, 0.28);
+  background: rgba(255, 248, 243, 0.96);
+}
+
+.lindi-tilli-case .case-study-header-hero-image {
+  background: rgba(169, 104, 41, 0.1);
+}
+
+/* Shared evidence gallery (used by On My Way Trip Discovery) */
+.case-evidence-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.case-evidence-gallery figure {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-evidence-gallery figure:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 520px;
+  width: 100%;
+  justify-self: center;
+}
+
+.case-evidence-gallery img,
+.case-evidence-feature img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 14px;
+  display: block;
+  background: rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.case-evidence-gallery .media-caption,
+.case-evidence-feature .media-caption {
+  margin-top: 8px;
+  font-size: 0.86rem;
+}
+
+.case-evidence-feature {
+  margin: 20px 0 0;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.case-evidence-feature img {
+  max-height: 320px;
+}
+
+.omw-case .case-evidence-gallery,
+.omw-case .case-evidence-feature {
+  border-color: rgba(11, 60, 73, 0.1);
+  background: rgba(255, 250, 245, 0.94);
+}
+
+.omw-case .case-evidence-gallery img,
+.omw-case .case-evidence-feature img {
+  background: rgba(144, 164, 128, 0.1);
+}
+
+@media (max-width: 900px) {
+  .case-evidence-gallery {
+    grid-template-columns: 1fr;
+    padding: 14px;
+    gap: 16px;
+  }
+
+  .case-evidence-gallery img,
+  .case-evidence-feature img {
+    max-height: 300px;
+  }
+}
+
 /* --- MTG case study layouts (project-4 only) --- */
 .mtg-hero {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 36px;
-  margin-bottom: 32px;
-  padding: 32px 28px;
-  background: #fff;
+  gap: 28px;
+  margin: 0;
+  padding: 22px 20px 18px;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 20px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.08),
     0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.case-study-header-visual .mtg-hero {
+  padding: 4px 2px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .mtg-hero-phone {
@@ -1718,6 +2091,7 @@ main:has(> .home) {
   flex-direction: column;
   align-items: center;
   flex: 0 1 auto;
+  min-width: 0;
 }
 
 .mtg-hero-phone img {
@@ -1726,24 +2100,26 @@ main:has(> .home) {
   height: auto;
   max-width: 100%;
   object-fit: contain;
+  object-position: center top;
   border-radius: 16px;
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
 }
 
 .mtg-hero-phone--primary img {
-  max-width: min(280px, 100%);
-  max-height: 520px;
+  max-width: min(300px, 100%);
+  max-height: 480px;
 }
 
 .mtg-hero-phone--accent img {
-  max-width: min(220px, 100%);
-  max-height: 440px;
-  opacity: 0.96;
+  max-width: min(250px, 100%);
+  max-height: 420px;
+  opacity: 0.98;
 }
 
 .mtg-hero-phone .media-caption {
   text-align: center;
   max-width: 260px;
+  margin-top: 10px;
 }
 
 .mtg-phone-frame {
@@ -1805,10 +2181,38 @@ main:has(> .home) {
 }
 
 @media (max-width: 900px) {
+  .case-study-header-title {
+    font-size: 1.9rem;
+  }
+
+  .case-study-header-description {
+    font-size: 1rem;
+  }
+
+  .case-study-header-visual {
+    padding: 14px;
+  }
+
+  .case-study-header-hero-image,
+  .case-study-header-visual .case-hero img {
+    max-height: 340px;
+  }
+
   .mtg-hero {
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 20px;
+    padding: 18px 16px 14px;
+  }
+
+  .case-study-header-visual .mtg-hero {
+    padding: 0;
+  }
+
+  .mtg-hero-phone--primary img,
+  .mtg-hero-phone--accent img {
+    max-width: min(280px, 100%);
+    max-height: 420px;
   }
 
   .mtg-scanner-gallery {
@@ -1822,6 +2226,21 @@ main:has(> .home) {
 }
 
 @media (max-width: 600px) {
+  .case-study-header-meta {
+    gap: 8px;
+  }
+
+  .case-study-header-hero-image,
+  .case-study-header-visual .case-hero img {
+    max-height: 280px;
+  }
+
+  .mtg-hero-phone--primary img,
+  .mtg-hero-phone--accent img {
+    max-width: min(260px, 100%);
+    max-height: 380px;
+  }
+
   .mtg-deck-gallery {
     grid-template-columns: 1fr;
   }

@@ -12,7 +12,6 @@ export default function ProjectCaseStudyLayout({
   const contentRef = useRef(null);
 
   useEffect(() => {
-    contentRef.current?.scrollTo({ top: 0, behavior: "auto" });
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [project.slug]);
 
@@ -91,7 +90,9 @@ export default function ProjectCaseStudyLayout({
 
         <main className="projects-content">
           <div ref={contentRef} className="case-scroll">
-            <h2 className="case-title">{project.title}</h2>
+            {project.hideDefaultCaseTitle ? null : (
+              <h2 className="case-title">{project.title}</h2>
+            )}
             {children}
           </div>
         </main>

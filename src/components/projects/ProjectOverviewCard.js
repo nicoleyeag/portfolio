@@ -26,9 +26,14 @@ export default function ProjectOverviewCard({
 }) {
   const projectPath = getProjectPath(project.slug);
   const hasCustomHero = Boolean(project.cardHero);
-  const cardClassName = hasCustomHero
-    ? `project-overview-card card project-overview-card--${project.cardHero.variant}`
-    : "project-overview-card card";
+  const cardClassName = [
+    "project-overview-card",
+    "card",
+    hasCustomHero ? `project-overview-card--${project.cardHero.variant}` : null,
+    project.featured ? "project-overview-card--featured" : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
   const titleContent = enableLinks ? (
     <Link to={projectPath} className="project-overview-card-title-link">
       {project.title}
@@ -71,7 +76,21 @@ export default function ProjectOverviewCard({
 
       <div className="project-overview-card-body">
         <div className="project-overview-card-content">
-          <h2 className="project-overview-card-title">{titleContent}</h2>
+          <div className="project-overview-card-heading">
+            <div className="project-overview-card-meta">
+              {project.featured ? (
+                <span className="project-overview-card-featured-label">
+                  Featured Project
+                </span>
+              ) : null}
+              {project.projectType ? (
+                <p className="project-overview-card-type-label">
+                  {project.projectType}
+                </p>
+              ) : null}
+            </div>
+            <h2 className="project-overview-card-title">{titleContent}</h2>
+          </div>
 
           <p className="project-overview-card-description">
             {project.shortDescription}
