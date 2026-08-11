@@ -144,6 +144,7 @@ main:has(> .home) {
   border-radius: 999px;
   background: #ffFAFA;
   border: none;
+  color: #111;
   cursor: pointer;
   overflow: visible;
 
@@ -155,6 +156,7 @@ main:has(> .home) {
 .download-cv:hover,
 .download-cv:visited,
 .download-cv:active {
+  color: #111;
   text-decoration: none;
 }
 
@@ -307,6 +309,31 @@ main:has(> .home) {
 
 .hero-cta--primary:visited {
   color: #fffafa;
+}
+
+.hero-cta--secondary {
+  background: #ffFAFA;
+  color: #111;
+  border: 2px solid #111;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.hero-cta--secondary:hover,
+.hero-cta--secondary:focus-visible {
+  color: #111;
+  text-decoration: none;
+  filter: brightness(0.98);
+}
+
+.hero-cta--secondary:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+.hero-cta--secondary:visited {
+  color: #111;
 }
 
 
@@ -2385,10 +2412,126 @@ main:has(> .home) {
    ========================================================= */
 
 .hire {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 10px 20px;
   font-family: "Jost", sans-serif;
+  overflow-x: clip;
+}
+
+.hire-capabilities-section {
+  margin-top: 28px;
+}
+
+.hire-capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 8px 0 0;
+  width: 100%;
+}
+
+.hire-capability-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 18px 16px;
+  background: #ffFAFA;
+  border: 2px solid #111;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.hire-capability-title {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.hire-capability-stack {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.hire-capability-description {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.hire-cta {
+  margin-top: 36px;
+  padding-bottom: 12px;
+}
+
+.hire-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px 14px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.hire-cta-actions .hero-cta,
+.hire-cta-actions .download-wrap {
+  flex: 0 1 auto;
+}
+
+.hire-cta-actions .download-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hire-cta-actions .hero-cta,
+.hire-cta-actions .download-cv {
+  box-sizing: border-box;
+  min-width: 150px;
+  min-height: 52px;
+  padding: 12px 22px;
+}
+
+.hire-cta-actions .download-cv .download-label {
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .hire-capabilities {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hire-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hire-cta-actions .hero-cta,
+  .hire-cta-actions .download-wrap,
+  .hire-cta-actions .download-cv {
+    width: 100%;
+  }
 }
 
 

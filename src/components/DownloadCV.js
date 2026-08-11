@@ -10,7 +10,7 @@ const CV_SPARKLES = [
   { color: "red", size: "large", className: "s6" },
 ];
 
-export default function DownloadCV() {
+export default function DownloadCV({ label = "Download CV" }) {
   const [buttonState, setButtonState] = useState("default");
   const [showToast, setShowToast] = useState(false);
 
@@ -33,7 +33,7 @@ export default function DownloadCV() {
         onMouseDown={() => setButtonState("active")}
         onMouseUp={() => setButtonState("hover")}
       > 
-        <span className="download-label">Download CV</span>
+        <span className="download-label">{label}</span>
 
         <span className="cv-sparkles" aria-hidden="true">
           {CV_SPARKLES.map((s, i) => (
