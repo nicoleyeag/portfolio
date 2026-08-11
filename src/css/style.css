@@ -2476,7 +2476,7 @@ main:has(> .home) {
 
 .hire-cta {
   margin-top: 36px;
-  padding-bottom: 12px;
+  padding-bottom: 56px;
 }
 
 .hire-cta-actions {
@@ -2487,31 +2487,61 @@ main:has(> .home) {
   gap: 12px 14px;
   width: 100%;
   margin-top: 8px;
+  /* Reserve room so the toast can show under Download CV without shifting buttons */
+  padding-bottom: 40px;
+  box-sizing: border-box;
 }
 
-.hire-cta-actions .hero-cta,
-.hire-cta-actions .download-wrap {
+.hire-cta-actions .hero-cta {
   flex: 0 1 auto;
-}
-
-.hire-cta-actions .download-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.hire-cta-actions .hero-cta,
-.hire-cta-actions .download-cv {
   box-sizing: border-box;
   min-width: 150px;
   min-height: 52px;
   padding: 12px 22px;
 }
 
+/* Match homepage Download CV sizing/treatment */
+.hire-cta-actions .download-wrap {
+  flex: 0 0 190px;
+  width: 190px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hire-cta-actions .download-cv {
+  box-sizing: border-box;
+  width: 190px;
+  height: 52px;
+  padding: 0;
+  margin: 0;
+}
+
 .hire-cta-actions .download-cv .download-label {
   padding: 0;
   font-size: 16px;
   line-height: 1;
+}
+
+/* Keep toast below Download CV without moving the button row */
+.hire-cta-actions .toast {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 200px;
+  margin: 0;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #111;
+  pointer-events: none;
+  z-index: 2;
 }
 
 @media (max-width: 900px) {
@@ -2530,6 +2560,7 @@ main:has(> .home) {
   .hire-cta-actions .hero-cta,
   .hire-cta-actions .download-wrap,
   .hire-cta-actions .download-cv {
+    flex: 1 1 auto;
     width: 100%;
   }
 }

@@ -2,10 +2,25 @@ import React, { useEffect } from "react";
 import DownloadCV from "../components/DownloadCV";
 import { setFaviconColor } from "../favicon";
 
+const EMAIL_COMPOSE_URL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=nyeager95@gmail.com";
+
 export default function Hire() {
   useEffect(() => {
     setFaviconColor("#49CC5C"); // Set the favicon color to match your theme
   }, []);
+
+  const openEmailCompose = (event) => {
+    event.preventDefault();
+    const composeWindow = window.open(
+      EMAIL_COMPOSE_URL,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (composeWindow) {
+      composeWindow.opener = null;
+    }
+  };
 
   return (
     <div className="hire">
@@ -79,7 +94,10 @@ export default function Hire() {
         <div className="hire-cta-actions">
           <a
             className="hero-cta hero-cta--primary"
-            href="mailto:nyeager95@gmail.com"
+            href={EMAIL_COMPOSE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={openEmailCompose}
           >
             Email Me
           </a>
@@ -91,7 +109,7 @@ export default function Hire() {
           >
             LinkedIn
           </a>
-          <DownloadCV label="Download Résumé" />
+          <DownloadCV />
         </div>
       </section>
     </div>
