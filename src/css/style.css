@@ -1030,8 +1030,8 @@ main:has(> .home) {
   }
 
   .featured-work-cta {
-    align-self: stretch;
-    width: 100%;
+    align-self: center;
+    box-sizing: border-box;
   }
 }
 
@@ -1085,6 +1085,10 @@ main:has(> .home) {
 }
 
 @media (max-width: 767px) {
+  .about h1 {
+    text-align: center;
+  }
+
   .about-connect {
     margin-top: 20px;
     padding-bottom: 20px;
@@ -1104,6 +1108,14 @@ main:has(> .home) {
   display: block;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 767px) {
+  .about-photo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @media (min-width: 768px) {
