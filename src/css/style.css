@@ -315,9 +315,9 @@ main:has(> .home) {
   background: #ffFAFA;
   color: #111;
   border: 2px solid #111;
-  box-shadow:
+  /*box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.06),
-    0 2px 8px rgba(0, 0, 0, 0.03);
+    0 2px 8px rgba(0, 0, 0, 0.03);*/
 }
 
 .hero-cta--secondary:hover,
@@ -1085,10 +1085,6 @@ main:has(> .home) {
 }
 
 @media (max-width: 767px) {
-  .about h1 {
-    text-align: center;
-  }
-
   .about-connect {
     margin-top: 20px;
     padding-bottom: 20px;
