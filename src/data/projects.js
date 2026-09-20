@@ -7,7 +7,7 @@ export const PROJECT_REGISTRY = [
     hideDefaultCaseTitle: true,
     projectType: "Mobile Engineering",
     shortDescription:
-      "A cross-platform React Native application for scanning and recognizing trading cards, managing collections, building decks, and supporting intelligent search and automation.",
+      "A React Native mobile application for scanning Magic: The Gathering cards, managing collections, building decks, and resolving card printings through an OCR-powered recognition pipeline.",
     heroImage: "/mtgPhotos/mtgHero.png",
     heroImageAlt:
       "MTG Collection Manager hero banner showing scanner, collection, and deck building screens",
@@ -17,7 +17,7 @@ export const PROJECT_REGISTRY = [
       ariaLabel:
         "MTG Collection Manager hero banner showing scanner, collection management, and deck building mobile screens",
     },
-    techStack: ["React Native", "TypeScript", "Expo", "REST APIs", "Jest"],
+    techStack: ["React Native", "TypeScript", "Expo", "SQLite", "Scryfall API", "Jest"],
     bg: {
       base: "rgba(30, 58, 95, 0.55)",
       accent: "rgba(139, 92, 246, 0.4)",
@@ -26,12 +26,11 @@ export const PROJECT_REGISTRY = [
       { id: "overview", label: "Overview" },
       { id: "collection-management", label: "Collection Management" },
       { id: "scanner-engineering", label: "Scanner Engineering" },
-      { id: "deck-building", label: "Deck Building" },
+      { id: "deck-management-import", label: "Deck Management & Import" },
       { id: "architecture-testing", label: "Architecture & Testing" },
-      { id: "next-iterations", label: "Next Iterations" },
       { id: "engineering-decisions", label: "Engineering Decisions" },
+      { id: "whats-next", label: "What’s Next" },
       { id: "outcome", label: "Outcome" },
-      { id: "demo", label: "Demo" },
     ],
     links: {
       githubUrl: null,
@@ -41,7 +40,7 @@ export const PROJECT_REGISTRY = [
     seo: {
       title: "MTG Collection Manager | Nicole Yeager",
       description:
-        "Case study for MTG Collection Manager, a React Native app for scanning cards, managing collections, and building decks.",
+        "Case study for MTG Collection Manager, a React Native app for scanning Magic cards, managing collections, building decks, and resolving printings with OCR.",
     },
   },
   {

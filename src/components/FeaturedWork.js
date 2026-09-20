@@ -8,8 +8,8 @@ const FEATURED_CONTENT = {
   title: "Magic: The Gathering Collection Manager",
   label: "Cross-Platform Mobile Application",
   description:
-    "Designed and built a React Native application for scanning and recognizing trading cards, managing collections, building decks, and supporting intelligent search and automation.",
-  techTags: ["React Native", "TypeScript", "Expo", "REST APIs", "Jest"],
+    "A local-first React Native application for scanning Magic: The Gathering cards, managing collections, and building decks, featuring an OCR-powered recognition pipeline, Scryfall integration, and persistent on-device data.",
+  techTags: ["React Native", "TypeScript", "Expo", "SQLite", "Scryfall API"],
   highlights: [
     {
       title: "OCR Recognition",

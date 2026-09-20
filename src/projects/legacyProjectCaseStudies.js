@@ -17,22 +17,22 @@ export function MtgCollectionManagerCaseStudy() {
         <h1 className="case-study-header-title">MTG Collection Manager</h1>
 
         <p className="case-study-header-description">
-          A React Native application for scanning and recognizing trading
-          cards, managing collections, building decks, and exploring
-          intelligent collection workflows.
+          A React Native mobile application for scanning Magic: The Gathering
+          cards, managing collections, building decks, and resolving card
+          printings through an OCR-powered recognition pipeline.
         </p>
 
         <p className="case-study-header-role">
           <span className="case-study-header-role-label">My Role</span>
           <span className="case-study-header-role-values">
-            Mobile Engineering · Interface Design · API Integration · Testing
+            Mobile Engineer · Interface Designer · API Integration · Testing
           </span>
         </p>
 
         <p className="case-study-header-role case-study-header-role--last">
           <span className="case-study-header-role-label">Technologies</span>
           <span className="case-study-header-role-values">
-            React Native · TypeScript · Expo · REST APIs · Jest
+            React Native · TypeScript · Expo · SQLite · Scryfall API · Jest
           </span>
         </p>
 
@@ -63,43 +63,73 @@ export function MtgCollectionManagerCaseStudy() {
       <section id="overview" className="case-section">
         <h2>Overview</h2>
         <p>
-          MTG Collection Manager is a cross-platform React Native application
-          for scanning, organizing, and managing Magic: The Gathering
-          collections. I designed and built the application end to end,
-          including the mobile UI, card-recognition workflow, Scryfall API
-          integration, local data handling, deck-building features, caching,
-          and automated testing.
+          MTG Collection Manager is a local-first React Native application for
+          scanning, organizing, and managing Magic: The Gathering cards. The
+          application combines collection management, deck building, deck
+          importing, OCR-powered card recognition, and live Scryfall data
+          within a mobile-first interface.
         </p>
         <p>
-          The project started as a collection-management tool and evolved into
-          a broader engineering challenge: how to make card recognition fast,
-          reliable, explainable, and easy to correct when automation fails.
+          What began as a collection-management tool evolved into a broader
+          engineering challenge: reliably identifying physical cards, resolving
+          specific printings, managing persistent local data, and keeping
+          complex card and deck workflows responsive and understandable.
         </p>
 
         <h3>Tech Stack</h3>
         <ul>
-          <li><span className="bold">Mobile:</span> React Native, Expo, TypeScript</li>
-          <li><span className="bold">Persistence:</span> SQLite</li>
-          <li><span className="bold">APIs:</span> Scryfall API</li>
-          <li><span className="bold">Scanner:</span> OCR-powered recognition pipeline</li>
-          <li><span className="bold">Navigation & UI:</span> React Navigation, Reanimated</li>
-          <li><span className="bold">Testing:</span> Jest (129 unit tests)</li>
+          <li>
+            <span className="bold">Mobile:</span> React Native, Expo, TypeScript
+          </li>
+          <li>
+            <span className="bold">Navigation:</span> Expo Router
+          </li>
+          <li>
+            <span className="bold">Persistence:</span> SQLite / expo-sqlite
+          </li>
+          <li>
+            <span className="bold">API:</span> Scryfall REST API
+          </li>
+          <li>
+            <span className="bold">Scanner:</span> expo-camera, Vision Camera +
+            ML Kit
+          </li>
+          <li>
+            <span className="bold">Testing:</span> Jest — 69 suites / 656 tests
+            passing
+          </li>
         </ul>
       </section>
 
       <section id="collection-management" className="case-section">
         <h2>Collection Management</h2>
         <p>
-          From the app home, users navigate to a searchable collection grid
-          that serves as the hub for owned cards. Data is backed by SQLite,
-          so reads and writes stay fast without a network connection.
+          Collection management is built around local-first persistence,
+          allowing users to maintain a searchable library of owned Magic cards
+          directly on-device. Collection data is stored in SQLite and surfaced
+          through reusable interfaces for browsing, searching, filtering, and
+          managing cards.
         </p>
-        <ul>
-          <li>Local SQLite persistence as the source of truth</li>
-          <li>Searchable collection grid for quick card lookup</li>
-          <li>Scryfall API integration for accurate card metadata and images</li>
-          <li>Reusable UI components shared across collection and deck screens</li>
+        <ul className="mtg-callouts">
+          <li>Local SQLite persistence</li>
+          <li>Searchable collection grid</li>
+          <li>Sorting and filtering</li>
+          <li>Color identity filtering</li>
+          <li>Card quantity and collection tracking</li>
+          <li>Reusable card UI shared across collection and deck workflows</li>
         </ul>
+        <div className="mtg-collection-gallery">
+          <figure className="mtg-phone-frame">
+            <img
+              src="/mtgPhotos/myCollectionPage.jpeg"
+              alt="Searchable collection grid with filters, sorting, and quantity tracking"
+            />
+            <figcaption className="media-caption">
+              Searchable collection grid with sorting, filtering, and quantity
+              tracking.
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       <section id="scanner-engineering" className="case-section">
@@ -107,67 +137,111 @@ export function MtgCollectionManagerCaseStudy() {
 
         <h3>The Challenge</h3>
         <p>
-          Card-title OCR became reliable relatively quickly, but identifying
-          the correct card printing and artwork was harder. Alternate artwork,
-          visually similar candidates, imperfect image crops, and stale scan
-          data could all produce incorrect matches.
+          Reliable OCR becomes difficult with physical trading cards because of
+          glare, card orientation, artwork, typography, borders, camera
+          framing, and visually similar printings. Correctly identifying the
+          card name is only part of the problem—the scanner also needs to
+          resolve the appropriate card or printing without making the workflow
+          frustrating when recognition is uncertain.
         </p>
 
         <h3>Recognition Approach</h3>
         <p>
-          I built a multi-stage recognition workflow that combines title OCR,
-          Scryfall candidate search, image comparison, confidence checks,
-          fallback logic, and manual correction. The goal was not only to
-          return a match, but to avoid confidently returning the wrong one.
+          The scanner uses a multi-stage recognition pipeline rather than
+          relying on a single OCR result. Camera input is processed for OCR,
+          candidate cards are resolved against Scryfall data, image/art
+          information can be used to distinguish candidates, and confidence
+          logic determines whether a result can be surfaced directly or should
+          be reviewed by the user.
         </p>
+
+        <ol className="mtg-pipeline" aria-label="Scanner recognition pipeline">
+          <li>
+            <span>Camera / Live Scan</span>
+          </li>
+          <li>
+            <span>OCR</span>
+          </li>
+          <li>
+            <span>Candidate Generation</span>
+          </li>
+          <li>
+            <span>Scryfall Resolution</span>
+          </li>
+          <li>
+            <span>Image / Art Comparison</span>
+          </li>
+          <li>
+            <span>Confidence Matching</span>
+          </li>
+          <li>
+            <span>Review &amp; Correction</span>
+          </li>
+          <li>
+            <span>Save to Collection</span>
+          </li>
+        </ol>
 
         <h3>Iteration &amp; Debugging</h3>
         <p>
-          I iterated on crop geometry, candidate filtering, caching, ambiguity
-          thresholds, stale-result handling, and scanner instrumentation. I
-          also added evaluation tooling to compare scan results across repeated
-          tests and identify where failures were occurring.
+          Scanner development has required continuous testing against real
+          cards and real camera conditions. Recognition failures, false
+          matches, crop behavior, caching, and performance have been
+          iteratively investigated and refined rather than hidden behind
+          automation. Android currently has the more advanced live OCR path,
+          while printing and art-matching accuracy continue to be improved.
         </p>
 
         <div className="mtg-scanner-gallery">
           <figure className="mtg-phone-frame">
             <img
               src="/mtgPhotos/scanCardPage.jpeg"
-              alt="Scanner — card capture screen"
+              alt="Scanner capture screen framing a physical Magic card"
             />
             <figcaption className="media-caption">
-              <span className="bold">1. Capture</span> - photograph a physical card
-            </figcaption>
-          </figure>
-          <figure className="mtg-phone-frame">
-            <img
-              src="/mtgPhotos/scanCardReview.jpeg"
-              alt="Scanner — OCR review screen"
-            />
-            <figcaption className="media-caption">
-              <span className="bold">2. Review</span> - OCR parsing and match preview
+              <span className="bold">1. Capture</span> — live camera scan of a
+              physical card
             </figcaption>
           </figure>
           <figure className="mtg-phone-frame">
             <img
               src="/mtgPhotos/scanCardResults.jpeg"
-              alt="Scanner — ranked match results"
+              alt="Scanner OCR result with ranked Scryfall match candidates"
             />
             <figcaption className="media-caption">
-              <span className="bold">3. Confirm</span> - ranked Scryfall matches to select
+              <span className="bold">2. Review</span> — OCR result and ranked
+              Scryfall candidates
+            </figcaption>
+          </figure>
+          <figure className="mtg-phone-frame">
+            <img
+              src="/mtgPhotos/scanCardReview.jpeg"
+              alt="Scanner confirm screen for resolving a Scryfall match"
+            />
+            <figcaption className="media-caption">
+              <span className="bold">3. Confirm</span> — resolve the Scryfall
+              match or correct it before saving
             </figcaption>
           </figure>
         </div>
       </section>
 
-      <section id="deck-building" className="case-section">
-        <h2>Deck Building</h2>
+      <section id="deck-management-import" className="case-section">
+        <h2>Deck Management &amp; Import</h2>
         <p>
-          Deck flows follow the same Screen -&gt; Service -&gt; Repository architecture
-          as the rest of the app. Users create and manage decks, review card
-          composition and statistics, and explore a planned AI coaching
-          surface for future deck analysis.
+          Deck workflows use the same card, service, and repository
+          architecture as collection management. Users can create and manage
+          decks, add and remove cards, inspect deck composition, and import
+          Archidekt-style card lists into a deck and/or their collection.
         </p>
+        <ul className="mtg-callouts">
+          <li>Create and manage decks</li>
+          <li>Add and remove cards</li>
+          <li>Deck card browsing</li>
+          <li>Deck overview and statistics</li>
+          <li>Text-based deck importing</li>
+          <li>Shared card data and UI components</li>
+        </ul>
 
         <div className="mtg-deck-gallery">
           <figure className="mtg-phone-frame">
@@ -209,116 +283,123 @@ export function MtgCollectionManagerCaseStudy() {
           <figure className="mtg-phone-frame mtg-phone-frame--planned">
             <img
               src="/mtgPhotos/deckAI.jpeg"
-              alt="Planned AI deck coaching screen"
+              alt="Planned AI-assisted Deck Coach preview"
             />
             <figcaption className="media-caption">
-              <span className="bold">Planned:</span> AI deck coaching and analysis.
+              <span className="bold">Planned:</span> AI-assisted Deck Coach
             </figcaption>
           </figure>
         </div>
       </section>
 
       <section id="architecture-testing" className="case-section">
-        <h2>Architecture & Testing</h2>
+        <h2>Architecture &amp; Testing</h2>
 
-        <h3>Architecture</h3>
+        <h3>Local-First Architecture</h3>
         <p>
-          The app separates UI screens, services, and repository/data
-          responsibilities so scanner logic, Scryfall integration, caching, and
-          collection data can evolve independently from presentation
-          components. Reusable React Native components handle shared UI, while
-          modular service layers isolate scanner logic from the screens that
-          display it. Caching, data handling, and local collection persistence
-          live in their own layers so those concerns can change without
-          rewriting presentation code.
+          The application separates screens and reusable UI components from
+          services, repositories, recognition logic, and persistence. SQLite
+          provides on-device collection and deck storage, while Scryfall
+          supplies external card and printing data. Keeping these
+          responsibilities separated makes scanner, collection, and deck
+          features easier to test and evolve independently.
         </p>
 
-        <h3>Testing</h3>
+        <h3>Testing &amp; Reliability</h3>
+        <div className="mtg-stats" aria-label="Testing status">
+          <div className="mtg-stat">
+            <p className="mtg-stat-value">69</p>
+            <p className="mtg-stat-label">test suites</p>
+          </div>
+          <div className="mtg-stat">
+            <p className="mtg-stat-value">656</p>
+            <p className="mtg-stat-label">tests passing</p>
+          </div>
+          <div className="mtg-stat">
+            <p className="mtg-stat-value">Clean</p>
+            <p className="mtg-stat-label">TypeScript</p>
+          </div>
+        </div>
         <p>
-          Jest tests cover core recognition behavior, caching logic, scanner
-          workflows, and data-layer behavior — currently{" "}
-          <span className="bold">129+ unit tests</span>.
+          Automated tests cover recognition behavior, caching, scanner
+          workflows, data handling, repositories, and collection/deck behavior.
+          TypeScript validation is also kept clean with{" "}
+          <code>tsc --noEmit</code>.
         </p>
-      </section>
-
-      <section id="next-iterations" className="case-section">
-        <h2>Next Iterations</h2>
-        <p>
-          Current development is focused on improving recognition reliability,
-          persistence, and higher-level collection intelligence.
-        </p>
-
-        <h3>Recognition</h3>
-        <ul>
-          <li>Improve art matching reliability</li>
-          <li>Improve adaptive crop handling</li>
-        </ul>
-
-        <h3>Persistence</h3>
-        <ul>
-          <li>Expand SQLite-backed local persistence</li>
-          <li>Improve offline collection behavior</li>
-        </ul>
-
-        <h3>Product Intelligence</h3>
-        <ul>
-          <li>AI-assisted deck coaching</li>
-          <li>Future premium feature exploration</li>
-        </ul>
       </section>
 
       <section id="engineering-decisions" className="case-section">
         <h2>Engineering Decisions &amp; Tradeoffs</h2>
-        <ul>
+        <ul className="mtg-decision-list">
           <li>
-            <span className="bold">Recognition accuracy vs automation:</span>{" "}
-            the scanner should avoid auto-selecting a weak match just to
-            complete the flow.
+            <span className="bold">Recognition accuracy vs. automation</span>
+            The scanner should solve as much as possible automatically without
+            silently saving an incorrect card. Uncertain matches are surfaced
+            for review.
           </li>
           <li>
-            <span className="bold">Confidence vs speed:</span> additional image
-            comparison and candidate checks can improve certainty, but they
-            also increase processing time.
+            <span className="bold">Confidence vs. speed</span>
+            Additional image comparison and candidate checking can improve
+            recognition accuracy but increase processing time.
           </li>
           <li>
-            <span className="bold">Fixed crop geometry vs real-world camera variance:</span>{" "}
-            consistent crop regions improve matching, but card position and
-            framing are not always identical.
+            <span className="bold">
+              Card copy geometry vs. real-world camera variance
+            </span>
+            Consistent card regions improve matching, but physical cards
+            introduce glare, framing, rotation, and perspective differences.
           </li>
           <li>
-            <span className="bold">Automation vs correction:</span> manual
-            correction is intentionally part of the workflow because a
-            recoverable uncertain result is better than a confidently wrong
-            result.
+            <span className="bold">Local-first persistence</span>
+            SQLite keeps collections and decks available on-device and
+            separates persistent user data from external Scryfall lookups.
           </li>
           <li>
-            <span className="bold">Debug visibility vs production simplicity:</span>{" "}
-            developer evaluation tools and timing instrumentation help diagnose
-            recognition failures but should remain separate from the normal
-            user experience.
+            <span className="bold">Debug visibility vs. production simplicity</span>
+            Detailed scanner diagnostics have been valuable during development
+            for understanding why recognition succeeds or fails.
           </li>
         </ul>
+      </section>
+
+      <section id="whats-next" className="case-section">
+        <h2>What’s Next</h2>
+        <div className="mtg-next-grid">
+          <div className="mtg-next-group">
+            <h3>Recognition</h3>
+            <ul>
+              <li>Improve art/printing matching reliability</li>
+              <li>Improve adaptive crop handling</li>
+              <li>Continue scanner performance improvements</li>
+            </ul>
+          </div>
+          <div className="mtg-next-group">
+            <h3>Persistence &amp; UX</h3>
+            <ul>
+              <li>Continue refining collection quantity/delete behavior</li>
+              <li>Improve offline/local-first behavior</li>
+            </ul>
+          </div>
+          <div className="mtg-next-group">
+            <h3>Product Intelligence</h3>
+            <ul>
+              <li>AI-assisted deck coaching</li>
+              <li>Future collection/deck intelligence</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section id="outcome" className="case-section">
         <h2>Outcome</h2>
         <p>
-          The result is a working cross-platform mobile application that
-          supports collection management, deck building, API-backed card data,
-          OCR-assisted scanning, manual correction, caching, and automated
-          testing.
+          MTG Collection Manager has evolved into a production-scale personal
+          engineering project spanning mobile UI, local persistence, REST API
+          integration, OCR/computer-vision workflows, caching, automated
+          testing, and UX design. Building it has required balancing
+          recognition accuracy, performance, maintainability, and user control
+          while continuously iterating against real card-scanning behavior.
         </p>
-        <p>
-          More importantly, the project has become an ongoing engineering
-          testbed for recognition reliability, mobile architecture, UX recovery
-          states, and performance tradeoffs—areas I continue to measure and
-          refine rather than treating the first implementation as finished.
-        </p>
-      </section>
-
-      <section id="demo" className="case-section">
-        <h2>Demo</h2>
-        <p>Demo video coming soon.</p>
       </section>
     </div>
   );
